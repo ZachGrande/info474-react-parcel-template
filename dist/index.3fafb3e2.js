@@ -1054,7 +1054,7 @@ try {
   var _reactDomDefault = _parcelHelpers.interopDefault(_reactDom);
   var _App = require("./App");
   var _AppDefault = _parcelHelpers.interopDefault(_App);
-  var _jsxFileName = "/Users/zachgrande/Code/INFO474/project-1/src/index.js";
+  var _jsxFileName = "/Users/zachgrande/Code/INFO474/project-template/src/index.js";
   _reactDomDefault.default.render(/*#__PURE__*/_reactDefault.default.createElement(_AppDefault.default, {
     __self: undefined,
     __source: {
@@ -26272,7 +26272,7 @@ try {
   _parcelHelpers.defineInteropFlag(exports);
   var _react = require("react");
   var _reactDefault = _parcelHelpers.interopDefault(_react);
-  var _jsxFileName = "/Users/zachgrande/Code/INFO474/project-1/src/App.js";
+  var _jsxFileName = "/Users/zachgrande/Code/INFO474/project-template/src/App.js";
   const App = () => {
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
