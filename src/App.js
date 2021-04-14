@@ -14,7 +14,8 @@ const App = () => {
         <rect x={248} y={200} width={10} height={10} />
         <line x1="20" y1={viewHeight - 50} x2="150" y2="100" stroke="black" />
         <text x="20" y="35" class="small" style={{font: "italic 13px sans- serif"}}>
-            Price history of 100 randomly selected Pokemon cards (new test)
+            Price history of 100 randomly selected Pokemon cards
+            Changed the name of the repo
         </text>
     </svg>;
     // return <div>Hello from react</div>;
