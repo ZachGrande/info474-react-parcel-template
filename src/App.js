@@ -11,6 +11,7 @@ const App = () => {
     const [data, loading] = useFetch(
         // "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
         "https://raw.githubusercontent.com/colinmegill/react-parcel-starter/main/weather.csv"
+        // "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/netflix_titles.csv"
     );
 
     console.log("from hook", loading, data);
