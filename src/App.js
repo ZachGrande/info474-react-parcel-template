@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetch } from "./hooks/useFetch";
 import { scaleLinear } from "d3-scale";
-import { extent, max, min } from "d3-array";
+import { extent, max, min, bin } from "d3-array";
 
 const viewHeight = 500;
 const viewWidth = 500;
@@ -16,21 +16,61 @@ const App = () => {
 
     console.log("from hook", loading, data);
 
-    const dataSmallSample = data.slice(0, 300);
+    const dataSmallSample = data.slice(0, 5000);
     const TMAXextent = extent(dataSmallSample, (d) => {
         return +d.TMAX;
     });
     console.log(TMAXextent);
+
+    const projection = d3.geoNaturalEarth1();
+    const path = d3.geoPath(projection);
+
     const size = 500;
     const margin = 20;
     const axisTextAlignmentFactor = 3;
     const yScale = scaleLinear()
         .domain(TMAXextent) // unit: km
         .range([size - margin, size - 350]); // unit: pixels
+
+    _bins = bin().thresholds(30);
+    tmaxBins = _bins(
+        dataSmallSample.map((d) => {
+            return +d.TMAX;
+        })
+    );
+
+    console.log(
+        tmaxBins.map((bin, i) => {
+            console.log(i, bin.x0, bin.x1, bin);
+        })
+    );
+
+    const histogramLeftPadding = 20;
+
+    console.log(tmaxBins);
+
     return (
         <div>
             <h1>Exploratory Data Analysis, Assignment 2, INFO 474 SP 2021</h1>
             <p>{loading && "Loading data!"}</p>
+
+            <h3>Working with Geo Data</h3>
+            <svg width={size} height={size} style={{ border: "1px solid black" }}>
+
+            </svg>
+
+            <h3>Binning</h3>
+            <svg width={size} height={size} style={{ border: "1px solid black" }}>
+                {tmaxBins.map((bin, i) => {
+                    return <rect
+                        y={size - 50 - bin.length}
+                        width="10"
+                        height={bin.length}
+                        x={histogramLeftPadding + i * 11}
+                    />
+                })
+                }
+            </svg>
             <h3>Scales in D3</h3>
             <svg width={size} height={size} style={{ border: "1px solid black" }}>
                 <text

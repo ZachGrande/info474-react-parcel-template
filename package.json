@@ -13,6 +13,7 @@
   "dependencies": {
     "d3-array": "^2.12.1",
     "d3-fetch": "^2.0.0",
+    "d3-geo-projection": "^3.0.0",
     "d3-scale": "^3.3.0",
     "parcel": "^2.0.0-beta.2",
     "react": "^17.0.2",
