@@ -5,6 +5,9 @@ import { extent, max, min, bin } from "d3-array";
 
 function ClassDemos() {
 
+    const viewHeight = 500;
+    const viewWidth = 500;
+
     const [data, loading] = useFetch(
         // "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
         "https://raw.githubusercontent.com/colinmegill/react-parcel-starter/main/weather.csv"
@@ -219,7 +222,7 @@ function ClassDemos() {
                 })}
             </svg>
         </div>
-    )
+    );
 }
 
 export default ClassDemos;

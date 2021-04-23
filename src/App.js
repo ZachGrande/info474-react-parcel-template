@@ -1,15 +1,37 @@
 import React from "react";
-import { useFetch } from "./hooks/useFetch";
-import { scaleLinear } from "d3-scale";
-import { extent, max, min, bin } from "d3-array";
 import ClassDemos from './ClassDemos.js';
+import { Route, Switch, Link, Redirect, NavLink } from 'react-router-dom';
 
-const viewHeight = 500;
-const viewWidth = 500;
-
-const App = () => {
+// const App = () => {
+function App(props) {
     return (
-        <ClassDemos />
+        <div>
+            <header className="jumbotron jumbotron-fluid py-4">
+                <div className="container">
+                    <h1><Link to="/"> INFO 474: Data Visualization </Link></h1>
+                    <h2>Zach Grande, Spring 2021</h2>
+                </div>
+            </header>
+
+            <main className="container">
+                <div className="row">
+                    <div className="col-3">
+                        <AboutNav />
+                    </div>
+                    <div className="col-9">
+                        <Switch>
+                            <Route exact path="/" />
+                            <Route path="/demos" component={ClassDemos} />
+                            <Redirect to="/" />
+                        </Switch>
+                    </div>
+                </div>
+            </main>
+            {/* <ClassDemos /> */}
+            <footer className="container">
+                <p>University of Washington</p>
+            </footer>
+        </div>
     );
 
     // return <svg style={{border: "1px solid lightgrey", width: viewWidth, height: viewHeight}}>
@@ -27,6 +49,19 @@ const App = () => {
     //     </text>
     // </svg>;
     // return <div>Hello from react</div>;
-};
+}
+
+function AboutNav() {
+    return (
+        <nav id="aboutLinks">
+            <h2>About</h2>
+            <ul classNAme="list-unstyled">
+                <li><NavLink exact to="/" className="nav-link" activeClassName={"activeLink"}>Home Page</NavLink></li>
+                <li><NavLink exact to="/" className="nav-link" activeClassName={"activeLink"}>Class Demos</NavLink></li>
+                <li><NavLink exact to="/" className="nav-link" activeClassName={"activeLink"}>Assignment 2</NavLink></li>
+            </ul>
+        </nav>
+    )
+}
 
 export default App;

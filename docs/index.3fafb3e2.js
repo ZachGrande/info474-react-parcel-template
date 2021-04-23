@@ -30216,37 +30216,670 @@ try {
   _parcelHelpers.defineInteropFlag(exports);
   var _react = require("react");
   var _reactDefault = _parcelHelpers.interopDefault(_react);
-  require("./hooks/useFetch");
-  require("d3-scale");
-  require("d3-array");
   var _ClassDemosJs = require('./ClassDemos.js');
   var _ClassDemosJsDefault = _parcelHelpers.interopDefault(_ClassDemosJs);
+  var _reactRouterDom = require('react-router-dom');
   var _jsxFileName = "/Users/zachgrande/Code/INFO474/info474-react-parcel-template/src/App.js";
-  const viewHeight = 500;
-  const viewWidth = 500;
-  const App = () => {
+  // const App = () => {
+  function App(props) {
     return (
-      /*#__PURE__*/_reactDefault.default.createElement(_ClassDemosJsDefault.default, {
-        __self: undefined,
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("header", {
+        className: "jumbotron jumbotron-fluid py-4",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 9,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("div", {
+        className: "container",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10,
+          columnNumber: 17
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 11,
+          columnNumber: 21
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Link, {
+        to: "/",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 11,
+          columnNumber: 25
+        }
+      }, " INFO 474: Data Visualization ")), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 12,
+          columnNumber: 21
+        }
+      }, "Zach Grande, Spring 2021"))), /*#__PURE__*/_reactDefault.default.createElement("main", {
+        className: "container",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("div", {
+        className: "row",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17,
+          columnNumber: 17
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("div", {
+        className: "col-3",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18,
+          columnNumber: 21
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(AboutNav, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19,
+          columnNumber: 25
+        }
+      })), /*#__PURE__*/_reactDefault.default.createElement("div", {
+        className: "col-9",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21,
+          columnNumber: 21
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Switch, {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22,
+          columnNumber: 25
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23,
+          columnNumber: 29
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
+        path: "/demos",
+        component: _ClassDemosJsDefault.default,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24,
+          columnNumber: 29
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Redirect, {
+        to: "/",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25,
+          columnNumber: 29
+        }
+      }))))), /*#__PURE__*/_reactDefault.default.createElement("footer", {
+        className: "container",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 31,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 32,
+          columnNumber: 17
+        }
+      }, "University of Washington")))
+    );
+  }
+  _c = App;
+  function AboutNav() {
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("nav", {
+        id: "aboutLinks",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 56,
           columnNumber: 9
         }
-      })
+      }, /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 57,
+          columnNumber: 13
+        }
+      }, "About"), /*#__PURE__*/_reactDefault.default.createElement("ul", {
+        classNAme: "list-unstyled",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 58,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 59,
+          columnNumber: 17
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.NavLink, {
+        exact: true,
+        to: "/",
+        className: "nav-link",
+        activeClassName: "activeLink",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 59,
+          columnNumber: 21
+        }
+      }, "Home Page")), /*#__PURE__*/_reactDefault.default.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 60,
+          columnNumber: 17
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.NavLink, {
+        exact: true,
+        to: "/",
+        className: "nav-link",
+        activeClassName: "activeLink",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 60,
+          columnNumber: 21
+        }
+      }, "Class Demos")), /*#__PURE__*/_reactDefault.default.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 61,
+          columnNumber: 17
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.NavLink, {
+        exact: true,
+        to: "/",
+        className: "nav-link",
+        activeClassName: "activeLink",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 61,
+          columnNumber: 21
+        }
+      }, "Assignment 2"))))
     );
-  };
-  _c = App;
+  }
+  _c2 = AboutNav;
   exports.default = App;
-  var _c;
+  var _c, _c2;
   $RefreshReg$(_c, "App");
+  $RefreshReg$(_c2, "AboutNav");
   helpers.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","./hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","./ClassDemos.js":"jf593"}],"5YU3r":[function(require,module,exports) {
+},{"react":"3b2NM","./ClassDemos.js":"jf593","react-router-dom":"1PMSK","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"jf593":[function(require,module,exports) {
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _hooksUseFetch = require("./hooks/useFetch");
+  var _d3Scale = require("d3-scale");
+  var _d3Array = require("d3-array");
+  var _jsxFileName = "/Users/zachgrande/Code/INFO474/info474-react-parcel-template/src/ClassDemos.js", _s = $RefreshSig$();
+  function ClassDemos() {
+    _s();
+    const viewHeight = 500;
+    const viewWidth = 500;
+    const [data, loading] = _hooksUseFetch.useFetch(// "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
+    "https://raw.githubusercontent.com/colinmegill/react-parcel-starter/main/weather.csv");
+    console.log("from hook", loading, data);
+    const dataSmallSample = data.slice(0, 5000);
+    const TMAXextent = _d3Array.extent(dataSmallSample, d => {
+      return +d.TMAX;
+    });
+    console.log(TMAXextent);
+    const projection = d3.geoNaturalEarth1();
+    const path = d3.geoPath(projection);
+    const size = 500;
+    const margin = 20;
+    const axisTextAlignmentFactor = 3;
+    const yScale = _d3Scale.scaleLinear().domain(TMAXextent).// unit: km
+    range([size - margin, size - 350]);
+    // unit: pixels
+    _bins = _d3Array.bin().thresholds(30);
+    tmaxBins = _bins(dataSmallSample.map(d => {
+      return +d.TMAX;
+    }));
+    console.log(tmaxBins.map((bin, i) => {
+      console.log(i, bin.x0, bin.x1, bin);
+    }));
+    const histogramLeftPadding = 20;
+    console.log(tmaxBins);
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 53,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 54,
+          columnNumber: 13
+        }
+      }, "Exploratory Data Analysis, Assignment 2, INFO 474 SP 2021"), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 55,
+          columnNumber: 13
+        }
+      }, loading && "Loading data!"), /*#__PURE__*/_reactDefault.default.createElement("h3", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 57,
+          columnNumber: 13
+        }
+      }, "Working with Geo Data"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
+        width: size,
+        height: size,
+        style: {
+          border: "1px solid black"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 58,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("h3", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 62,
+          columnNumber: 13
+        }
+      }, "Binning"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
+        width: size,
+        height: size,
+        style: {
+          border: "1px solid black"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 63,
+          columnNumber: 13
+        }
+      }, tmaxBins.map((bin, i) => {
+        return (
+          /*#__PURE__*/_reactDefault.default.createElement("rect", {
+            y: size - 50 - bin.length,
+            width: "10",
+            height: bin.length,
+            x: histogramLeftPadding + i * 11,
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 65,
+              columnNumber: 28
+            }
+          })
+        );
+      })), /*#__PURE__*/_reactDefault.default.createElement("h3", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 74,
+          columnNumber: 13
+        }
+      }, "Scales in D3"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
+        width: size,
+        height: size,
+        style: {
+          border: "1px solid black"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 75,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("text", {
+        x: size / 2 - 12,
+        y: yScale(0) + axisTextAlignmentFactor,
+        textAnchor: "end",
+        style: {
+          fontSize: 10,
+          fontFamily: "Gill Sans, sans serif"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 76,
+          columnNumber: 17
+        }
+      }, "0"), /*#__PURE__*/_reactDefault.default.createElement("text", {
+        x: size / 2 - 12,
+        y: yScale(100) + axisTextAlignmentFactor,
+        textAnchor: "end",
+        style: {
+          fontSize: 10,
+          fontFamily: "Gill Sans, sans serif"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 84,
+          columnNumber: 17
+        }
+      }, "100"), /*#__PURE__*/_reactDefault.default.createElement("line", {
+        x1: size / 2 - 10,
+        y1: yScale(100),
+        x2: size / 2 - 5,
+        y2: yScale(100),
+        stroke: "black",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 92,
+          columnNumber: 17
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("line", {
+        x1: size / 2 - 10,
+        y1: yScale(0),
+        x2: size / 2 - 5,
+        y2: yScale(0),
+        stroke: "black",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 99,
+          columnNumber: 17
+        }
+      }), dataSmallSample.map((measurement, index) => {
+        const highlight = measurement.station === "KALISPELL GLACIER AP";
+        return (
+          /*#__PURE__*/_reactDefault.default.createElement("line", {
+            key: index,
+            x1: size / 2,
+            y1: yScale(measurement.TMAX),
+            x2: size / 2 + 20,
+            y2: yScale(measurement.TMAX),
+            stroke: highlight ? "red" : "steelblue",
+            strokeOpacity: highlight ? 1 : 0.1,
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 109,
+              columnNumber: 25
+            }
+          })
+        );
+      })), /*#__PURE__*/_reactDefault.default.createElement("h3", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 121,
+          columnNumber: 13
+        }
+      }, "Scatterplot"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
+        width: size,
+        height: size,
+        style: {
+          border: "1px solid black"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 122,
+          columnNumber: 13
+        }
+      }, dataSmallSample.map((measurement, index) => {
+        const highlight = measurement.station === "KALISPELL GLACIER AP";
+        return (
+          /*#__PURE__*/_reactDefault.default.createElement("circle", {
+            key: index,
+            cx: 100 - measurement.TMIN,
+            cy: size - margin - measurement.TMAX,
+            r: "3",
+            fill: "none",
+            stroke: highlight ? "red" : "steelblue",
+            strokeOpacity: "0.2",
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 126,
+              columnNumber: 25
+            }
+          })
+        );
+      })), /*#__PURE__*/_reactDefault.default.createElement("h3", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 138,
+          columnNumber: 13
+        }
+      }, "Barcode plot TMAX at Kalispell Glacier (sounds cold, expect it to be lower than average)"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
+        width: size,
+        height: size,
+        style: {
+          border: "1px solid black"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 142,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("text", {
+        x: size / 2 - 12,
+        textAnchor: "end",
+        y: size - margin + axisTextAlignmentFactor,
+        style: {
+          fontSize: 10,
+          fontFamily: "Gill Sans, sans serif"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 143,
+          columnNumber: 17
+        }
+      }, "0"), /*#__PURE__*/_reactDefault.default.createElement("text", {
+        x: size / 2 - 12,
+        textAnchor: "end",
+        y: size - margin - 100 + axisTextAlignmentFactor,
+        style: {
+          fontSize: 10,
+          fontFamily: "Gill Sans, sans serif"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 151,
+          columnNumber: 17
+        }
+      }, "100"), /*#__PURE__*/_reactDefault.default.createElement("line", {
+        x1: size / 2 - 10,
+        y1: size - margin - 100,
+        x2: size / 2 - 5,
+        y2: size - margin - 100,
+        stroke: "black",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 159,
+          columnNumber: 17
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("line", {
+        x1: size / 2 - 10,
+        y1: size - margin,
+        x2: size / 2 - 5,
+        y2: size - margin,
+        stroke: "black",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 166,
+          columnNumber: 17
+        }
+      }), data.slice(0, 1000).map((measurement, index) => {
+        const highlight = measurement.station === "KALISPELL GLACIER AP";
+        return (
+          /*#__PURE__*/_reactDefault.default.createElement("line", {
+            key: index,
+            x1: size / 2,
+            y1: size - margin - measurement.TMAX,
+            x2: size / 2 + 20,
+            y2: size - margin - measurement.TMAX,
+            stroke: highlight ? "red" : "steelblue",
+            strokeOpacity: highlight ? 1 : 0.1,
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 176,
+              columnNumber: 25
+            }
+          })
+        );
+      })), /*#__PURE__*/_reactDefault.default.createElement("h3", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 188,
+          columnNumber: 13
+        }
+      }, "TMAX at Kalispell Glacier (sounds cold, expect it to be lower than average)"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
+        width: size,
+        height: size,
+        style: {
+          border: "1px solid black"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 192,
+          columnNumber: 13
+        }
+      }, data.slice(0, 300).map((measurement, index) => {
+        const highlight = measurement.station === "KALISPELL GLACIER AP";
+        return (
+          /*#__PURE__*/_reactDefault.default.createElement("circle", {
+            key: index,
+            cx: highlight ? size / 2 : size / 2 - 20,
+            cy: size - margin - measurement.TMAX,
+            r: "3",
+            fill: "none",
+            stroke: highlight ? "red" : "steelblue",
+            strokeOpacity: "0.2",
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 196,
+              columnNumber: 25
+            }
+          })
+        );
+      })), /*#__PURE__*/_reactDefault.default.createElement("h3", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 208,
+          columnNumber: 13
+        }
+      }, "Rendering circles :) this shows a distribution of TMAX"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
+        width: size,
+        height: size,
+        style: {
+          border: "1px solid black"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 209,
+          columnNumber: 13
+        }
+      }, data.slice(0, 300).map((measurement, index) => {
+        return (
+          /*#__PURE__*/_reactDefault.default.createElement("circle", {
+            key: index,
+            cx: size / 2,
+            cy: size - margin - measurement.TMAX,
+            r: "3",
+            fill: "none",
+            stroke: "steelblue",
+            strokeOpacity: "0.2",
+            __self: this,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 212,
+              columnNumber: 25
+            }
+          })
+        );
+      })))
+    );
+  }
+  _s(ClassDemos, "Jm65JCcgUFoenM4DufkEA80vRVI=", false, function () {
+    return [_hooksUseFetch.useFetch];
+  });
+  _c = ClassDemos;
+  exports.default = ClassDemos;
+  var _c;
+  $RefreshReg$(_c, "ClassDemos");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+
+},{"react":"3b2NM","./hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"5YU3r":[function(require,module,exports) {
 var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -34753,431 +35386,6 @@ var define;
   });
 });
 
-},{"d3-time":"JGVPX"}],"jf593":[function(require,module,exports) {
-var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-helpers.prelude(module);
-try {
-  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-  _parcelHelpers.defineInteropFlag(exports);
-  var _react = require('react');
-  var _reactDefault = _parcelHelpers.interopDefault(_react);
-  var _hooksUseFetch = require("./hooks/useFetch");
-  var _d3Scale = require("d3-scale");
-  var _d3Array = require("d3-array");
-  var _jsxFileName = "/Users/zachgrande/Code/INFO474/info474-react-parcel-template/src/ClassDemos.js", _s = $RefreshSig$();
-  function ClassDemos() {
-    _s();
-    const [data, loading] = _hooksUseFetch.useFetch(// "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
-    "https://raw.githubusercontent.com/colinmegill/react-parcel-starter/main/weather.csv");
-    console.log("from hook", loading, data);
-    const dataSmallSample = data.slice(0, 5000);
-    const TMAXextent = _d3Array.extent(dataSmallSample, d => {
-      return +d.TMAX;
-    });
-    console.log(TMAXextent);
-    const projection = d3.geoNaturalEarth1();
-    const path = d3.geoPath(projection);
-    const size = 500;
-    const margin = 20;
-    const axisTextAlignmentFactor = 3;
-    const yScale = _d3Scale.scaleLinear().domain(TMAXextent).// unit: km
-    range([size - margin, size - 350]);
-    // unit: pixels
-    _bins = _d3Array.bin().thresholds(30);
-    tmaxBins = _bins(dataSmallSample.map(d => {
-      return +d.TMAX;
-    }));
-    console.log(tmaxBins.map((bin, i) => {
-      console.log(i, bin.x0, bin.x1, bin);
-    }));
-    const histogramLeftPadding = 20;
-    console.log(tmaxBins);
-    return (
-      /*#__PURE__*/_reactDefault.default.createElement("div", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 50,
-          columnNumber: 9
-        }
-      }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 51,
-          columnNumber: 13
-        }
-      }, "Exploratory Data Analysis, Assignment 2, INFO 474 SP 2021"), /*#__PURE__*/_reactDefault.default.createElement("p", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 52,
-          columnNumber: 13
-        }
-      }, loading && "Loading data!"), /*#__PURE__*/_reactDefault.default.createElement("h3", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 54,
-          columnNumber: 13
-        }
-      }, "Working with Geo Data"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
-        width: size,
-        height: size,
-        style: {
-          border: "1px solid black"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 55,
-          columnNumber: 13
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("h3", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 59,
-          columnNumber: 13
-        }
-      }, "Binning"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
-        width: size,
-        height: size,
-        style: {
-          border: "1px solid black"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 60,
-          columnNumber: 13
-        }
-      }, tmaxBins.map((bin, i) => {
-        return (
-          /*#__PURE__*/_reactDefault.default.createElement("rect", {
-            y: size - 50 - bin.length,
-            width: "10",
-            height: bin.length,
-            x: histogramLeftPadding + i * 11,
-            __self: this,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 62,
-              columnNumber: 28
-            }
-          })
-        );
-      })), /*#__PURE__*/_reactDefault.default.createElement("h3", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 71,
-          columnNumber: 13
-        }
-      }, "Scales in D3"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
-        width: size,
-        height: size,
-        style: {
-          border: "1px solid black"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 72,
-          columnNumber: 13
-        }
-      }, /*#__PURE__*/_reactDefault.default.createElement("text", {
-        x: size / 2 - 12,
-        y: yScale(0) + axisTextAlignmentFactor,
-        textAnchor: "end",
-        style: {
-          fontSize: 10,
-          fontFamily: "Gill Sans, sans serif"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 73,
-          columnNumber: 17
-        }
-      }, "0"), /*#__PURE__*/_reactDefault.default.createElement("text", {
-        x: size / 2 - 12,
-        y: yScale(100) + axisTextAlignmentFactor,
-        textAnchor: "end",
-        style: {
-          fontSize: 10,
-          fontFamily: "Gill Sans, sans serif"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 81,
-          columnNumber: 17
-        }
-      }, "100"), /*#__PURE__*/_reactDefault.default.createElement("line", {
-        x1: size / 2 - 10,
-        y1: yScale(100),
-        x2: size / 2 - 5,
-        y2: yScale(100),
-        stroke: "black",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 89,
-          columnNumber: 17
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("line", {
-        x1: size / 2 - 10,
-        y1: yScale(0),
-        x2: size / 2 - 5,
-        y2: yScale(0),
-        stroke: "black",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 96,
-          columnNumber: 17
-        }
-      }), dataSmallSample.map((measurement, index) => {
-        const highlight = measurement.station === "KALISPELL GLACIER AP";
-        return (
-          /*#__PURE__*/_reactDefault.default.createElement("line", {
-            key: index,
-            x1: size / 2,
-            y1: yScale(measurement.TMAX),
-            x2: size / 2 + 20,
-            y2: yScale(measurement.TMAX),
-            stroke: highlight ? "red" : "steelblue",
-            strokeOpacity: highlight ? 1 : 0.1,
-            __self: this,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 106,
-              columnNumber: 25
-            }
-          })
-        );
-      })), /*#__PURE__*/_reactDefault.default.createElement("h3", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 118,
-          columnNumber: 13
-        }
-      }, "Scatterplot"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
-        width: size,
-        height: size,
-        style: {
-          border: "1px solid black"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 119,
-          columnNumber: 13
-        }
-      }, dataSmallSample.map((measurement, index) => {
-        const highlight = measurement.station === "KALISPELL GLACIER AP";
-        return (
-          /*#__PURE__*/_reactDefault.default.createElement("circle", {
-            key: index,
-            cx: 100 - measurement.TMIN,
-            cy: size - margin - measurement.TMAX,
-            r: "3",
-            fill: "none",
-            stroke: highlight ? "red" : "steelblue",
-            strokeOpacity: "0.2",
-            __self: this,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 123,
-              columnNumber: 25
-            }
-          })
-        );
-      })), /*#__PURE__*/_reactDefault.default.createElement("h3", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 135,
-          columnNumber: 13
-        }
-      }, "Barcode plot TMAX at Kalispell Glacier (sounds cold, expect it to be lower than average)"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
-        width: size,
-        height: size,
-        style: {
-          border: "1px solid black"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 139,
-          columnNumber: 13
-        }
-      }, /*#__PURE__*/_reactDefault.default.createElement("text", {
-        x: size / 2 - 12,
-        textAnchor: "end",
-        y: size - margin + axisTextAlignmentFactor,
-        style: {
-          fontSize: 10,
-          fontFamily: "Gill Sans, sans serif"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 140,
-          columnNumber: 17
-        }
-      }, "0"), /*#__PURE__*/_reactDefault.default.createElement("text", {
-        x: size / 2 - 12,
-        textAnchor: "end",
-        y: size - margin - 100 + axisTextAlignmentFactor,
-        style: {
-          fontSize: 10,
-          fontFamily: "Gill Sans, sans serif"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 148,
-          columnNumber: 17
-        }
-      }, "100"), /*#__PURE__*/_reactDefault.default.createElement("line", {
-        x1: size / 2 - 10,
-        y1: size - margin - 100,
-        x2: size / 2 - 5,
-        y2: size - margin - 100,
-        stroke: "black",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 156,
-          columnNumber: 17
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("line", {
-        x1: size / 2 - 10,
-        y1: size - margin,
-        x2: size / 2 - 5,
-        y2: size - margin,
-        stroke: "black",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 163,
-          columnNumber: 17
-        }
-      }), data.slice(0, 1000).map((measurement, index) => {
-        const highlight = measurement.station === "KALISPELL GLACIER AP";
-        return (
-          /*#__PURE__*/_reactDefault.default.createElement("line", {
-            key: index,
-            x1: size / 2,
-            y1: size - margin - measurement.TMAX,
-            x2: size / 2 + 20,
-            y2: size - margin - measurement.TMAX,
-            stroke: highlight ? "red" : "steelblue",
-            strokeOpacity: highlight ? 1 : 0.1,
-            __self: this,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 173,
-              columnNumber: 25
-            }
-          })
-        );
-      })), /*#__PURE__*/_reactDefault.default.createElement("h3", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 185,
-          columnNumber: 13
-        }
-      }, "TMAX at Kalispell Glacier (sounds cold, expect it to be lower than average)"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
-        width: size,
-        height: size,
-        style: {
-          border: "1px solid black"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 189,
-          columnNumber: 13
-        }
-      }, data.slice(0, 300).map((measurement, index) => {
-        const highlight = measurement.station === "KALISPELL GLACIER AP";
-        return (
-          /*#__PURE__*/_reactDefault.default.createElement("circle", {
-            key: index,
-            cx: highlight ? size / 2 : size / 2 - 20,
-            cy: size - margin - measurement.TMAX,
-            r: "3",
-            fill: "none",
-            stroke: highlight ? "red" : "steelblue",
-            strokeOpacity: "0.2",
-            __self: this,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 193,
-              columnNumber: 25
-            }
-          })
-        );
-      })), /*#__PURE__*/_reactDefault.default.createElement("h3", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 205,
-          columnNumber: 13
-        }
-      }, "Rendering circles :) this shows a distribution of TMAX"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
-        width: size,
-        height: size,
-        style: {
-          border: "1px solid black"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 206,
-          columnNumber: 13
-        }
-      }, data.slice(0, 300).map((measurement, index) => {
-        return (
-          /*#__PURE__*/_reactDefault.default.createElement("circle", {
-            key: index,
-            cx: size / 2,
-            cy: size - margin - measurement.TMAX,
-            r: "3",
-            fill: "none",
-            stroke: "steelblue",
-            strokeOpacity: "0.2",
-            __self: this,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 209,
-              columnNumber: 25
-            }
-          })
-        );
-      })))
-    );
-  }
-  _s(ClassDemos, "Jm65JCcgUFoenM4DufkEA80vRVI=", false, function () {
-    return [_hooksUseFetch.useFetch];
-  });
-  _c = ClassDemos;
-  exports.default = ClassDemos;
-  var _c;
-  $RefreshReg$(_c, "ClassDemos");
-  helpers.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-
-},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","./hooks/useFetch":"5YU3r","d3-scale":"2UZ4X","d3-array":"7CLUA"}]},["1j6wU","3Imd1","5rkFb"], "5rkFb", "parcelRequire27c8")
+},{"d3-time":"JGVPX"}]},["1j6wU","3Imd1","5rkFb"], "5rkFb", "parcelRequire27c8")
 
 //# sourceMappingURL=index.3fafb3e2.js.map
