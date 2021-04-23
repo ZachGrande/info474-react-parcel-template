@@ -5,9 +5,6 @@ import { extent, max, min, bin } from "d3-array";
 
 function ClassDemos() {
 
-    const viewHeight = 500;
-    const viewWidth = 500;
-
     const [data, loading] = useFetch(
         // "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
         "https://raw.githubusercontent.com/colinmegill/react-parcel-starter/main/weather.csv"
@@ -50,7 +47,7 @@ function ClassDemos() {
     console.log(tmaxBins);
 
     return (
-        <div>
+        <div className="container">
             <h1>Exploratory Data Analysis, Assignment 2, INFO 474 SP 2021</h1>
             <p>{loading && "Loading data!"}</p>
 
