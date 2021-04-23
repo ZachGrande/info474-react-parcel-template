@@ -30434,7 +30434,7 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","./ClassDemos.js":"jf593","react-router-dom":"1PMSK","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","react-bootstrap":"4n7hB","./HomePage.js":"2e1ph","./Assignment2":"19t3x"}],"jf593":[function(require,module,exports) {
+},{"react":"3b2NM","./ClassDemos.js":"jf593","./HomePage.js":"2e1ph","./Assignment2":"19t3x","react-router-dom":"1PMSK","react-bootstrap":"4n7hB","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"jf593":[function(require,module,exports) {
 var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -35367,7 +35367,207 @@ var define;
   });
 });
 
-},{"d3-time":"JGVPX"}],"4n7hB":[function(require,module,exports) {
+},{"d3-time":"JGVPX"}],"2e1ph":[function(require,module,exports) {
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _jsxFileName = "/Users/zachgrande/Code/INFO474/info474-react-parcel-template/src/HomePage.js";
+  function HomePage() {
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        className: "container",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 5,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 6,
+          columnNumber: 13
+        }
+      }, "This is the main page!"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
+        style: {
+          border: "1px solid lightgrey",
+          width: 500,
+          height: 500
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("circle", {
+        cx: 0,
+        cy: "500",
+        r: "5",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8,
+          columnNumber: 17
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
+        x: "200",
+        y: "100",
+        width: "10",
+        height: "10",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 9,
+          columnNumber: 17
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
+        x: 200,
+        y: 200,
+        width: 10,
+        height: 10,
+        fill: "rgb(230,230,230)",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10,
+          columnNumber: 17
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
+        x: 212,
+        y: 200,
+        width: 10,
+        height: 10,
+        fill: "rgb(230,230,230)",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 11,
+          columnNumber: 17
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
+        x: 224,
+        y: 200,
+        width: 10,
+        height: 10,
+        fill: "rgb(230,230,230)",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 12,
+          columnNumber: 17
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
+        x: 236,
+        y: 200,
+        width: 10,
+        height: 10,
+        fill: "rgb(230,230,230)",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 13,
+          columnNumber: 17
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
+        x: 248,
+        y: 200,
+        width: 10,
+        height: 10,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 14,
+          columnNumber: 17
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("line", {
+        x1: "20",
+        y1: 500 - 50,
+        x2: "150",
+        y2: "100",
+        stroke: "black",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15,
+          columnNumber: 17
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("text", {
+        x: "20",
+        y: "35",
+        className: "small",
+        style: {
+          font: "italic 13px sans- serif"
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16,
+          columnNumber: 17
+        }
+      }, "Price history of 100 randomly selected Pokemon cards Changed the name of the repo")))
+    );
+  }
+  _c = HomePage;
+  exports.default = HomePage;
+  var _c;
+  $RefreshReg$(_c, "HomePage");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+
+},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"19t3x":[function(require,module,exports) {
+var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _jsxFileName = "/Users/zachgrande/Code/INFO474/info474-react-parcel-template/src/Assignment2.js";
+  // import {createClassFromLiteSpec} from 'react-vega-lite';
+  function Assignment2() {
+    printTable(cars.slice(0, 5));
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 9,
+          columnNumber: 9
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10,
+          columnNumber: 13
+        }
+      }, "Hello there!"))
+    );
+  }
+  _c = Assignment2;
+  exports.default = Assignment2;
+  var _c;
+  $RefreshReg$(_c, "Assignment2");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+
+},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"4n7hB":[function(require,module,exports) {
 "use strict";
 
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
@@ -48525,204 +48725,6 @@ Tooltip.displayName = 'Tooltip';
 var _default = Tooltip;
 exports.default = _default;
 module.exports = exports["default"];
-},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","prop-types-extra/lib/isRequiredForA11y":"4XrEc","./ThemeProvider":"4rz1S"}],"2e1ph":[function(require,module,exports) {
-var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-helpers.prelude(module);
-try {
-  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-  _parcelHelpers.defineInteropFlag(exports);
-  var _react = require('react');
-  var _reactDefault = _parcelHelpers.interopDefault(_react);
-  var _jsxFileName = "/Users/zachgrande/Code/INFO474/info474-react-parcel-template/src/HomePage.js";
-  function HomePage() {
-    return (
-      /*#__PURE__*/_reactDefault.default.createElement("div", {
-        className: "container",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 5,
-          columnNumber: 9
-        }
-      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 6,
-          columnNumber: 13
-        }
-      }, "This is the main page!"), /*#__PURE__*/_reactDefault.default.createElement("svg", {
-        style: {
-          border: "1px solid lightgrey",
-          width: 500,
-          height: 500
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 7,
-          columnNumber: 13
-        }
-      }, /*#__PURE__*/_reactDefault.default.createElement("circle", {
-        cx: 0,
-        cy: "500",
-        r: "5",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 8,
-          columnNumber: 17
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
-        x: "200",
-        y: "100",
-        width: "10",
-        height: "10",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 9,
-          columnNumber: 17
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
-        x: 200,
-        y: 200,
-        width: 10,
-        height: 10,
-        fill: "rgb(230,230,230)",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 10,
-          columnNumber: 17
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
-        x: 212,
-        y: 200,
-        width: 10,
-        height: 10,
-        fill: "rgb(230,230,230)",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 11,
-          columnNumber: 17
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
-        x: 224,
-        y: 200,
-        width: 10,
-        height: 10,
-        fill: "rgb(230,230,230)",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 12,
-          columnNumber: 17
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
-        x: 236,
-        y: 200,
-        width: 10,
-        height: 10,
-        fill: "rgb(230,230,230)",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 13,
-          columnNumber: 17
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
-        x: 248,
-        y: 200,
-        width: 10,
-        height: 10,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 14,
-          columnNumber: 17
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("line", {
-        x1: "20",
-        y1: 500 - 50,
-        x2: "150",
-        y2: "100",
-        stroke: "black",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 15,
-          columnNumber: 17
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("text", {
-        x: "20",
-        y: "35",
-        className: "small",
-        style: {
-          font: "italic 13px sans- serif"
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 16,
-          columnNumber: 17
-        }
-      }, "Price history of 100 randomly selected Pokemon cards Changed the name of the repo")))
-    );
-  }
-  _c = HomePage;
-  exports.default = HomePage;
-  var _c;
-  $RefreshReg$(_c, "HomePage");
-  helpers.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-
-},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"19t3x":[function(require,module,exports) {
-var helpers = require("../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-helpers.prelude(module);
-try {
-  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-  _parcelHelpers.defineInteropFlag(exports);
-  var _react = require('react');
-  var _reactDefault = _parcelHelpers.interopDefault(_react);
-  var _jsxFileName = "/Users/zachgrande/Code/INFO474/info474-react-parcel-template/src/Assignment2.js";
-  function Assignment2() {
-    return (
-      /*#__PURE__*/_reactDefault.default.createElement("div", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 5,
-          columnNumber: 9
-        }
-      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 6,
-          columnNumber: 13
-        }
-      }, "Hello there!"))
-    );
-  }
-  _c = Assignment2;
-  exports.default = Assignment2;
-  var _c;
-  $RefreshReg$(_c, "Assignment2");
-  helpers.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-
-},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","3Imd1","5rkFb"], "5rkFb", "parcelRequire27c8")
+},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","prop-types-extra/lib/isRequiredForA11y":"4XrEc","./ThemeProvider":"4rz1S"}]},["1j6wU","3Imd1","5rkFb"], "5rkFb", "parcelRequire27c8")
 
 //# sourceMappingURL=index.3fafb3e2.js.map
