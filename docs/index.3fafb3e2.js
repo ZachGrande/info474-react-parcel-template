@@ -35633,7 +35633,7 @@ try {
           lineNumber: 21,
           columnNumber: 13
         }
-      }, "This bar chart compares the number of movies in each genre. We can identify Comedy, Adventure, and Drama movies as the most common Disney films, with each category having over 100 movies. The trend steadily declines as the subsequent categories all have 40 or less movies. The bar chart affords us the view of what Disney believes its most popular genres are, based on how many they have made."), /*#__PURE__*/_reactDefault.default.createElement("iframe", {
+      }, "This bar chart compares the number of movies in each genre. We can identify Comedy, Adventure, and Drama movies as the most common Disney films, with each category having over 100 movies. The trend steadily declines as the subsequent categories all have 40 or less movies. The bar chart affords us the view of what Disney believes its most popular genres are, based on how many they have made. The data was filtered to exclude null values and an additional numerical variable, \"Number of Movies,\" was created to represent the sum of records for each genre."), /*#__PURE__*/_reactDefault.default.createElement("iframe", {
         src: "https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet2?:origin=card_share_link&:embed=yes",
         width: "800",
         height: "600",
@@ -35657,39 +35657,111 @@ try {
           lineNumber: 25,
           columnNumber: 181
         }
-      }, "public"), " favors, instead of the studio. Money invested by consumers in each genre shows which types of movies they value, which in turn may eduate the types of movies Disney produces moving forward."), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+      }, "public"), " favors, instead of the studio. Money invested by consumers in each genre shows which types of movies they value, which in turn may eduate the types of movies Disney produces moving forward. The data is sorted to bring prominence to the most popular genres, and the graph is constructued in such a way that each genre represents the sum income of films contained in them."), /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26,
+          lineNumber: 27,
           columnNumber: 13
         }
-      }, "2. Which MPAA ratings garner the most income?"), /*#__PURE__*/_reactDefault.default.createElement("p", {
+      }, "2. Which MPAA ratings garner the most income?"), /*#__PURE__*/_reactDefault.default.createElement("iframe", {
+        src: "https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet3?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link",
+        width: "800",
+        height: "600",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 28,
+          lineNumber: 29,
           columnNumber: 13
         }
       }), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 29,
+          lineNumber: 31,
           columnNumber: 13
         }
-      }, "All images can be found in the ", /*#__PURE__*/_reactDefault.default.createElement("code", {
+      }, "In our second analysis question, we are searching to find which MPAA rating from Disney has made the most money. A key element to this question is to find how many movies belong to each MPAA rating. Since most of the movies Disney has made are rated PG, it could stand to reason that PG movies have made the most money. Further analysis can either confirm or debunk this hypothesis. In this graph, movies were binned by MPAA rating to provide the \"Number of Movies\" numerical attribute."), /*#__PURE__*/_reactDefault.default.createElement("iframe", {
+        src: "https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet4?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link",
+        width: "800",
+        height: "600",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 29,
-          columnNumber: 47
+          lineNumber: 33,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35,
+          columnNumber: 13
+        }
+      }, "This side-by-side bar chart investigates the income generated from each MPAA rating. Here, gross income ", /*#__PURE__*/_reactDefault.default.createElement("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35,
+          columnNumber: 120
+        }
+      }, "and"), " gross income adjusted for inflation are displayed. The graph is sorted for inflation-adjusted income since it is more relevant to our analysis. Purely looking at this attribute, the G rating is clearly the highest grossing category. This debunks our hypothesis, showing that fewer movies were able to generate more money than the PG rating. However, the orange bars for unadjusted income show PG as the highest grossing category."), /*#__PURE__*/_reactDefault.default.createElement("iframe", {
+        src: "https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet8?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link",
+        width: "800",
+        height: "600",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 37,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39,
+          columnNumber: 13
+        }
+      }, "This table serves as a further exploration into the last chart. The top ten highest grossing movies (with income adjusted for inflation) are displayed and sorted by release year. In this list, the top five movies are released in or before the year 1950. This could explain our dichotomy from the last graph, as we know older movies are affected by a larger inflation factor. This chart confirms that some of Disney's most popular films were created over 60 years ago, so many of these values will be affected by inflation. Only one film on the list was made in the 21st century."), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 41,
+          columnNumber: 13
+        }
+      }, "3. How has the most popular genre changed over time?"), /*#__PURE__*/_reactDefault.default.createElement("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 44,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 45,
+          columnNumber: 13
+        }
+      }, "All visualizations can be found in the ", /*#__PURE__*/_reactDefault.default.createElement("code", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 45,
+          columnNumber: 55
         }
       }, "src/img"), " directory of the repository."), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30,
+          lineNumber: 46,
           columnNumber: 13
         }
       }, "The assignment was originally built in Vega-Lite: ", /*#__PURE__*/_reactDefault.default.createElement("a", {
@@ -35697,7 +35769,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30,
+          lineNumber: 46,
           columnNumber: 66
         }
       }, "https://observablehq.com/@zachgrande/info-474-assignment-2")))
