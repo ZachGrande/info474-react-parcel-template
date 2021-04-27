@@ -30289,7 +30289,7 @@ try {
           columnNumber: 17
         }
       }, /*#__PURE__*/_reactDefault.default.createElement("div", {
-        className: "col-3",
+        className: "col-9",
         __self: this,
         __source: {
           fileName: _jsxFileName,
@@ -35538,36 +35538,167 @@ try {
   var _jsxFileName = "/Users/zachgrande/Code/INFO474/info474-react-parcel-template/src/Assignment2.js";
   // import {createClassFromLiteSpec} from 'react-vega-lite';
   function Assignment2() {
-    // printTable(cars.slice(0, 5));
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9,
+          lineNumber: 6,
           columnNumber: 9
         }
-      }, /*#__PURE__*/_reactDefault.default.createElement("h2", {
+      }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7,
+          columnNumber: 13
+        }
+      }, "Assignment 2: Exploratory Visual Analysis"), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8,
+          columnNumber: 13
+        }
+      }, "Zach Grande, INFO 474, Spring 2021"), /*#__PURE__*/_reactDefault.default.createElement("h3", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 9,
+          columnNumber: 13
+        }
+      }, "The Data"), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 10,
           columnNumber: 13
         }
-      }, "Assignment 2: Exploratory Visual Analysis"), /*#__PURE__*/_reactDefault.default.createElement("p", {
+      }, "This dataset represents a catalogue of 573 films created by Disney from 1937 to 2016. I am interested in working with this dataset because it spans a long period of time (December 1937 to December 2016) and represents a tremendously successful studio. There are several intersections that can be examined (movie genre popularity over time, MPAA rating vs. gross income, etc.) that offer many unique examinations into this dataset."), /*#__PURE__*/_reactDefault.default.createElement("h4", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 11,
           columnNumber: 13
         }
-      }, "The assignment can be found at: ", /*#__PURE__*/_reactDefault.default.createElement("a", {
+      }, "Analysis Questions:"), /*#__PURE__*/_reactDefault.default.createElement("ol", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 12,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 13,
+          columnNumber: 17
+        }
+      }, "Which movie genre is the most popular?"), /*#__PURE__*/_reactDefault.default.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 14,
+          columnNumber: 17
+        }
+      }, "Which MPAA ratings garner the most income?"), /*#__PURE__*/_reactDefault.default.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15,
+          columnNumber: 17
+        }
+      }, "How has the most popular genre changed over time?")), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17,
+          columnNumber: 13
+        }
+      }, "1. Which movie genre is the most popular?"), /*#__PURE__*/_reactDefault.default.createElement("iframe", {
+        src: "https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet1?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link",
+        width: "800",
+        height: "600",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21,
+          columnNumber: 13
+        }
+      }, "This bar chart compares the number of movies in each genre. We can identify Comedy, Adventure, and Drama movies as the most common Disney films, with each category having over 100 movies. The trend steadily declines as the subsequent categories all have 40 or less movies. The bar chart affords us the view of what Disney believes its most popular genres are, based on how many they have made."), /*#__PURE__*/_reactDefault.default.createElement("iframe", {
+        src: "https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet2?:origin=card_share_link&:embed=yes",
+        width: "800",
+        height: "600",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25,
+          columnNumber: 13
+        }
+      }, "This bar chart shows a similar view as the last, but here we can see the gross income of each genre. The largest difference here is that we can see which genres the ", /*#__PURE__*/_reactDefault.default.createElement("em", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25,
+          columnNumber: 181
+        }
+      }, "public"), " favors, instead of the studio. Money invested by consumers in each genre shows which types of movies they value, which in turn may eduate the types of movies Disney produces moving forward."), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 26,
+          columnNumber: 13
+        }
+      }, "2. Which MPAA ratings garner the most income?"), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29,
+          columnNumber: 13
+        }
+      }, "All images can be found in the ", /*#__PURE__*/_reactDefault.default.createElement("code", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29,
+          columnNumber: 47
+        }
+      }, "src/img"), " directory of the repository."), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30,
+          columnNumber: 13
+        }
+      }, "The assignment was originally built in Vega-Lite: ", /*#__PURE__*/_reactDefault.default.createElement("a", {
         href: "https://observablehq.com/@zachgrande/info-474-assignment-2",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11,
-          columnNumber: 48
+          lineNumber: 30,
+          columnNumber: 66
         }
       }, "https://observablehq.com/@zachgrande/info-474-assignment-2")))
     );

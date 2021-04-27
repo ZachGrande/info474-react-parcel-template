@@ -18,7 +18,7 @@ function App(props) {
 
             <main className="container">
                 <div>
-                    <div className="col-3">
+                    <div className="col-9">
                         <AboutNav />
                     </div>
                     <div className="col-9">
