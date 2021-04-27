@@ -23,10 +23,10 @@ function App(props) {
                     </div>
                     <div className="col-9">
                         <Switch>
-                            <Route exact path="/" component={HomePage} />
-                            <Route path="/demos" component={ClassDemos} />
-                            <Route path="/assignment2" component={Assignment2} />
-                            <Redirect to="/" />
+                            <Route exact path="/info474-react-parcel-template/" component={HomePage} />
+                            <Route path="/info474-react-parcel-template/demos" component={ClassDemos} />
+                            <Route path="/info474-react-parcel-template/assignment2" component={Assignment2} />
+                            <Redirect to="/info474-react-parcel-template/" />
                         </Switch>
                     </div>
                 </div>
@@ -41,9 +41,9 @@ function App(props) {
 function AboutNav() {
     return (
         <Navbar bg="navbar navbar-expand-lg navbar-light bg-light" id="nav-bar">
-            <NavLink exact to="/" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Home Page</NavLink>
-            <NavLink exact to="/demos" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Class Demos</NavLink>
-            <NavLink exact to="/assignment2" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Assignment 2</NavLink>
+            <NavLink exact to="/info474-react-parcel-template/" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Home Page</NavLink>
+            <NavLink exact to="/info474-react-parcel-template/demos" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Class Demos</NavLink>
+            <NavLink exact to="/info474-react-parcel-template/assignment2" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Assignment 2</NavLink>
         </Navbar>
     )
 }

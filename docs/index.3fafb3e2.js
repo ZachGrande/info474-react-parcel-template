@@ -30320,7 +30320,7 @@ try {
         }
       }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
         exact: true,
-        path: "/",
+        path: "/info474-react-parcel-template/",
         component: _HomePageJsDefault.default,
         __self: this,
         __source: {
@@ -30329,7 +30329,7 @@ try {
           columnNumber: 29
         }
       }), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
-        path: "/demos",
+        path: "/info474-react-parcel-template/demos",
         component: _ClassDemosJsDefault.default,
         __self: this,
         __source: {
@@ -30338,7 +30338,7 @@ try {
           columnNumber: 29
         }
       }), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Route, {
-        path: "/assignment2",
+        path: "/info474-react-parcel-template/assignment2",
         component: _AssignmentDefault.default,
         __self: this,
         __source: {
@@ -30347,7 +30347,7 @@ try {
           columnNumber: 29
         }
       }), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Redirect, {
-        to: "/",
+        to: "/info474-react-parcel-template/",
         __self: this,
         __source: {
           fileName: _jsxFileName,
@@ -30386,7 +30386,7 @@ try {
         }
       }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.NavLink, {
         exact: true,
-        to: "/",
+        to: "/info474-react-parcel-template/",
         className: "nav-link",
         id: "nav-li",
         activeClassName: "activeLink",
@@ -30398,7 +30398,7 @@ try {
         }
       }, "Home Page"), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.NavLink, {
         exact: true,
-        to: "/demos",
+        to: "/info474-react-parcel-template/demos",
         className: "nav-link",
         id: "nav-li",
         activeClassName: "activeLink",
@@ -30410,7 +30410,7 @@ try {
         }
       }, "Class Demos"), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.NavLink, {
         exact: true,
-        to: "/assignment2",
+        to: "/info474-react-parcel-template/assignment2",
         className: "nav-link",
         id: "nav-li",
         activeClassName: "activeLink",
@@ -35538,7 +35538,7 @@ try {
   var _jsxFileName = "/Users/zachgrande/Code/INFO474/info474-react-parcel-template/src/Assignment2.js";
   // import {createClassFromLiteSpec} from 'react-vega-lite';
   function Assignment2() {
-    printTable(cars.slice(0, 5));
+    // printTable(cars.slice(0, 5));
     return (
       /*#__PURE__*/_reactDefault.default.createElement("div", {
         __self: this,
@@ -35547,14 +35547,29 @@ try {
           lineNumber: 9,
           columnNumber: 9
         }
-      }, /*#__PURE__*/_reactDefault.default.createElement("p", {
+      }, /*#__PURE__*/_reactDefault.default.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 10,
           columnNumber: 13
         }
-      }, "Hello there!"))
+      }, "Assignment 2: Exploratory Visual Analysis"), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 11,
+          columnNumber: 13
+        }
+      }, "The assignment can be found at: ", /*#__PURE__*/_reactDefault.default.createElement("a", {
+        href: "https://observablehq.com/@zachgrande/info-474-assignment-2",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 11,
+          columnNumber: 48
+        }
+      }, "https://observablehq.com/@zachgrande/info-474-assignment-2")))
     );
   }
   _c = Assignment2;

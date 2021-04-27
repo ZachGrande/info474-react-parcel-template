@@ -3,11 +3,13 @@ import React from 'react';
 
 function Assignment2() {
 
-    printTable(cars.slice(0, 5));
+    // printTable(cars.slice(0, 5));
 
     return (
         <div>
-            <p>Hello there!</p>
+            <h2>Assignment 2: Exploratory Visual Analysis</h2>
+            <p>The assignment can be found at: <a href="https://observablehq.com/@zachgrande/info-474-assignment-2">
+                https://observablehq.com/@zachgrande/info-474-assignment-2</a></p>
         </div>
     )
 }
