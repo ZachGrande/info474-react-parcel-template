@@ -35729,18 +35729,14 @@ try {
           lineNumber: 41,
           columnNumber: 13
         }
-      }, "3. How has the most popular genre changed over time?"), /*#__PURE__*/_reactDefault.default.createElement("br", {
+      }, "3. How has the most popular genre changed over time?"), /*#__PURE__*/_reactDefault.default.createElement("iframe", {
+        src: "https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet5?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link",
+        width: "800",
+        height: "600",
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 43,
-          columnNumber: 13
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 44,
           columnNumber: 13
         }
       }), /*#__PURE__*/_reactDefault.default.createElement("p", {
@@ -35750,18 +35746,150 @@ try {
           lineNumber: 45,
           columnNumber: 13
         }
+      }, "For our third question, we are introducing time as a core element of our visualizations. To get our bearings, this graph plots the gross income of Disney by year. We can see that there is a strong outlier in the opening year, 1937. The graph stabilizes after this point, and we can generally identify an increase in gross income throughout the history of Disney's existence."), /*#__PURE__*/_reactDefault.default.createElement("iframe", {
+        src: "https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet6?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link",
+        width: "800",
+        height: "600",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 49,
+          columnNumber: 13
+        }
+      }, "This scorecard investigates the outlier from the last visualization. Snow White and the Seven Dwarfs is arguably one of Disney's most popular films, having garnered ", /*#__PURE__*/_reactDefault.default.createElement("b", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 49,
+          columnNumber: 181
+        }
+      }, "$5.2 BILLION"), " in the box office. When put into context, we can understand why the year 1937 is such a massive outlier in the previous visualization."), /*#__PURE__*/_reactDefault.default.createElement("iframe", {
+        src: "https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet7?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link",
+        width: "800",
+        height: "600",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 51,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 53,
+          columnNumber: 13
+        }
+      }, "This visualization utilizes several attributes from the Disney Movies dataset as we seek to answer our third analysis question. First, movies have been grouped into their respective genres. This allows us to aggregate the income for each genre into a single numerical value that we can plot against time. There is no clear \"winner\" for most popular genre, but we can see that Musical, Comedy, and Adventure (respectively) had all had their time to shine."), /*#__PURE__*/_reactDefault.default.createElement("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 55,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("h2", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 57,
+          columnNumber: 13
+        }
+      }, "Write-Up"), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 58,
+          columnNumber: 13
+        }
+      }, "The questions I came up with were:"), /*#__PURE__*/_reactDefault.default.createElement("ol", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 59,
+          columnNumber: 13
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 60,
+          columnNumber: 17
+        }
+      }, "Which movie genre is the most popular?"), /*#__PURE__*/_reactDefault.default.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 61,
+          columnNumber: 17
+        }
+      }, "Which MPAA ratings garner the most income?"), /*#__PURE__*/_reactDefault.default.createElement("li", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 62,
+          columnNumber: 17
+        }
+      }, "How has the most popular genre changed over time?")), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 64,
+          columnNumber: 13
+        }
+      }, "A common theme in my visualizations is that the idea of \"popular\" was left vague. This was intentional, as it could refer to how many movies were made or which movies earned the most money. Early on, it was clear that these inquiries lead to different results."), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 66,
+          columnNumber: 13
+        }
+      }, "I did my best to leverage the most unique variables, genre, rating, and gross income, against each other in the first two questions often. Different grouping techniques showed really interesting traits of the data, like how G-rated movies have gained the most money, but are not the most common type of film made."), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 68,
+          columnNumber: 13
+        }
+      }, "I knew that I wanted to bring time into the equation once we had a good grip on the dataset. Common transformations that we had established were cutting out null values, aggregating movie incomes, and binning movies into digestible categories (such as genre or rating). These were necessary techniques to continue using in the release year exploration since there are so many dimensions of data at play."), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 70,
+          columnNumber: 13
+        }
+      }, "Overall, I've learned that different interpretations of sentences can lead to varying outcomes. When two people are talking about popular categories of film, how can they be sure that they have the same understanding of \"popular\"? With this same spirit, comparisons of income can get messy when the temporal dimension is introduced. There is obviously a difference between \"income\" and \"inflation-adjusted income,\" which I have become very familiar with. One thing we can be certain of is that Comedy and Adventure movies are wildly popular across Disney's history, in every sense of the word."), /*#__PURE__*/_reactDefault.default.createElement("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 72,
+          columnNumber: 13
+        }
+      }), /*#__PURE__*/_reactDefault.default.createElement("p", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 73,
+          columnNumber: 13
+        }
       }, "All visualizations can be found in the ", /*#__PURE__*/_reactDefault.default.createElement("code", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45,
+          lineNumber: 73,
           columnNumber: 55
         }
       }, "src/img"), " directory of the repository."), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46,
+          lineNumber: 74,
           columnNumber: 13
         }
       }, "The assignment was originally built in Vega-Lite: ", /*#__PURE__*/_reactDefault.default.createElement("a", {
@@ -35769,7 +35897,7 @@ try {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46,
+          lineNumber: 74,
           columnNumber: 66
         }
       }, "https://observablehq.com/@zachgrande/info-474-assignment-2")))
