@@ -18,15 +18,29 @@ function Assignment2() {
         "Black Comedy",
         "Concert/Performance"
     ];
-
+    
     const validMPAARatings = [
         "G",
         "PG",
         "PG-13",
         "R",
         "Not Rated"
-    ]
+    ];
+
+    const topMovies = [
+        "Snow White and the Seven Dwarfs",
+        "Fantasia",
+        "Pinocchio",
+        "Song of the South",
+        "Cinderella",
+        "Lady and the Tramp",
+        "101 Dalmatians",
+        "The Jungle Book",
+        "The Lion King",
+        "Star Wars Ep. VII: The Force Awakens"
+    ];
     
+    // DONE
     const visOne = {
         title: "Number of Movies Per Genre",
         width: viewWidth,
@@ -59,11 +73,13 @@ function Assignment2() {
             },
             color: {
                 aggregate: "count",
-                type: "quantitative"
+                type: "quantitative",
+                title: "Number of Movies"
             }
         }
     };
-
+    
+    // DONE
     const visTwo = {
         title: "Total Income (Adjusted for Inflation) Per Genre",
         width: viewWidth,
@@ -90,16 +106,22 @@ function Assignment2() {
                 sort: "-y"
             },
             y: {
+                aggregate: "sum",
                 field: "inflation_adjusted_gross",
-                type: "quantitative",
-                title:"Inflation Adjusted Gross",
+                title: "Inflation Adjusted Gross",
                 axis: {
                     format: "$B"
                 }
+            },
+            color: {
+                aggregate: "sum",
+                field: "inflation_adjusted_gross",
+                title: "Inflation Adjusted Gross"
             }
         }
     };
-
+    
+    // DONE
     const visThree = {
         title: "Total Movies Per MPAA Rating",
         width: viewWidth,
@@ -132,6 +154,202 @@ function Assignment2() {
             }
         }
     };
+
+    // Figure out how to do side-by-side
+    const visFour = {
+        title: "Total Income (Adjusted for Inflation) Per MPAA Rating",
+        width: viewWidth,
+        height: viewHeight,
+        description: "Visualization 4",
+        mark: {
+            type: "bar",
+            tooltip: true
+        },
+        data: {
+            "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
+        },
+        // transform: [{
+        //     filter: {
+        //         field: "mpaa_rating",
+        //         oneOf: validMPAARatings,
+        //     }
+        // }],
+        encoding: {
+            x: {
+                field: "mpaa_rating",
+                type: "nominal",
+                title: "MPAA Rating",
+                sort: "-y"
+            },
+            y: {
+                aggregate: "count",
+                type: "quantitative",
+                title:"Number of Movies"
+            }
+        }
+    };
+
+    // DONE
+    const visFive = {
+        title: "Total Movies Per MPAA Rating",
+        width: viewWidth,
+        height: viewHeight,
+        description: "Visualization 5",
+        mark: {
+            type: "rect",
+            tooltip: true
+        },
+        data: {
+            "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
+        },
+        transform: [{
+            filter: {
+                field: "movie_title",
+                oneOf: topMovies,
+            }
+        }],
+        encoding: {
+            x: {
+                field: "movie_title",
+                type: "nominal",
+                title: "Movie Title",
+                sort: "-y"
+            },
+            y: {
+                field: "release_date",
+                type: "temporal",
+                title:"Year of Release Date",
+                timeUnit: "year"
+            },
+            color: {
+                field: "inflation_adjusted_gross",
+                type: "quantitative",
+                scale: {
+                    range: ["white", "black"]
+                },
+                format: "$"
+            }
+        },
+        config: {
+            axis: {
+                grid: true,
+                tickBand:  "extent"
+            }
+        }
+    };
+
+    // DONE
+    const visSix = {
+        title: "Inflation Adjusted Gross Income Per Year",
+        width: viewWidth,
+        height: viewHeight,
+        description: "Visualization 6",
+        mark: {
+            type: "line",
+            tooltip: true,
+            interpolate: "monotone"
+        },
+        data: {
+            "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
+        },
+        // transform: [{
+        //     filter: {
+        //         field: "mpaa_rating",
+        //         oneOf: validMPAARatings,
+        //     }
+        // }],
+        encoding: {
+            x: {
+                field: "release_date",
+                type: "temporal",
+                title:"Release Date",
+                timeUnit: "year"
+            },
+            y: {
+                aggregate: "sum",
+                field: "inflation_adjusted_gross",
+                type: "quantitative",
+                title:"Inflation Adjusted Gross",
+            }
+        }
+    };
+
+    // Scorecard
+    const visSeven = {
+        title: "Inflation Adjusted Gross Income Per Year",
+        width: viewWidth,
+        height: viewHeight,
+        description: "Visualization 6",
+        mark: {
+            type: "line",
+            tooltip: true,
+            interpolate: "monotone"
+        },
+        data: {
+            "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
+        },
+        // transform: [{
+        //     filter: {
+        //         field: "mpaa_rating",
+        //         oneOf: validMPAARatings,
+        //     }
+        // }],
+        encoding: {
+            x: {
+                field: "release_date",
+                type: "temporal",
+                title:"Release Date",
+                timeUnit: "year"
+            },
+            y: {
+                aggregate: "sum",
+                field: "inflation_adjusted_gross",
+                type: "quantitative",
+                title:"Inflation Adjusted Gross"
+            }
+        }
+    };
+
+    // DONE
+    const visEight = {
+        title: "Inflation Adjusted Gross Income by Genre Per Year",
+        width: viewWidth,
+        height: viewHeight,
+        description: "Visualization 8",
+        mark: {
+            type: "line",
+            tooltip: true,
+            interpolate: "monotone"
+        },
+        data: {
+            "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
+        },
+        transform: [{
+            filter: {
+                field: "genre",
+                oneOf: validGenres,
+            }
+        }],
+        encoding: {
+            x: {
+                field: "release_date",
+                type: "temporal",
+                title:"Release Date",
+                timeUnit: "year"
+            },
+            y: {
+                field: "inflation_adjusted_gross",
+                type: "quantitative",
+                title:"Inflation Adjusted Gross"
+            },
+            color: {
+                field: "genre",
+                type: "nominal",
+                title: "Genre",
+                sort: "color"
+            }
+        }
+    };
     
     return (
         <div>
@@ -154,7 +372,7 @@ function Assignment2() {
         <p>This bar chart compares the number of movies in each genre. We can identify Comedy, Adventure, and Drama movies as the most common Disney films, with each category having over 100 movies. The trend steadily declines as the subsequent categories all have 40 or less movies. The bar chart affords us the view of what Disney believes its most popular genres are, based on how many they have made. The data was filtered to exclude null values and an additional numerical variable, "Number of Movies," was created to represent the sum of records for each genre.</p>
         
         <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet2?:origin=card_share_link&:embed=yes" width="800" height="600"></iframe>
-
+        
         <VegaLite spec={visTwo} />
         
         <p>This bar chart shows a similar view as the last, but here we can see the gross income of each genre. The largest difference here is that we can see which genres the <em>public</em> favors, instead of the studio. Money invested by consumers in each genre shows which types of movies they value, which in turn may eduate the types of movies Disney produces moving forward. The data is sorted to bring prominence to the most popular genres, and the graph is constructued in such a way that each genre represents the sum income of films contained in them.</p>
@@ -162,30 +380,40 @@ function Assignment2() {
         <h2>2. Which MPAA ratings garner the most income?</h2>
         
         <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet3?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe>
-
+        
         <VegaLite spec={visThree} />
         
         <p>In our second analysis question, we are searching to find which MPAA rating from Disney has made the most money. A key element to this question is to find how many movies belong to each MPAA rating. Since most of the movies Disney has made are rated PG, it could stand to reason that PG movies have made the most money. Further analysis can either confirm or debunk this hypothesis. In this graph, movies were binned by MPAA rating to provide the "Number of Movies" numerical attribute.</p>
         
         <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet4?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe>
+
+        <VegaLite spec={visFour} />
         
         <p>This side-by-side bar chart investigates the income generated from each MPAA rating. Here, gross income <b>and</b> gross income adjusted for inflation are displayed. The graph is sorted for inflation-adjusted income since it is more relevant to our analysis. Purely looking at this attribute, the G rating is clearly the highest grossing category. This debunks our hypothesis, showing that fewer movies were able to generate more money than the PG rating. However, the orange bars for unadjusted income show PG as the highest grossing category.</p>
         
         <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet8?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe>
+
+        <VegaLite spec={visFive} />
         
         <p>This table serves as a further exploration into the last chart. The top ten highest grossing movies (with income adjusted for inflation) are displayed and sorted by release year. In this list, the top five movies are released in or before the year 1950. This could explain our dichotomy from the last graph, as we know older movies are affected by a larger inflation factor. This chart confirms that some of Disney's most popular films were created over 60 years ago, so many of these values will be affected by inflation. Only one film on the list was made in the 21st century.</p>
         
         <h2>3. How has the most popular genre changed over time?</h2>
         
         <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet5?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe>
+
+        <VegaLite spec={visSix} />
         
         <p>For our third question, we are introducing time as a core element of our visualizations. To get our bearings, this graph plots the gross income of Disney by year. We can see that there is a strong outlier in the opening year, 1937. The graph stabilizes after this point, and we can generally identify an increase in gross income throughout the history of Disney's existence.</p>
         
         <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet6?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe>
+
+        <VegaLite spec={visSeven} />
         
         <p>This scorecard investigates the outlier from the last visualization. Snow White and the Seven Dwarfs is arguably one of Disney's most popular films, having garnered <b>$5.2 BILLION</b> in the box office. When put into context, we can understand why the year 1937 is such a massive outlier in the previous visualization.</p>
         
         <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet7?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe>
+
+        <VegaLite spec={visEight} />
         
         <p>This visualization utilizes several attributes from the Disney Movies dataset as we seek to answer our third analysis question. First, movies have been grouped into their respective genres. This allows us to aggregate the income for each genre into a single numerical value that we can plot against time. There is no clear "winner" for most popular genre, but we can see that Musical, Comedy, and Adventure (respectively) had all had their time to shine.</p>
         
