@@ -2,6 +2,7 @@ import React from "react";
 import ClassDemos from './ClassDemos.js';
 import HomePage from './HomePage.js';
 import Assignment2 from './Assignment2';
+import InteractiveDemos from './InteractiveDemos';
 import { Route, Switch, Link, Redirect, NavLink } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 
@@ -26,6 +27,7 @@ function App(props) {
                             <Route exact path="/info474-react-parcel-template/" component={HomePage} />
                             <Route path="/info474-react-parcel-template/demos" component={ClassDemos} />
                             <Route path="/info474-react-parcel-template/assignment2" component={Assignment2} />
+                            <Route path="/info474-react-parcel-template/demos2" component={InteractiveDemos} />
                             <Redirect to="/info474-react-parcel-template/" />
                         </Switch>
                     </div>
@@ -44,6 +46,7 @@ function AboutNav() {
             <NavLink exact to="/info474-react-parcel-template/" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Home Page</NavLink>
             <NavLink exact to="/info474-react-parcel-template/demos" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Class Demos</NavLink>
             <NavLink exact to="/info474-react-parcel-template/assignment2" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Assignment 2</NavLink>
+            <NavLink exact to="/info474-react-parcel-template/demos2" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Interactive Demos</NavLink>
         </Navbar>
     )
 }
