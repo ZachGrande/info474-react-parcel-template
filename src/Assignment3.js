@@ -1,6 +1,7 @@
 import React from 'react';
-import { VegaLite } from 'react-vega';
 import { useFetch } from "./hooks/useFetch";
+import { geoPath, geoAlbersUsa } from 'd3-geo';
+import { feature } from "topojson-client";
 
 function Assignment2() {
 
