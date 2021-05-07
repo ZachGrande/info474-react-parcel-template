@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useFetch } from "./hooks/useFetch";
-import { useJson } from "./hooks/useJson";
 import { scaleLinear } from "d3-scale";
 import { extent, max, min, bin } from "d3-array";
 
