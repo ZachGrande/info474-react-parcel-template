@@ -2,38 +2,38 @@ import React from 'react';
 import { useFetch } from "./hooks/useFetch";
 import { useJson } from "./hooks/useJson";
 import { geoPath, geoAlbersUsa } from 'd3-geo';
-// import { feature } from "topojson-client";
 import * as topojson from "topojson-client";
-import world from "./land-50m.txt";
+import world from "./land-50m";
 import { extent } from "d3-array";
+import { scaleLinear } from "d3-scale";
 
 function Assignment2() {
-
+    
     const [data, loading] = useFetch(
         "https://raw.githubusercontent.com/colinmegill/react-parcel-starter/main/weather.csv"
-      );
-      const dataSmallSample = data.slice(0, 5000);
-    
-    const TMAXextent = extent(dataSmallSample, (d) => {
-        return +d.TMAX;
-    });
-    const land = topojson.feature(world, world.objects.land);
-    const projection = d3.geoNaturalEarth1();
-    const path = d3.geoPath(projection);
-    const mapPathString = path(land);
-    const size = 500;
-    const margin = 20;
-    const axisTextAlignmentFactor = 3;
-    const yScale = scaleLinear()
-    .domain(TMAXextent) // unit: km
-    .range([size - margin, size - 350]); // unit: pixels
-    // _bins = bin().thresholds(30);
-    // tmaxBins = _bins(
-    //     data.map((d) => {
-    //         return +d.TMAX;
-    //     })
-    //     );
-    //     const histogramLeftPadding = 20;
+        );
+        const dataSmallSample = data.slice(0, 5000);
+        
+        const TMAXextent = extent(dataSmallSample, (d) => {
+            return +d.TMAX;
+        });
+        const land = topojson.feature(world, world.objects.land);
+        const projection = d3.geoNaturalEarth1();
+        const path = d3.geoPath(projection);
+        const mapPathString = path(land);
+        const size = 500;
+        const margin = 20;
+        const axisTextAlignmentFactor = 3;
+        const yScale = scaleLinear()
+        .domain(TMAXextent) // unit: km
+        .range([size - margin, size - 350]); // unit: pixels
+        // _bins = bin().thresholds(30);
+        // tmaxBins = _bins(
+        //     data.map((d) => {
+        //         return +d.TMAX;
+        //     })
+        //     );
+        //     const histogramLeftPadding = 20;
         /*
         binning https://observablehq.com/@d3/d3-bin  
         geo https://observablehq.com/@d3/world-airports?collection=@d3/d3-geo https://github.com/d3/d3-geo
