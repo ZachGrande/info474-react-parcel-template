@@ -17,28 +17,27 @@ import {
 * https://github.com/zcreativelabs/react-simple-maps
 */
 
-function Assignment2() {
-
+function Assignment3() {
+    
     const [data, loading] = useFetch(
         "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/avocado-2020-joined-city-only.csv"
     );
-    
+        
     return (
-        
-        <div>
-        <h1>Assignment 3: Interactive Data Visualization</h1>
-        <h3>Zach Grande, Alycia Nguyen, Michelle Ponting, Darren Ma, Erik Thomas-Hommer</h3>
-        <p>{loading && "Loading data!"}</p>
-        <ComposableMap>
-        <Geographies geography={world}>
-        {({geographies}) => geographies.map(geo =>
-            <Geography key={geo.rsmKey} geography={geo} />
-            )}
-            </Geographies>
-            </ComposableMap>
             
-            </div>
-            )
-        }
-        
-        export default Assignment2;
+        <div>
+            <h1>Assignment 3: Interactive Data Visualization</h1>
+            <h3>Zach Grande, Alycia Nguyen, Michelle Ponting, Darren Ma, Erik Thomas-Hommer</h3>
+            <p>{loading && "Loading data!"}</p>
+            <ComposableMap>
+            <Geographies geography={world}>
+            {({geographies}) => geographies.map(geo =>
+                <Geography key={geo.rsmKey} geography={geo} />
+                )}
+                </Geographies>
+                </ComposableMap>
+        </div>
+    )
+}
+            
+export default Assignment3;
