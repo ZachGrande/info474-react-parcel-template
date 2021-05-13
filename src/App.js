@@ -6,6 +6,7 @@ import InteractiveDemos from './InteractiveDemos';
 import Assignment3 from './Assignment3';
 import { Route, Switch, Link, Redirect, NavLink } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // const App = () => {
 function App(props) {

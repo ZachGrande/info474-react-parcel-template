@@ -13,8 +13,8 @@ import {
 } from "react-simple-maps"
 
 /*
-* The skeleton for the map was implemented using the documentation for react-simple-maps
-* https://github.com/zcreativelabs/react-simple-maps
+* The skeleton for the map was implemented using the documentation for D3's Bubble Map
+* https://observablehq.com/@d3/bubble-map
 */
 
 function Assignment3() {
