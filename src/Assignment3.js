@@ -20,6 +20,14 @@ function Assignment3() {
         "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/avocado-2020-joined-city-only.csv"
     );
 
+    // Colin's starter code to render world map
+    const land = topojson.feature(world, world.objects.land);
+    const projection = d3.geoNaturalEarth1();
+    const path = d3.geoPath(projection);
+    const mapPathString = path(land);
+    const radius = d3.scaleSqrt([0, d3.max(data, d => d.total_volume)], [0, 40]);
+
+
     const chart = function() {
 
         const svg = d3.select("#map");
@@ -98,10 +106,25 @@ function Assignment3() {
             <h3>Zach Grande, Alycia Nguyen, Michelle Ponting, Darren Ma, Erik Thomas-Hommer</h3>
             <p>{loading && "Loading data!"}</p>
 
-            <svg style={{
+            {/* <svg style={{
                 width: '80vw',
                 height: '90vh'
-              }} id="map"/>
+              }} id="map"/> */}
+
+            <svg width={1000} height={600} style={{ border: "1px solid black" }}>
+                <path d={mapPathString} fill="rgb(200, 200, 200)" />
+                {data.map((measurement) => {
+                    return (
+                        <circle
+                            transform={`translate(
+                            ${projection([measurement.longitude, measurement.latitude])})`}
+                            r={measurement.total_volume / 1000000}
+                            fill="blue"
+                            // implement more styling to reduce opacity of circles
+                        />
+                    );
+                })}
+            </svg>
         </div>
     )
 }
