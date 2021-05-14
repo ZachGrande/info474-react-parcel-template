@@ -25,11 +25,11 @@ function Assignment3() {
         const svg = d3.select("#map");
 
         // This path variable works when building the map
-        // const path = d3.geoPath();
+        const path = d3.geoPath();
 
         // This construction of projection/path can translate the coordinates, but not render the map
-        const projection = d3.geoNaturalEarth1();
-        const path = d3.geoPath(projection);
+        // const projection = d3.geoNaturalEarth1();
+        // const path = d3.geoPath(projection);
 
 
         const radius = d3.scaleSqrt([0, d3.max(data, d => d.total_volume)], [0, 40]); // altered line, was d.value
@@ -80,12 +80,11 @@ function Assignment3() {
             .selectAll("circle")
             .data(data
                 .filter(d => d.latitude)
-                // .sort((a, b) => d3.descending(a.latitude, b.longitude)))
                 .sort((a, b) => d3.descending(a.total_volume, b.total_volume))) // altered line, was a/b.value
                 .join("circle")
-                // .attr("transform", d => `translate(${+d.latitude},${+d.longitude})`) // altered line, was d.position
-                .attr("transform", d=>`translate(
-                    ${projection([d.longitude, d.latitude])})`)
+                .attr("transform", d => `translate(${+d.latitude},${+d.longitude})`) // altered line, was d.position
+                // .attr("transform", d=>`translate(
+                    // ${projection([d.longitude, d.latitude])})`)
                 .attr("r", d => radius(d.total_volume)) // altered line: .attr("r", d => radius(d.value))
                 .append("title")
                 // .text(d => `${d.city}
