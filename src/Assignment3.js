@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useFetch } from "./hooks/useFetch";
 import { useJson } from "./hooks/useJson";
 import { geoPath, geoAlbersUsa } from 'd3-geo';
+import { AiFillPlusCircle, AiFillMinusCircle, AiFillCaretLeft, AiFillCaretDown, AiFillCaretUp, AiFillCaretRight } from "react-icons/ai";
 import * as topojson from "topojson-client";
 //import us from './cb_2015_us_state_20m.js';
 import * as us from "./states-albers-10m.json";
@@ -26,79 +27,17 @@ function Assignment3() {
     const path = d3.geoPath(projection);
     const mapPathString = path(land);
     const radius = d3.scaleSqrt([0, d3.max(data, d => d.total_volume)], [0, 40]);
+    const max_height = 25;
+    const max_width = 300;
+    const max_x = 90;
+    const max_y = 100
+
+    const [width, setWidth] = useState(300)
+    const [height, setHeight] = useState(25)
+    const [x, setX] = useState(90);
+    const [y, setY] = useState(100);
 
 
-    const chart = function() {
-
-        const svg = d3.select("#map");
-
-        // This path variable works when building the map
-        const path = d3.geoPath();
-
-        // This construction of projection/path can translate the coordinates, but not render the map
-        // const projection = d3.geoNaturalEarth1();
-        // const path = d3.geoPath(projection);
-
-
-        const radius = d3.scaleSqrt([0, d3.max(data, d => d.total_volume)], [0, 40]); // altered line, was d.value
-
-        // Draw US outline
-        svg.append("path")
-            .datum(topojson.feature(us, us.objects.nation))
-            .attr("fill", "#ddd")
-            .attr("d", path);
-
-        // Draw states outline
-        svg.append("path")
-            .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
-            .attr("fill", "none")
-            .attr("stroke", "white")
-            .attr("stroke-linejoin", "round")
-            .attr("d", path);
-
-        // Create legend
-        const legend = svg.append("g")
-            .attr("fill", "#777")
-            .attr("transform", "translate(915,608)")
-            .attr("text-anchor", "middle")
-            .style("font", "10px sans-serif")
-            .selectAll("g")
-            .data(radius.ticks(4).slice(1))
-            .join("g");
-
-        // Add cirlces to legend
-        legend.append("circle")
-            .attr("fill", "none")
-            .attr("stroke", "#ccc")
-            .attr("cy", d => -radius(d))
-            .attr("r", radius);
-
-        // Add text to legend
-        legend.append("text")
-            .attr("y", d => -2 * radius(d))
-            .attr("dy", "1.3em")
-            .text(radius.tickFormat(4, "s"));
-
-        // Draw circles on map
-        svg.append("g")
-            .attr("fill", "brown")
-            .attr("fill-opacity", 0.5)
-            .attr("stroke", "#fff")
-            .attr("stroke-width", 0.5)
-            .selectAll("circle")
-            .data(data
-                .filter(d => d.latitude)
-                .sort((a, b) => d3.descending(a.total_volume, b.total_volume))) // altered line, was a/b.value
-                .join("circle")
-                .attr("transform", d => `translate(${+d.latitude},${+d.longitude})`) // altered line, was d.position
-                // .attr("transform", d=>`translate(
-                    // ${projection([d.longitude, d.latitude])})`)
-                .attr("r", d => radius(d.total_volume)) // altered line: .attr("r", d => radius(d.value))
-                .append("title")
-                // .text(d => `${d.city}
-                    // ${format(d.total_volume)}`); // altered line: ${format(d.value)}`);, also d.title above
-    };
-    chart()
     return (
 
         <div>
@@ -110,8 +49,40 @@ function Assignment3() {
                 width: '80vw',
                 height: '90vh'
               }} id="map"/> */}
+            <div className='d-flex justify-content-around align-items-center' style={{
+                width: '5vw'
+              }}>
+              <AiFillPlusCircle onClick={() => {
+                  setWidth(width - 20)
+                  setHeight(height - 3)
+                }}/>
+              <AiFillMinusCircle onClick={() => {
+                  setWidth(width >= max_width ? max_width : width + 20)
+                  setHeight(height >= max_height ? max_height : height + 3)
+                }}/>
+            </div>
+            <div className='d-flex flex-column  align-items-center' style={{
+                width: '5vw'
+              }}>
+              <AiFillCaretUp onClick={() => {
+                    setY(y - 5)
+                  }}/>
+                <div className='d-flex flex-row justify-content-between align-items-center' style={{
+                    width: '100%'
+                  }}>
+                  <AiFillCaretLeft onClick={() => {
+                        setX(x - 10)
+                      }}/>
+                  <AiFillCaretRight onClick={() => {
+                        setX(x + 10)
+                      }}/>
+                </div>
+                <AiFillCaretDown onClick={() => {
+                      setY(y + 5)
+                    }}/>
+            </div>
 
-            <svg width={1000} height={600} style={{ border: "1px solid black" }}>
+              <svg id="map" width={1000} height={600} style={{ border: "1px solid black" }} viewBox={`${x} ${y} ${width} ${height}`}>
                 <path d={mapPathString} fill="rgb(200, 200, 200)" />
                 {data.map((measurement) => {
                     return (
@@ -120,7 +91,6 @@ function Assignment3() {
                             ${projection([measurement.longitude, measurement.latitude])})`}
                             r={measurement.total_volume / 1000000}
                             fill="blue"
-                            // implement more styling to reduce opacity of circles
                         />
                     );
                 })}
