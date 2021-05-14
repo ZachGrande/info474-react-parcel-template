@@ -8,11 +8,6 @@ import * as us from "./states-albers-10m.json";
 import world from "./land-50m";
 import { extent } from "d3-array";
 import { scaleLinear } from "d3-scale";
-// import {
-//     ComposableMap,
-//     Geographies,
-//     Geography,
-// } from "react-simple-maps"
 
 /*
 * The skeleton for the map was implemented using the documentation for D3's Bubble Map
@@ -25,17 +20,35 @@ function Assignment3() {
         "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/avocado-2020-joined-city-only.csv"
     );
 
+    // Colin's starter code to render world map
+    const land = topojson.feature(world, world.objects.land);
+    const projection = d3.geoNaturalEarth1();
+    const path = d3.geoPath(projection);
+    const mapPathString = path(land);
+    const radius = d3.scaleSqrt([0, d3.max(data, d => d.total_volume)], [0, 40]);
+
+
     const chart = function() {
 
         const svg = d3.select("#map");
-        const path = d3.geoPath()
-        const radius = d3.scaleSqrt([0, d3.max(data, d => d.value)], [0, 40])
 
+        // This path variable works when building the map
+        const path = d3.geoPath();
+
+        // This construction of projection/path can translate the coordinates, but not render the map
+        // const projection = d3.geoNaturalEarth1();
+        // const path = d3.geoPath(projection);
+
+
+        const radius = d3.scaleSqrt([0, d3.max(data, d => d.total_volume)], [0, 40]); // altered line, was d.value
+
+        // Draw US outline
         svg.append("path")
             .datum(topojson.feature(us, us.objects.nation))
             .attr("fill", "#ddd")
             .attr("d", path);
 
+        // Draw states outline
         svg.append("path")
             .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
             .attr("fill", "none")
@@ -43,6 +56,7 @@ function Assignment3() {
             .attr("stroke-linejoin", "round")
             .attr("d", path);
 
+        // Create legend
         const legend = svg.append("g")
             .attr("fill", "#777")
             .attr("transform", "translate(915,608)")
@@ -52,17 +66,20 @@ function Assignment3() {
             .data(radius.ticks(4).slice(1))
             .join("g");
 
+        // Add cirlces to legend
         legend.append("circle")
             .attr("fill", "none")
             .attr("stroke", "#ccc")
             .attr("cy", d => -radius(d))
             .attr("r", radius);
 
+        // Add text to legend
         legend.append("text")
             .attr("y", d => -2 * radius(d))
             .attr("dy", "1.3em")
             .text(radius.tickFormat(4, "s"));
 
+        // Draw circles on map
         svg.append("g")
             .attr("fill", "brown")
             .attr("fill-opacity", 0.5)
@@ -70,15 +87,16 @@ function Assignment3() {
             .attr("stroke-width", 0.5)
             .selectAll("circle")
             .data(data
-                .filter(d => d.position)
-                .sort((a, b) => d3.descending(a.value, b.value)))
+                .filter(d => d.latitude)
+                .sort((a, b) => d3.descending(a.total_volume, b.total_volume))) // altered line, was a/b.value
                 .join("circle")
-                .attr("transform", d => `translate(${d.position})`)
-                .attr("r", d => radius(d.value))
+                .attr("transform", d => `translate(${+d.latitude},${+d.longitude})`) // altered line, was d.position
+                // .attr("transform", d=>`translate(
+                    // ${projection([d.longitude, d.latitude])})`)
+                .attr("r", d => radius(d.total_volume)) // altered line: .attr("r", d => radius(d.value))
                 .append("title")
-                .text(d => `${d.title}
-                    ${format(d.value)}`);
-
+                // .text(d => `${d.city}
+                    // ${format(d.total_volume)}`); // altered line: ${format(d.value)}`);, also d.title above
     };
     chart()
     return (
@@ -88,22 +106,25 @@ function Assignment3() {
             <h3>Zach Grande, Alycia Nguyen, Michelle Ponting, Darren Ma, Erik Thomas-Hommer</h3>
             <p>{loading && "Loading data!"}</p>
 
-            <svg style={{
+            {/* <svg style={{
                 width: '80vw',
                 height: '90vh'
-              }} id="map"/>
+              }} id="map"/> */}
 
-            {/* <svg width={1000} height={600} style={{ border: "1px solid black" }}>
-
-            </svg> */}
-
-            {/* <ComposableMap>
-                <Geographies geography={world}>
-                    {({geographies}) => geographies.map(geo =>
-                        <Geography key={geo.rsmKey} geography={geo} />
-                    )}
-                </Geographies>
-            </ComposableMap> */}
+            <svg width={1000} height={600} style={{ border: "1px solid black" }}>
+                <path d={mapPathString} fill="rgb(200, 200, 200)" />
+                {data.map((measurement) => {
+                    return (
+                        <circle
+                            transform={`translate(
+                            ${projection([measurement.longitude, measurement.latitude])})`}
+                            r={measurement.total_volume / 1000000}
+                            fill="blue"
+                            // implement more styling to reduce opacity of circles
+                        />
+                    );
+                })}
+            </svg>
         </div>
     )
 }
