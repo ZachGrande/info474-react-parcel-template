@@ -29,7 +29,23 @@ function Assignment3() {
 
         const svg = d3.select("#map");
         const path = d3.geoPath()
-        const radius = d3.scaleSqrt([0, d3.max(data, d => d.value)], [0, 40])
+        // const projection = d3.geoAlbersUsa().scale(1200).translate([960/2, 600/2]);
+        const radius = d3.scaleSqrt([0, d3.max(data, d => d.total_volume)], [0, 40]) // altered line, was d.value
+        // const translate = (coords) => {
+        //     const [x, y]  = projection([+coords.longitude, +coords.latitude])
+        //     return `translate(${x},${y})`
+        // };
+
+        // svg.append("g")
+        //     .attr("fill", "brown")
+        //     .attr("fill-opacity", 0.5)
+        //     .attr("stroke", "#fff")
+        //     .attr("stroke-width", 0.5)
+        //     .selectAll("circles")
+        //     .data(data)
+        //     .join("circle")
+        //     .attr("transform", translate)
+        //     .attr("r", d => radius(d.count));
 
         svg.append("path")
             .datum(topojson.feature(us, us.objects.nation))
@@ -70,15 +86,15 @@ function Assignment3() {
             .attr("stroke-width", 0.5)
             .selectAll("circle")
             .data(data
-                .filter(d => d.position)
-                .sort((a, b) => d3.descending(a.value, b.value)))
+                .filter(d => d.city)
+                // .sort((a, b) => d3.descending(a.latitude, b.longitude)))
+                .sort((a, b) => d3.descending(a.latitude, b.latitude))) // altered line, was a/b.value
                 .join("circle")
-                .attr("transform", d => `translate(${d.position})`)
-                .attr("r", d => radius(d.value))
+                .attr("transform", d => `translate(${d.latitude})`) // altered line, was d.position
+                .attr("r", d => radius(d.total_volume)) // altered line: .attr("r", d => radius(d.value))
                 .append("title")
-                .text(d => `${d.title}
-                    ${format(d.value)}`);
-
+                // .text(d => `${d.city}
+                    // ${format(d.total_volume)}`); // altered line: ${format(d.value)}`);, also d.title above
     };
     chart()
     return (
@@ -92,18 +108,6 @@ function Assignment3() {
                 width: '80vw',
                 height: '90vh'
               }} id="map"/>
-
-            {/* <svg width={1000} height={600} style={{ border: "1px solid black" }}>
-
-            </svg> */}
-
-            {/* <ComposableMap>
-                <Geographies geography={world}>
-                    {({geographies}) => geographies.map(geo =>
-                        <Geography key={geo.rsmKey} geography={geo} />
-                    )}
-                </Geographies>
-            </ComposableMap> */}
         </div>
     )
 }
