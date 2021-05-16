@@ -90,7 +90,10 @@ function Assignment3() {
                             transform={`translate(
                             ${projection([measurement.longitude, measurement.latitude])})`}
                             r={measurement.total_volume / 1000000}
-                            fill="blue"
+                            opacity="0.1"
+                            fill="#Dd3815"
+                            stroke="8E2914"
+                            stroke-width="0.1"
                         />
                     );
                 })}
