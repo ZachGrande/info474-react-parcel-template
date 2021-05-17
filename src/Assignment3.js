@@ -9,6 +9,9 @@ import * as us from "./states-albers-10m.json";
 import world from "./land-50m";
 import { extent } from "d3-array";
 import { scaleLinear } from "d3-scale";
+import {sliderBottom} from "d3-simple-slider"
+import Slider from 'react-rangeslider'
+import "react-rangeslider/lib/index.css";
 
 /*
 * The skeleton for the map was implemented using the documentation for D3's Bubble Map
@@ -29,6 +32,8 @@ function Assignment3() {
     const radius = d3.scaleSqrt([0, d3.max(data, d => d.total_volume)], [0, 40]);
     const max_height = 25;
     const max_width = 300;
+    const min_height = 1;
+    const min_width = 1;
     const max_x = 90;
     const max_y = 100
 
@@ -36,7 +41,26 @@ function Assignment3() {
     const [height, setHeight] = useState(25)
     const [x, setX] = useState(90);
     const [y, setY] = useState(100);
+    const [years, setYears] = useState([]);
+    const [selectedYear, setSelectedYear] = useState(2015)
 
+    useEffect(() => {
+      if(data) {
+        getYears()
+      }
+    }, [data])
+
+    const getYears = async () => {
+      var _years = [];
+      await data.forEach((item, i) => {
+        const year = parseInt(item.year);
+        if(_years.indexOf(year) == -1) {
+          _years.push(year)
+        }
+      });
+
+      setYears(_years)
+    }
 
     return (
 
@@ -45,16 +69,12 @@ function Assignment3() {
             <h3>Zach Grande, Alycia Nguyen, Michelle Ponting, Darren Ma, Erik Thomas-Hommer</h3>
             <p>{loading && "Loading data!"}</p>
 
-            {/* <svg style={{
-                width: '80vw',
-                height: '90vh'
-              }} id="map"/> */}
             <div className='d-flex justify-content-around align-items-center' style={{
                 width: '5vw'
               }}>
               <AiFillPlusCircle onClick={() => {
-                  setWidth(width - 20)
-                  setHeight(height - 3)
+                  setWidth(width <= min_width + 20 ? min_width : width - 20)
+                  setHeight(height <= min_height + 3 ? min_height : height - 3)
                 }}/>
               <AiFillMinusCircle onClick={() => {
                   setWidth(width >= max_width ? max_width : width + 20)
@@ -81,10 +101,22 @@ function Assignment3() {
                       setY(y + 5)
                     }}/>
             </div>
+            <div id="slider-time"></div>
+            <div class="col-sm-2"><p id="value-time"></p></div>
+              <Slider
+                value={selectedYear - d3.min(years)}
+                min={0}
+                max={5}
+                labels={years}
+                tooltip={false}
+                orientation="horizontal"
+                onChange={value => { setSelectedYear(value + d3.min(years))
+                }}
+              />
 
-              <svg id="map" width={1000} height={600} style={{ border: "1px solid black" }} viewBox={`${x} ${y} ${width} ${height}`}>
+            <svg id="map" width={1000} height={600} style={{ border: "1px solid black", 'margin-top': '10vh' }} viewBox={`${x} ${y} ${width} ${height}`}>
                 <path d={mapPathString} fill="rgb(200, 200, 200)" />
-                {data.map((measurement) => {
+                {data.filter(item => item.year == selectedYear).map((measurement) => {
                     return (
                         <circle
                             transform={`translate(
@@ -93,7 +125,7 @@ function Assignment3() {
                             opacity="0.1"
                             fill="#Dd3815"
                             stroke="8E2914"
-                            stroke-width="0.1"
+                            strokeWidth="0.1"
                         />
                     );
                 })}
