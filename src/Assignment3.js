@@ -100,6 +100,51 @@ function Assignment3() {
             </svg>
           
           <div className="py-2">
+            <h4 className="py-2 font-italic">General Instructions</h4>
+            <h5>For zooming:</h5>
+            <div className="py-2 font-italic">
+              Use zoom to enlarge and shrink the area of focus
+            </div>
+            <div>
+              <ul>
+                <li>
+                  Use the arrows to change your direction of focus - left, right, up, down
+                </li>
+                <li> 
+                  Use the plus or minus button to zoom in or out of your area of focus
+                </li>
+              </ul>
+            </div>
+            <h5>To use the slider:</h5>
+            <div className="py-2 font-italic">
+              Use the slider to look at different years of avocado sales
+            </div>
+            <div>
+              <ul>
+                <li>
+                  Move the slider right to increase the number of years
+                </li>
+                <li> 
+                  Move the slider left to decrease the number of years
+                </li>
+              </ul>
+            </div>
+            <h5>Key:</h5>
+            <div>
+              <ul>
+                <li>
+                  Each marking indicates the number of avocados sold in that city
+                </li>
+                <li> 
+                  A larger marking means that a higher amount of avocados were sold
+                </li>
+                <li> 
+                  A smaller marking means that lesser amount of avocados were sold
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="py-2">
             <h4 className="font-italic">Context</h4>
             <div>
               Avocados have certainly been trending for years now, and more trends involving avocados continue to present 
