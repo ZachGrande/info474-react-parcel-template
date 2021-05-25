@@ -64,7 +64,7 @@ function Assignment3() {
 
     return (
 
-        <div>
+        <div className="container">
             <h1>Assignment 3: Interactive Data Visualization</h1>
             <h3>Zach Grande, Alycia Nguyen, Michelle Ponting, Darren Ma, Erik Thomas-Hommer</h3>
             <p>{loading && "Loading data!"}</p>

@@ -13,34 +13,34 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App(props) {
     return (
         <div>
-            <header className="jumbotron jumbotron-fluid py-4">
-                <div className="container">
-                    <h1><Link to="/"> INFO 474: Data Visualization </Link></h1>
-                    <h2>Zach Grande, Spring 2021</h2>
+            <header className="jumbotron jumbotron-fluid py-4 mb-0">
+                <div className="d-flex mx-5 px-5 flex-column">
+                    <div>
+                        <h1><Link to="/"> INFO 474: Data Visualization </Link></h1>
+                    </div>
+                    <div>
+                        <h2>Zach Grande, Spring 2021</h2>
+                    </div>
                 </div>
+                <div className="d-flex mx-5 px-3 flex-column text-center">
+                    <AboutNav />
+                </div> 
             </header>
 
-            <main className="container">
-                <div>
-                    <div className="col-9">
-                        <AboutNav />
-                    </div>
-                    <div className="col-9">
-                        <Switch>
-                            <Route exact path="/info474-react-parcel-template/" component={Assignment4} />
-                            <Route path="/info474-react-parcel-template/home" component={HomePage} />
-                            <Route path="/info474-react-parcel-template/demos" component={ClassDemos} />
-                            <Route path="/info474-react-parcel-template/assignment2" component={Assignment2} />
-                            <Route path="/info474-react-parcel-template/demos2" component={InteractiveDemos} />
-                            <Route path="/info474-react-parcel-template/assignment3" component={Assignment3} />
-                            
-                            <Redirect to="/info474-react-parcel-template/" />
-                        </Switch>
-                    </div>
-                </div>
+            <main>
+                <Switch>
+                    <Route exact path="/info474-react-parcel-template/" component={Assignment4} />
+                    <Route path="/info474-react-parcel-template/home" component={HomePage} />
+                    <Route path="/info474-react-parcel-template/demos" component={ClassDemos} />
+                    <Route path="/info474-react-parcel-template/assignment2" component={Assignment2} />
+                    <Route path="/info474-react-parcel-template/demos2" component={InteractiveDemos} />
+                    <Route path="/info474-react-parcel-template/assignment3" component={Assignment3} />
+
+                    <Redirect to="/info474-react-parcel-template/" />
+                </Switch>
             </main>
-            <footer className="container">
-                <p>University of Washington</p>
+            <footer className="container pt-5">
+                <p className="float-right">University of Washington</p>
             </footer>
         </div>
     );
@@ -48,7 +48,7 @@ function App(props) {
 
 function AboutNav() {
     return (
-        <Navbar bg="navbar navbar-expand-lg navbar-light bg-light" id="nav-bar">
+        <Navbar bg="navbar navbar-expand-lg navbar-light bg-transparent" id="nav-bar">
             <NavLink exact to="/info474-react-parcel-template/" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Final Project</NavLink>
             <NavLink exact to="/info474-react-parcel-template/home" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Home Page</NavLink>
             <NavLink exact to="/info474-react-parcel-template/demos" className="nav-link" id="nav-li" activeClassName={"activeLink"}>Class Demos</NavLink>
