@@ -17,6 +17,10 @@ function Assignment4() {
     "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/avocado-2020-joined-city-only.csv"
   );
 
+  const [avo_agg_data, loading2] = useFetch(
+    "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/aggregated-avocado-2020.csv"
+  );
+
   // Colin's starter code to render world map
   const land = topojson.feature(world, world.objects.land);
   const projection = d3.geoNaturalEarth1();
@@ -64,6 +68,7 @@ function Assignment4() {
             <h2>Final Project: Avocado Sales Dashboard</h2>
             <h4>Zach Grande, Alycia Nguyen, Michelle Ponting, Darren Ma, Erik Thomas-Hommer</h4>
             <p>{loading && "Loading data!"}</p>
+            <p>{loading2 && "Loading other data!"}</p>
           </div>
         </div>
 
