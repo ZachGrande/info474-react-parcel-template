@@ -272,6 +272,7 @@ function Assignment4() {
                   }
                   {data.filter(item => item.year == selectedYear).map((measurement) => {
                     return (
+                      // <div>
                       <circle
                         transform={`translate(
                             ${projection([measurement.longitude, measurement.latitude])})`}
@@ -281,12 +282,15 @@ function Assignment4() {
                         stroke="8E2914"
                         strokeWidth="0.1"
                       />
+                      // TODO Get the tooltip to render alongside each centroid
+                      // CSS will make the tooltip only visible when scrolled over
+                      // <g class="tooltip css">
+                        // <rect x="-3em" y="-45" width="6em" height="1.25em" />
+                        // <text y="-45" dy="1em" text-anchor="middle">measurement.city</text>
+                      // </g>
+                      // </div>
                     );
                   })}
-                  <g class="tooltip css">
-                    <rect x="-3em" y="-45" width="6em" height="1.25em" />
-                    <text y="-45" dy="1em" text-anchor="middle">Tooltip</text>
-                  </g>
                 </svg>
                 {/* zoom overlay, needs nesting to properly stack in corner */}
                 <div className="row text-center no-gutters" style={{ position: "absolute", top: "10px", right: "20px" }}>
@@ -318,6 +322,7 @@ function Assignment4() {
               </div>
               <div className="col"> {/* tbd list col */}
                 <h4>Top Cities:</h4>
+                <TopCities data={data} />
                 <ol>
                   <li id="city-1">Seattle</li>
                   <li id="city-2">San Fransisco</li>
@@ -427,6 +432,23 @@ function Assignment4() {
         </div>
       </div>
     </div>
+  )
+}
+
+function TopCities(data) {
+  // console.log(data);
+  // // get the current avocado size and year, store in variable
+  // data.filter(item => item.year == selectedYear).map((measurement) => {
+  //   return (
+  //     <li>measurement.city</li>
+  //   )});
+  // // sort remaining data based on top sales
+
+  // // for the top ten cities, return a list element with the city's name
+  return (
+    <ol>
+      <li>Hello</li>
+    </ol>
   )
 }
 
