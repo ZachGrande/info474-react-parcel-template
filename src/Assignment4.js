@@ -5,6 +5,7 @@ import * as topojson from "topojson-client";
 import world from "./land-50m";
 import Slider from 'react-rangeslider'
 import "react-rangeslider/lib/index.css";
+import "./A4styling.css";
 
 /*
 * The skeleton for the map was implemented using the documentation for D3's Bubble Map
@@ -269,6 +270,23 @@ function Assignment4() {
                       );
                     })
                   }
+                  {data.filter(item => item.year == selectedYear).map((measurement) => {
+                    return (
+                      <circle
+                        transform={`translate(
+                            ${projection([measurement.longitude, measurement.latitude])})`}
+                        r={measurement.total_volume / 1000000}
+                        opacity="0.1"
+                        fill="#Dd3815"
+                        stroke="8E2914"
+                        strokeWidth="0.1"
+                      />
+                    );
+                  })}
+                  <g class="tooltip css">
+                    <rect x="-3em" y="-45" width="6em" height="1.25em" />
+                    <text y="-45" dy="1em" text-anchor="middle">Tooltip</text>
+                  </g>
                 </svg>
                 {/* zoom overlay, needs nesting to properly stack in corner */}
                 <div className="row text-center no-gutters" style={{ position: "absolute", top: "10px", right: "20px" }}>
