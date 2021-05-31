@@ -39,13 +39,28 @@ function Assignment4() {
   const [x, setX] = useState(90);
   const [y, setY] = useState(100);
   const [years, setYears] = useState([]);
-  const [selectedYear, setSelectedYear] = useState(2015)
+  const [groupedData, setGroupedData] = useState([]);
+  const [selectedYear, setSelectedYear] = useState(2015);
+  const [selectedSize, setSelectedSize] = useState("total_volume");
+  const [spark, setSpark] = useState(true);
 
   useEffect(() => {
     if (data) {
       getYears()
+      getGroupedData()
     }
   }, [data])
+
+  useEffect(() => {
+    if(groupedData) {
+      console.log(groupedData["Albany"])
+      console.log(groupedData.length)
+      groupedData.forEach((item, i) => {
+        console.log(item)
+      });
+
+    }
+  }, [groupedData])
 
   const getYears = async () => {
     var _years = [];
@@ -57,6 +72,80 @@ function Assignment4() {
     });
 
     setYears(_years)
+  }
+
+  const getGroupedData = async () => {
+    var _groupedData = [];
+    await data.sort((a, b) => {
+      const aDate = new Date(a.date);
+      const bDate = new Date(b.date);
+      return aDate - bDate;
+    }).forEach((item, i) => {
+      const city = item.city;
+      const year = item.year;
+      const month = parseInt(item.date.split('/')[0]);
+      if(!_groupedData[city]) {
+        _groupedData[city] = {
+          latitude: item.latitude,
+          longitude: item.longitude
+        };
+      }
+
+      if(!_groupedData[city][year]) {
+        _groupedData[city][year] = [];
+      }
+
+      if(_groupedData[city][year].length < month) {
+        _groupedData[city][year].push(parseInt(item[selectedSize]));
+      } else {
+        const prev = _groupedData[city][year][month - 1];
+        _groupedData[city][year][month - 1] = prev + parseInt(item[selectedSize]);
+      }
+    });
+
+    setGroupedData(_groupedData)
+  }
+
+  const genSpark = (data, translateX, translateY) => {
+    const x = d3.scaleLinear()
+    const y = d3.scaleLinear()
+
+    const xScale = x
+      .range([2, width - 2])
+      .domain(data.length);
+
+    const yScale = y
+      .range([height - 2, 2])
+      .domain(d3.extent(data));
+
+    const svg = d3
+      .create("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr("viewBox", [0, 0, width, height]);
+
+    const g = svg.append("g");
+
+    const line = d3
+      .line()
+      .curve(d3.curveMonotoneX)
+      .x((d, i) => xScale(i + 1))
+      .y(d => yScale(d));
+
+    // const path = g
+    //   .append("path")
+    //   .data(data)
+    //   .attr("d", line)
+    //   .style("fill", "none")
+    //   .style("stroke", "black")
+    //   .style("stroke-width", "2");
+
+    const current = g
+      .append("g")
+      .attr(`translate(${projection([translateX, translateY])})`);
+
+
+    return svg.node();
   }
 
   return (
@@ -130,19 +219,24 @@ function Assignment4() {
               <div className="col"> {/* map col */}
                 <svg id="map" width={1000} height={600} style={{ border: "1px solid black" }} viewBox={`${x} ${y} ${width} ${height}`}>
                   <path d={mapPathString} fill="rgb(200, 200, 200)" />
-                  {data.filter(item => item.year == selectedYear).map((measurement) => {
-                    return (
-                      <circle
-                        transform={`translate(
-                            ${projection([measurement.longitude, measurement.latitude])})`}
-                        r={measurement.total_volume / 1000000}
-                        opacity="0.1"
-                        fill="#Dd3815"
-                        stroke="8E2914"
-                        strokeWidth="0.1"
-                      />
-                    );
-                  })}
+                  {
+                    groupedData.map((city, i) => {
+                      console.log(i)
+                      console.log(genSpark(city[selectedYear, city.longitude, city.latitude]))
+                      const total = city[selectedYear].reduce((total, num) => total + num);
+                      return (
+                        <circle
+                          transform={`translate(
+                              ${projection([city.longitude, city.latitude])})`}
+                          r={total / 1000000}
+                          opacity="0.1"
+                          fill="#Dd3815"
+                          stroke="8E2914"
+                          strokeWidth="0.1"
+                        />
+                      );
+                    })
+                  }
                 </svg>
                 {/* zoom overlay, needs nesting to properly stack in corner */}
                 <div className="row text-center no-gutters" style={{ position: "absolute", top: "10px", right: "20px" }}>
