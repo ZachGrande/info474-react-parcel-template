@@ -33,6 +33,8 @@ function Assignment4() {
   const min_width = 1;
   const max_x = 90;
   const max_y = 100
+  const x_d3_scale = d3.scaleLinear()
+  const y_d3_scale = d3.scaleLinear()
 
   const [width, setWidth] = useState(300)
   const [height, setHeight] = useState(25)
@@ -42,25 +44,21 @@ function Assignment4() {
   const [selectedYear, setSelectedYear] = useState(2015)
   const [selectedSize, setSelectedSize] = useState("total_volume")
   const [groupedData, setGroupedData] = useState([]);
-  const [spark, setSpark] = useState(false);
+  const [spark, setSpark] = useState(true);
 
   useEffect(() => {
     if (avo_agg_data) {
       getYears()
+    }
+
+    if (data) {
       getGroupedData()
     }
-  }, [avo_agg_data])
+  }, [avo_agg_data, data, selectedSize])
 
   useEffect(() => {
-    if(groupedData) {
-      console.log(groupedData["Albany"])
-      console.log(groupedData.length)
-      groupedData.forEach((item, i) => {
-        console.log(item)
-      });
-
-    }
-  }, [groupedData])
+    console.log(groupedData)
+  }, [])
 
   const getYears = async () => {
     var _years = [];
@@ -159,51 +157,8 @@ function Assignment4() {
         _groupedData[city][year][month - 1] = prev + parseInt(item[selectedSize]);
       }
     });
-
     setGroupedData(_groupedData)
   }
-
-//   const genSpark = (data, translateX, translateY) => {
-//     const x = d3.scaleLinear()
-//     const y = d3.scaleLinear()
-
-//     const xScale = x
-//       .range([2, width - 2])
-//       .domain(data.length);
-
-//     const yScale = y
-//       .range([height - 2, 2])
-//       .domain(d3.extent(data));
-
-//     const svg = d3
-//       .create("svg")
-//       .attr("width", width)
-//       .attr("height", height)
-//       .attr("viewBox", [0, 0, width, height]);
-
-//     const g = svg.append("g");
-
-//     const line = d3
-//       .line()
-//       .curve(d3.curveMonotoneX)
-//       .x((d, i) => xScale(i + 1))
-//       .y(d => yScale(d));
-
-//     // const path = g
-//     //   .append("path")
-//     //   .data(data)
-//     //   .attr("d", line)
-//     //   .style("fill", "none")
-//     //   .style("stroke", "black")
-//     //   .style("stroke-width", "2");
-
-//     const current = g
-//       .append("g")
-//       .attr(`translate(${projection([translateX, translateY])})`);
-
-
-//     return svg.node();
-//   }
 
   return (
     <div className="p-5" style={{ backgroundColor: "#EEF5DD" }} >
@@ -278,18 +233,27 @@ function Assignment4() {
                   <path d={mapPathString} fill="rgb(200, 200, 200)" />
                   {
                     spark ?
-                    groupedData.map((city, i) => {
-                        const total = city[selectedYear].reduce((total, num) => total + num);
+                    Object.keys(groupedData).map((city, i) => {
+                        const x_scale = x_d3_scale
+                          .range([2, width - 2])
+                          .domain(data.length);
+                        const y_scale = y_d3_scale
+                          .range([height - 2, 2])
+                          .domain(d3.extent(groupedData[city][selectedYear]));
+                        const line = d3.line()
+                                    .x((d, i) => {
+                                      return x_scale(i);
+                                    })
+                                    .y((d, i) => {
+                                      return y_scale(d);
+                                    });
+                        console.log(line(groupedData[city][selectedYear]))
                         return (
-                          <circle
-                            transform={`translate(
-                                ${projection([city.longitude, city.latitude])})`}
-                            r={total / 1000000}
-                            opacity="0.1"
-                            fill="#Dd3815"
-                            stroke="8E2914"
-                            strokeWidth="0.1"
-                          />
+                          <svg width={width} height={height} transform={`translate(
+                              ${projection([groupedData[city].longitude, groupedData[city].latitude])})`}>
+                            <path
+                              style={{ fill: 'none', strokeWidth: '0.5px', stroke: 'steelblue' }}/>
+                          </svg>
                         );
                     }) :
                     avo_agg_data.filter(item => item.year == selectedYear).map(measurement => {
