@@ -18,7 +18,7 @@ function Assignment4() {
   );
 
   const [avo_agg_data, loading2] = useFetch(
-    "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/aggregated-avocado-2020.csv"
+    "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/sizeChange/aggregated-avocado-2020.csv"
   );
 
   // Colin's starter code to render world map
@@ -42,7 +42,6 @@ function Assignment4() {
   const [selectedYear, setSelectedYear] = useState(2015)
   const [selectedSize, setSelectedSize] = useState("total_volume")
 
-
   useEffect(() => {
     if (avo_agg_data) {
       getYears()
@@ -62,9 +61,60 @@ function Assignment4() {
   }
 
   handleSizeChange = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     let returnSize = event.target.value
     setSelectedSize(returnSize)
+  }
+
+  setRadius = (measurement) => {
+    let r = "5"
+    let rValue = 0
+    if (selectedSize === "4046") {
+      rValue = measurement.sm_4046
+      if (rValue <= 3780000) {
+        r = "1"
+      } else if (rValue > 3780000 && rValue <= 7520000) {
+        r = "2"
+      } else if (rValue > 7520000 && rValue <= 1120000) {
+        r = "3"
+      } else if (rValue > 1120000 && rValue <= 1500000) {
+        r = "4"
+      }
+    } else if (selectedSize === "4225") {
+      rValue = measurement.l_4225 
+      if (rValue <= 2600000) {
+        r = "1"
+      } else if (rValue > 2600000 && rValue <= 5100000) {
+        r = "2"
+      } else if (rValue > 5100000 && rValue <= 7500000) {
+        r = "3"
+      } else if (rValue > 7500000 && rValue <= 10000000) {
+        r = "4"
+      }
+    } else if (selectedSize === "4770") {
+      rValue = measurement.xl_4770
+      if (rValue <= 200000) {
+        r = "1"
+      } else if (rValue > 200000 && rValue <= 400000) {
+        r = "2"
+      } else if (rValue > 400000 && rValue <= 600000) {
+        r = "3"
+      } else if (rValue > 600000 && rValue <= 800000) {
+        r = "4"
+      }
+    } else {
+      rValue = measurement.total_volume
+      if (rValue <= 14000000) {
+        r = "1"
+      } else if (rValue > 14000000 && rValue <= 26000000) {
+        r = "2"
+      } else if (rValue > 26000000 && rValue <= 38000000) {
+        r = "3"
+      } else if (rValue > 38000000 && rValue <= 50000000) {
+        r = "4"
+      }
+    }
+    return r
   }
 
   return (
@@ -139,24 +189,11 @@ function Assignment4() {
                 <svg id="map" width={1000} height={600} style={{ border: "1px solid black" }} viewBox={`${x} ${y} ${width} ${height}`}>
                   <path d={mapPathString} fill="rgb(200, 200, 200)" />
                   {avo_agg_data.filter(item => item.year == selectedYear).map((measurement) => {
-                    let filterRadius = measurement.total_volume / 1000000
-                    if (selectedSize === "4046") {
-                      // filterRadius = measurement.sm_4046 / 1000000
-                      console.log(measurement.sm_4046)
-                    } else if (selectedSize === "4225") {
-                      // filterRadius = measurement.l_4225 / 1000000
-                      console.log(measurement.l_4225 )
-                    } else if (selectedSize === "4770") {
-                      // filterRadius = measurement.xl_4770 / 1000000
-                      console.log(measurement.xl_4770 )
-                    } else {
-                      console.log(measurement)
-                    }
                     return (
                       <circle
                         transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}
-                        r={filterRadius}
-                        opacity="0.1"
+                        r={this.setRadius(measurement)}
+                        opacity="0.5"
                         fill="#Dd3815"
                         stroke="8E2914"
                         strokeWidth="0.1"
