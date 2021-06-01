@@ -182,6 +182,15 @@ function Assignment4() {
   }
   
   var tableData = avo_agg_data.filter(item => item.year == selectedYear);
+  tableData = tableData.sort(function(a, b){
+    return b.total_volume - a.total_volume;
+  });
+
+  // Implementation is used from https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings
+  var currency = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
 
   return (
     <div className="p-5" style={{ backgroundColor: "#EEF5DD" }} >
@@ -362,7 +371,7 @@ function Assignment4() {
               </div>
               <div className="col">
                 <h4>Top Cities:</h4>
-                {listData[0] && 
+                {listData[0] &&
                 <ol>
                   <li id="city-1" className="animate__animated animate__lightSpeedInRight">{listData[0].city}</li>
                   <li id="city-2" className="animate__animated animate__lightSpeedInRight">{listData[1].city}</li>
@@ -388,75 +397,73 @@ function Assignment4() {
                       <th scope="col">#</th>
                       <th scope="col">City</th>
                       <th scope="col">State</th>
-                      <th scope="col">Sales ($)</th>
+                      <th scope="col">Total Sales (USD)</th>
                     </tr>
                   </thead>
+                  {listData[0] &&
                   <tbody>
                     <tr>
                       <th scope="row">1</th>
                       <td>{tableData[0].city}</td>
-                      <td>Washington</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[0].state_id}</td>
+                      <td>{currency.format(tableData[0].total_volume)}</td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
-                      <td>San Fransisco</td>
-                      <td>California</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[1].city}</td>
+                      <td>{tableData[1].state_id}</td>
+                      <td>{currency.format(tableData[1].total_volume)}</td>
                     </tr>
                     <tr>
                       <th scope="row">3</th>
-                      <td>San Diego</td>
-                      <td>California</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[2].city}</td>
+                      <td>{tableData[2].state_id}</td>
+                      <td>{currency.format(tableData[2].total_volume)}</td>
                     </tr>
                     <tr>
                       <th scope="row">4</th>
-                      <td>Atlanta</td>
-                      <td>Georgia</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[3].city}</td>
+                      <td>{tableData[3].state_id}</td>
+                      <td>{currency.format(tableData[3].total_volume)}</td>
                     </tr>
                     <tr>
                       <th scope="row">5</th>
-                      <td>Miami</td>
-                      <td>Florida</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[4].city}</td>
+                      <td>{tableData[4].state_id}</td>
+                      <td>{currency.format(tableData[4].total_volume)}</td>
                     </tr>
                     <tr>
                       <th scope="row">6</th>
-                      <td>New York</td>
-                      <td>New York</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[5].city}</td>
+                      <td>{tableData[5].state_id}</td>
+                      <td>{currency.format(tableData[5].total_volume)}</td>
                     </tr>
                     <tr>
                       <th scope="row">7</th>
-                      <td>Houston</td>
-                      <td>the Bird</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[6].city}</td>
+                      <td>{tableData[6].state_id}</td>
+                      <td>{currency.format(tableData[6].total_volume)}</td>
                     </tr>
                     <tr>
                       <th scope="row">8</th>
-                      <td>Baltimore</td>
-                      <td>Maryland</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[7].city}</td>
+                      <td>{tableData[7].state_id}</td>
+                      <td>{currency.format(tableData[7].total_volume)}</td>
                     </tr>
                     <tr>
                       <th scope="row">9</th>
-                      <td>Charlotte</td>
-                      <td>North Carolina</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[8].city}</td>
+                      <td>{tableData[8].state_id}</td>
+                      <td>{currency.format(tableData[8].total_volume)}</td>
                     </tr>
                     <tr>
                       <th scope="row">10</th>
-                      <td>Albany</td>
-                      <td>New York</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[9].city}</td>
+                      <td>{tableData[9].state_id}</td>
+                      <td>{currency.format(tableData[9].total_volume)}</td>
                     </tr>
-                  </tbody>
+                  </tbody>}
                 </table>
-              </div>
-              <div className="col"> {/* tbd graph col */}
-                <div className="bg-warning h-100">d3 graph</div>
               </div>
             </div>
           </div>
