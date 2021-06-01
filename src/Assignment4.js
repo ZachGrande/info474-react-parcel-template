@@ -322,7 +322,21 @@ function Assignment4() {
               </div>
               <div className="col"> {/* tbd list col */}
                 <h4>Top Cities:</h4>
-                <TopCities data={data} />
+                {/* get the current avocado size and year, store in variable */}
+                {/* data.filter(item => item.year == selectedYear).map((measurement) => { */}
+                {/* sort remaining data based on top sales */}
+                <ol>
+                  <li id="city-1">{data[0].city}</li>
+                  <li id="city-2">{data[1].city}</li>
+                  <li id="city-3">{data[2].city}</li>
+                  <li id="city-4">{data[3].city}</li>
+                  <li id="city-5">{data[4].city}</li>
+                  <li id="city-6">{data[5].city}</li>
+                  <li id="city-7">{data[6].city}</li>
+                  <li id="city-8">{data[7].city}</li>
+                  <li id="city-9">{data[8].city}</li>
+                  <li id="city-10">{data[9].city}</li>
+                </ol>
                 <ol>
                   <li id="city-1">Seattle</li>
                   <li id="city-2">San Fransisco</li>
@@ -432,23 +446,6 @@ function Assignment4() {
         </div>
       </div>
     </div>
-  )
-}
-
-function TopCities(data) {
-  // console.log(data);
-  // // get the current avocado size and year, store in variable
-  // data.filter(item => item.year == selectedYear).map((measurement) => {
-  //   return (
-  //     <li>measurement.city</li>
-  //   )});
-  // // sort remaining data based on top sales
-
-  // // for the top ten cities, return a list element with the city's name
-  return (
-    <ol>
-      <li>Hello</li>
-    </ol>
   )
 }
 
