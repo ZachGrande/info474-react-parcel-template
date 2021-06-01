@@ -41,10 +41,8 @@ function Assignment4() {
   const [years, setYears] = useState([]);
   const [selectedYear, setSelectedYear] = useState(2015)
   const [selectedSize, setSelectedSize] = useState("total_volume")
-  // const [groupedData, setGroupedData] = useState([]);
-  // const [selectedYear, setSelectedYear] = useState(2015);
-  // const [selectedSize, setSelectedSize] = useState("total_volume");
-  // const [spark, setSpark] = useState(true);
+  const [groupedData, setGroupedData] = useState([]);
+  const [spark, setSpark] = useState(false);
 
   useEffect(() => {
     if (avo_agg_data) {
@@ -97,7 +95,7 @@ function Assignment4() {
         r = "4"
       }
     } else if (selectedSize === "4225") {
-      rValue = measurement.l_4225 
+      rValue = measurement.l_4225
       if (rValue <= 2600000) {
         r = "1"
       } else if (rValue > 2600000 && rValue <= 5100000) {
@@ -132,38 +130,38 @@ function Assignment4() {
     }
     return r
   }
-  
-    //   const getGroupedData = async () => {
-//     var _groupedData = [];
-//     await data.sort((a, b) => {
-//       const aDate = new Date(a.date);
-//       const bDate = new Date(b.date);
-//       return aDate - bDate;
-//     }).forEach((item, i) => {
-//       const city = item.city;
-//       const year = item.year;
-//       const month = parseInt(item.date.split('/')[0]);
-//       if(!_groupedData[city]) {
-//         _groupedData[city] = {
-//           latitude: item.latitude,
-//           longitude: item.longitude
-//         };
-//       }
 
-//       if(!_groupedData[city][year]) {
-//         _groupedData[city][year] = [];
-//       }
+  const getGroupedData = async () => {
+    var _groupedData = [];
+    await data.sort((a, b) => {
+      const aDate = new Date(a.date);
+      const bDate = new Date(b.date);
+      return aDate - bDate;
+    }).forEach((item, i) => {
+      const city = item.city;
+      const year = item.year;
+      const month = parseInt(item.date.split('/')[0]);
+      if(!_groupedData[city]) {
+        _groupedData[city] = {
+          latitude: item.latitude,
+          longitude: item.longitude
+        };
+      }
 
-//       if(_groupedData[city][year].length < month) {
-//         _groupedData[city][year].push(parseInt(item[selectedSize]));
-//       } else {
-//         const prev = _groupedData[city][year][month - 1];
-//         _groupedData[city][year][month - 1] = prev + parseInt(item[selectedSize]);
-//       }
-//     });
+      if(!_groupedData[city][year]) {
+        _groupedData[city][year] = [];
+      }
 
-//     setGroupedData(_groupedData)
-//   }
+      if(_groupedData[city][year].length < month) {
+        _groupedData[city][year].push(parseInt(item[selectedSize]));
+      } else {
+        const prev = _groupedData[city][year][month - 1];
+        _groupedData[city][year][month - 1] = prev + parseInt(item[selectedSize]);
+      }
+    });
+
+    setGroupedData(_groupedData)
+  }
 
 //   const genSpark = (data, translateX, translateY) => {
 //     const x = d3.scaleLinear()
@@ -278,34 +276,35 @@ function Assignment4() {
               <div className="col"> {/* map col */}
                 <svg id="map" width={1000} height={600} style={{ border: "1px solid black" }} viewBox={`${x} ${y} ${width} ${height}`}>
                   <path d={mapPathString} fill="rgb(200, 200, 200)" />
-                  {avo_agg_data.filter(item => item.year == selectedYear).map((measurement) => {
-                    return (
-                      <circle
-                        transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}
-                        r={this.setRadius(measurement)}
-                        opacity="0.5"
-                        fill="#Dd3815"
-                        stroke="8E2914"
-                        strokeWidth="0.1"
-                      />
-                    );
-                  })}
-                  {/* {groupedData.map((city, i) => {
-                      console.log(i)
-                      console.log(genSpark(city[selectedYear, city.longitude, city.latitude]))
-                      const total = city[selectedYear].reduce((total, num) => total + num);
+                  {
+                    spark ?
+                    groupedData.map((city, i) => {
+                        const total = city[selectedYear].reduce((total, num) => total + num);
+                        return (
+                          <circle
+                            transform={`translate(
+                                ${projection([city.longitude, city.latitude])})`}
+                            r={total / 1000000}
+                            opacity="0.1"
+                            fill="#Dd3815"
+                            stroke="8E2914"
+                            strokeWidth="0.1"
+                          />
+                        );
+                    }) :
+                    avo_agg_data.filter(item => item.year == selectedYear).map(measurement => {
                       return (
                         <circle
-                          transform={`translate(
-                              ${projection([city.longitude, city.latitude])})`}
-                          r={total / 1000000}
-                          opacity="0.1"
+                          transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}
+                          r={this.setRadius(measurement)}
+                          opacity="0.5"
                           fill="#Dd3815"
                           stroke="8E2914"
                           strokeWidth="0.1"
                         />
                       );
-                    })} */}
+                    })
+                  }
                 </svg>
                 {/* zoom overlay, needs nesting to properly stack in corner */}
                 <div className="row text-center no-gutters" style={{ position: "absolute", top: "10px", right: "20px" }}>
