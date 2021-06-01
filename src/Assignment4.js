@@ -18,7 +18,7 @@ function Assignment4() {
   );
 
   const [avo_agg_data, loading2] = useFetch(
-    "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/aggregated-avocado-2020.csv"
+    "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/sizeChange/aggregated-avocado-2020.csv"
   );
 
   // Colin's starter code to render world map
@@ -26,7 +26,7 @@ function Assignment4() {
   const projection = d3.geoNaturalEarth1();
   const path = d3.geoPath(projection);
   const mapPathString = path(land);
-  const radius = d3.scaleSqrt([0, d3.max(data, d => d.total_volume)], [0, 40]);
+  const radius = d3.scaleSqrt([0, d3.max(avo_agg_data, d => d.total_volume)], [0, 40]);
   const max_height = 25;
   const max_width = 300;
   const min_height = 1;
@@ -40,16 +40,17 @@ function Assignment4() {
   const [y, setY] = useState(100);
   const [years, setYears] = useState([]);
   const [selectedYear, setSelectedYear] = useState(2015)
+  const [selectedSize, setSelectedSize] = useState("total_volume")
 
   useEffect(() => {
-    if (data) {
+    if (avo_agg_data) {
       getYears()
     }
-  }, [data])
+  }, [avo_agg_data])
 
   const getYears = async () => {
     var _years = [];
-    await data.forEach((item, i) => {
+    await avo_agg_data.forEach((item, i) => {
       const year = parseInt(item.year);
       if (_years.indexOf(year) == -1) {
         _years.push(year)
@@ -57,6 +58,63 @@ function Assignment4() {
     });
 
     setYears(_years)
+  }
+
+  handleSizeChange = (event) => {
+    // console.log(event.target.value)
+    let returnSize = event.target.value
+    setSelectedSize(returnSize)
+  }
+
+  setRadius = (measurement) => {
+    let r = "5"
+    let rValue = 0
+    if (selectedSize === "4046") {
+      rValue = measurement.sm_4046
+      if (rValue <= 3780000) {
+        r = "1"
+      } else if (rValue > 3780000 && rValue <= 7520000) {
+        r = "2"
+      } else if (rValue > 7520000 && rValue <= 1120000) {
+        r = "3"
+      } else if (rValue > 1120000 && rValue <= 1500000) {
+        r = "4"
+      }
+    } else if (selectedSize === "4225") {
+      rValue = measurement.l_4225 
+      if (rValue <= 2600000) {
+        r = "1"
+      } else if (rValue > 2600000 && rValue <= 5100000) {
+        r = "2"
+      } else if (rValue > 5100000 && rValue <= 7500000) {
+        r = "3"
+      } else if (rValue > 7500000 && rValue <= 10000000) {
+        r = "4"
+      }
+    } else if (selectedSize === "4770") {
+      rValue = measurement.xl_4770
+      if (rValue <= 200000) {
+        r = "1"
+      } else if (rValue > 200000 && rValue <= 400000) {
+        r = "2"
+      } else if (rValue > 400000 && rValue <= 600000) {
+        r = "3"
+      } else if (rValue > 600000 && rValue <= 800000) {
+        r = "4"
+      }
+    } else {
+      rValue = measurement.total_volume
+      if (rValue <= 14000000) {
+        r = "1"
+      } else if (rValue > 14000000 && rValue <= 26000000) {
+        r = "2"
+      } else if (rValue > 26000000 && rValue <= 38000000) {
+        r = "3"
+      } else if (rValue > 38000000 && rValue <= 50000000) {
+        r = "4"
+      }
+    }
+    return r
   }
 
   return (
@@ -107,20 +165,20 @@ function Assignment4() {
               <div className="col-5"> {/* tbd size radio btns col */}
                 <h4 className="mb-0">Change Which Size Of Avocado Is Displayed:</h4>
                 <div className="py-3">
-                  <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                  <div className="form-check form-check-inline" onChange={this.handleSizeChange}>
+                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="4046" onChange={this.handleSizeChange} checked={selectedSize === "4046"} />
                     <label className="form-check-label" for="inlineRadio1">Small/Medium</label>
                   </div>
                   <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="4225" onChange={this.handleSizeChange} checked={selectedSize === "4225"} />
                     <label className="form-check-label" for="inlineRadio2">Large</label>
                   </div>
                   <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" />
+                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="4770" onChange={this.handleSizeChange} checked={selectedSize === "4770"} />
                     <label className="form-check-label" for="inlineRadio3">Extra Large</label>
                   </div>
                   <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option3" />
+                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="total_volume" onChange={this.handleSizeChange} checked={selectedSize === "total_volume"} />
                     <label className="form-check-label" for="inlineRadio4">Any Size</label>
                   </div>
                 </div>
@@ -130,13 +188,12 @@ function Assignment4() {
               <div className="col"> {/* map col */}
                 <svg id="map" width={1000} height={600} style={{ border: "1px solid black" }} viewBox={`${x} ${y} ${width} ${height}`}>
                   <path d={mapPathString} fill="rgb(200, 200, 200)" />
-                  {data.filter(item => item.year == selectedYear).map((measurement) => {
+                  {avo_agg_data.filter(item => item.year == selectedYear).map((measurement) => {
                     return (
                       <circle
-                        transform={`translate(
-                            ${projection([measurement.longitude, measurement.latitude])})`}
-                        r={measurement.total_volume / 1000000}
-                        opacity="0.1"
+                        transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}
+                        r={this.setRadius(measurement)}
+                        opacity="0.5"
                         fill="#Dd3815"
                         stroke="8E2914"
                         strokeWidth="0.1"
