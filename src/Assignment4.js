@@ -248,7 +248,7 @@ function Assignment4() {
                                     .y((d, i) => {
                                       return y_scale(d);
                                     });
-                        console.log(line(groupedData[city][selectedYear]))
+                        // console.log(line(groupedData[city][selectedYear]))
                         return (
                           <svg width={width} height={height} transform={`translate(
                               ${projection([groupedData[city].longitude, groupedData[city].latitude])})`}>
