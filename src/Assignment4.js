@@ -398,6 +398,9 @@ function Assignment4() {
                       <th scope="col">City</th>
                       <th scope="col">State</th>
                       <th scope="col">Total Sales (USD)</th>
+                      <th scope="col">Small/Medium Avocado Sales (USD)</th>
+                      <th scope="col">Large Avocado Sales (USD)</th>
+                      <th scope="col">Extra Large Avocado Sales (USD)</th>
                     </tr>
                   </thead>
                   {listData[0] &&
@@ -407,60 +410,90 @@ function Assignment4() {
                       <td>{tableData[0].city}</td>
                       <td>{tableData[0].state_id}</td>
                       <td>{currency.format(tableData[0].total_volume)}</td>
+                      <td>{currency.format(tableData[0].sm_4046)}</td>
+                      <td>{currency.format(tableData[0].l_4225)}</td>
+                      <td>{currency.format(tableData[0].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
                       <td>{tableData[1].city}</td>
                       <td>{tableData[1].state_id}</td>
                       <td>{currency.format(tableData[1].total_volume)}</td>
+                      <td>{currency.format(tableData[1].sm_4046)}</td>
+                      <td>{currency.format(tableData[1].l_4225)}</td>
+                      <td>{currency.format(tableData[1].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">3</th>
                       <td>{tableData[2].city}</td>
                       <td>{tableData[2].state_id}</td>
                       <td>{currency.format(tableData[2].total_volume)}</td>
+                      <td>{currency.format(tableData[2].sm_4046)}</td>
+                      <td>{currency.format(tableData[2].l_4225)}</td>
+                      <td>{currency.format(tableData[2].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">4</th>
                       <td>{tableData[3].city}</td>
                       <td>{tableData[3].state_id}</td>
                       <td>{currency.format(tableData[3].total_volume)}</td>
+                      <td>{currency.format(tableData[3].sm_4046)}</td>
+                      <td>{currency.format(tableData[3].l_4225)}</td>
+                      <td>{currency.format(tableData[3].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">5</th>
                       <td>{tableData[4].city}</td>
                       <td>{tableData[4].state_id}</td>
                       <td>{currency.format(tableData[4].total_volume)}</td>
+                      <td>{currency.format(tableData[4].sm_4046)}</td>
+                      <td>{currency.format(tableData[4].l_4225)}</td>
+                      <td>{currency.format(tableData[4].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">6</th>
                       <td>{tableData[5].city}</td>
                       <td>{tableData[5].state_id}</td>
                       <td>{currency.format(tableData[5].total_volume)}</td>
+                      <td>{currency.format(tableData[5].sm_4046)}</td>
+                      <td>{currency.format(tableData[5].l_4225)}</td>
+                      <td>{currency.format(tableData[5].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">7</th>
                       <td>{tableData[6].city}</td>
                       <td>{tableData[6].state_id}</td>
                       <td>{currency.format(tableData[6].total_volume)}</td>
+                      <td>{currency.format(tableData[6].sm_4046)}</td>
+                      <td>{currency.format(tableData[6].l_4225)}</td>
+                      <td>{currency.format(tableData[6].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">8</th>
                       <td>{tableData[7].city}</td>
                       <td>{tableData[7].state_id}</td>
                       <td>{currency.format(tableData[7].total_volume)}</td>
+                      <td>{currency.format(tableData[7].sm_4046)}</td>
+                      <td>{currency.format(tableData[7].l_4225)}</td>
+                      <td>{currency.format(tableData[7].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">9</th>
                       <td>{tableData[8].city}</td>
                       <td>{tableData[8].state_id}</td>
                       <td>{currency.format(tableData[8].total_volume)}</td>
+                      <td>{currency.format(tableData[8].sm_4046)}</td>
+                      <td>{currency.format(tableData[8].l_4225)}</td>
+                      <td>{currency.format(tableData[8].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">10</th>
                       <td>{tableData[9].city}</td>
                       <td>{tableData[9].state_id}</td>
                       <td>{currency.format(tableData[9].total_volume)}</td>
+                      <td>{currency.format(tableData[9].sm_4046)}</td>
+                      <td>{currency.format(tableData[9].l_4225)}</td>
+                      <td>{currency.format(tableData[9].xl_4770)}</td>
                     </tr>
                   </tbody>}
                 </table>
