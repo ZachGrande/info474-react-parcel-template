@@ -1,4 +1,4 @@
-city,geography,state_id,year,latitude,longitude,average_price,total_volume,4046,4225,4770
+city,geography,state_id,year,latitude,longitude,average_price,total_volume,sm_4046,l_4225,xl_4770
 Albany,Albany,NY,2015,42.65258,-73.756233,1.53875,4029896.43,55636.89,3219826.6,34777.34
 Albany,Albany,NY,2016,42.65258,-73.756233,1.533942308,5264335.59,282658.72,4140017.73,3359.23
 Albany,Albany,NY,2017,42.65258,-73.756233,1.637830189,5231581.78,170502.18,4209517.84,16056.16
