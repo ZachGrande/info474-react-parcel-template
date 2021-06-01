@@ -6,6 +6,7 @@ import world from "./land-50m";
 import Slider from 'react-rangeslider'
 import "react-rangeslider/lib/index.css";
 import "./A4styling.css";
+import { select } from 'd3-selection';
 
 /*
 * The skeleton for the map was implemented using the documentation for D3's Bubble Map
@@ -161,6 +162,27 @@ function Assignment4() {
     setGroupedData(_groupedData)
   }
 
+  var listData = avo_agg_data.filter(item => item.year == selectedYear);
+  if (selectedSize === "4046") {
+    listData = listData.sort(function(a, b){
+      return b.sm_4046 - a.sm_4046;
+    });
+  } else if (selectedSize === "4225") {
+    listData = listData.sort(function(a, b){
+      return b.l_4225 - a.l_4225;
+    });
+  } else if (selectedSize === "4770") {
+    listData = listData.sort(function(a, b){
+      return b.xl_4770 - a.xl_4770;
+    });
+  } else {
+    listData = listData.sort(function(a, b){
+      return b.total_volume - a.total_volume;
+    });
+  }
+  
+  var tableData = avo_agg_data.filter(item => item.year == selectedYear);
+
   return (
     <div className="p-5" style={{ backgroundColor: "#EEF5DD" }} >
 
@@ -233,30 +255,30 @@ function Assignment4() {
                 <svg id="map" width={1000} height={600} style={{ border: "1px solid black" }} viewBox={`${x} ${y} ${width} ${height}`}>
                   <path d={mapPathString} fill="rgb(200, 200, 200)" />
                   {
-                    spark ?
-                    Object.keys(groupedData).map((city, i) => {
-                        const x_scale = x_d3_scale
-                          .range([2, width - 2])
-                          .domain(data.length);
-                        const y_scale = y_d3_scale
-                          .range([height - 2, 2])
-                          .domain(d3.extent(groupedData[city][selectedYear]));
-                        const line = d3.line()
-                                    .x((d, i) => {
-                                      return x_scale(i);
-                                    })
-                                    .y((d, i) => {
-                                      return y_scale(d);
-                                    });
-                        // console.log(line(groupedData[city][selectedYear]))
-                        return (
-                          <svg width={width} height={height} transform={`translate(
-                              ${projection([groupedData[city].longitude, groupedData[city].latitude])})`}>
-                            <path
-                              style={{ fill: 'none', strokeWidth: '0.5px', stroke: 'steelblue' }}/>
-                          </svg>
-                        );
-                    }) :
+                    // spark ?
+                    // Object.keys(groupedData).map((city, i) => {
+                    //     const x_scale = x_d3_scale
+                    //       .range([2, width - 2])
+                    //       .domain(data.length);
+                    //     const y_scale = y_d3_scale
+                    //       .range([height - 2, 2])
+                    //       .domain(d3.extent(groupedData[city][selectedYear]));
+                    //     const line = d3.line()
+                    //                 .x((d, i) => {
+                    //                   return x_scale(i);
+                    //                 })
+                    //                 .y((d, i) => {
+                    //                   return y_scale(d);
+                    //                 });
+                    //     // console.log(line(groupedData[city][selectedYear]))
+                    //     return (
+                    //       <svg width={width} height={height} transform={`translate(
+                    //           ${projection([groupedData[city].longitude, groupedData[city].latitude])})`}>
+                    //         <path
+                    //           style={{ fill: 'none', strokeWidth: '0.5px', stroke: 'steelblue' }}/>
+                    //       </svg>
+                    //     );
+                    // }) :
                     avo_agg_data.filter(item => item.year == selectedYear).map(measurement => {
                       return (
                         <circle
@@ -270,9 +292,22 @@ function Assignment4() {
                       );
                     })
                   }
-                  {data.filter(item => item.year == selectedYear).map((measurement) => {
+                  {avo_agg_data.filter(item => item.year == selectedYear).map(measurement => {
                     return (
-                      <div>
+                      // <g className="tooltip css">
+                      <g>
+                        <rect x="-3em" y="-45" width="6em" height="1.25em" />
+                        <text y="-45" dy="1em" textAnchor="middle">
+                          City: {measurement.city}
+                          State: {measurement.state_id}
+                          Sale Amount: ${measurement.total_volume}
+                        </text>
+                      </g>
+                    );
+                  })}
+                  {/* {data.filter(item => item.year == selectedYear).map((measurement) => {
+                    return (
+                      // <div>
                       <circle
                         transform={`translate(
                             ${projection([measurement.longitude, measurement.latitude])})`}
@@ -282,20 +317,20 @@ function Assignment4() {
                         stroke="8E2914"
                         strokeWidth="0.1"
                       />
-                      {/* TODO Get the tooltip to render alongside each centroid
-                      CSS will make the tooltip only visible when scrolled over */}
-                      <g class="tooltip css">
-                        <rect x="-3em" y="-45" width="6em" height="1.25em" />
-                        {/* <text y="-45" dy="1em" text-anchor="middle"> */}
-                        <text y="-45" dy="1em" textAnchor="middle">
-                          City: {measurement.city}
-                          State: {measurement.state_id}
-                          Sale Amount: ${measurement.total_volume}
-                        </text>
-                      </g>
-                      </div>
+                      // TODO Get the tooltip to render alongside each centroid
+                      // CSS will make the tooltip only visible when scrolled over
+                      // <g class="tooltip css">
+                        // <rect x="-3em" y="-45" width="6em" height="1.25em" />
+                        // <text y="-45" dy="1em" text-anchor="middle">
+                        // <text y="-45" dy="1em" textAnchor="middle">
+                          // City: {measurement.city}
+                          // State: {measurement.state_id}
+                          // Sale Amount: ${measurement.total_volume}
+                        // </text>
+                      // </g>
+                      // </div>
                     );
-                  })}
+                  })} */}
                 </svg>
                 {/* zoom overlay, needs nesting to properly stack in corner */}
                 <div className="row text-center no-gutters" style={{ position: "absolute", top: "10px", right: "20px" }}>
@@ -327,43 +362,25 @@ function Assignment4() {
               </div>
               <div className="col">
                 <h4>Top Cities:</h4>
-                {/* get the current avocado size and year */}
-                {/* data.filter(item => item.year == selectedYear) */}
-                {/* sort remaining data based on top sales */}
-                {/* */}
-                {avo_agg_data[0] && 
+                {listData[0] && 
                 <ol>
-                  <li id="city-1" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[0].city}</li>
-                  <li id="city-2" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[1].city}</li>
-                  <li id="city-3" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[2].city}</li>
-                  <li id="city-4" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[3].city}</li>
-                  <li id="city-5" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[4].city}</li>
-                  <li id="city-6" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[5].city}</li>
-                  <li id="city-7" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[6].city}</li>
-                  <li id="city-8" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[7].city}</li>
-                  <li id="city-9" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[8].city}</li>
-                  <li id="city-10" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[9].city}</li>
-                </ol>
-}
-                {/* */}
-                <ol>
-                  <li id="city-1">Seattle</li>
-                  <li id="city-2">San Fransisco</li>
-                  <li id="city-3">San Diego</li>
-                  <li id="city-4">Atlanta</li>
-                  <li id="city-5">Miami</li>
-                  <li id="city-6">New York</li>
-                  <li id="city-7">Houston</li>
-                  <li id="city-8">Baltimore</li>
-                  <li id="city-9">Charlotte</li>
-                  <li id="city-10">Albany</li>
-                </ol>
+                  <li id="city-1" className="animate__animated animate__lightSpeedInRight">{listData[0].city}</li>
+                  <li id="city-2" className="animate__animated animate__lightSpeedInRight">{listData[1].city}</li>
+                  <li id="city-3" className="animate__animated animate__lightSpeedInRight">{listData[2].city}</li>
+                  <li id="city-4" className="animate__animated animate__lightSpeedInRight">{listData[3].city}</li>
+                  <li id="city-5" className="animate__animated animate__lightSpeedInRight">{listData[4].city}</li>
+                  <li id="city-6" className="animate__animated animate__lightSpeedInRight">{listData[5].city}</li>
+                  <li id="city-7" className="animate__animated animate__lightSpeedInRight">{listData[6].city}</li>
+                  <li id="city-8" className="animate__animated animate__lightSpeedInRight">{listData[7].city}</li>
+                  <li id="city-9" className="animate__animated animate__lightSpeedInRight">{listData[8].city}</li>
+                  <li id="city-10" className="animate__animated animate__lightSpeedInRight">{listData[9].city}</li>
+                </ol>}
                 <hr></hr>
                 <p>Could put something here</p>
               </div>
             </div>
-            <div className="row"> {/* tbd table / graph row */}
-              <div className="col"> {/* tbd table col */}
+            <div className="row">
+              <div className="col">
                 <table class="table table-striped table-sm mb-0">
                   <caption>List of top cities and sale amounts</caption>
                   <thead className="thead-dark">
@@ -377,7 +394,7 @@ function Assignment4() {
                   <tbody>
                     <tr>
                       <th scope="row">1</th>
-                      <td>Seattle</td>
+                      <td>{tableData[0].city}</td>
                       <td>Washington</td>
                       <td>{"$ " + "1000"}</td>
                     </tr>
