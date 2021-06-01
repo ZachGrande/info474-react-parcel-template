@@ -272,7 +272,7 @@ function Assignment4() {
                   }
                   {data.filter(item => item.year == selectedYear).map((measurement) => {
                     return (
-                      // <div>
+                      <div>
                       <circle
                         transform={`translate(
                             ${projection([measurement.longitude, measurement.latitude])})`}
@@ -282,13 +282,18 @@ function Assignment4() {
                         stroke="8E2914"
                         strokeWidth="0.1"
                       />
-                      // TODO Get the tooltip to render alongside each centroid
-                      // CSS will make the tooltip only visible when scrolled over
-                      // <g class="tooltip css">
-                        // <rect x="-3em" y="-45" width="6em" height="1.25em" />
-                        // <text y="-45" dy="1em" text-anchor="middle">measurement.city</text>
-                      // </g>
-                      // </div>
+                      {/* TODO Get the tooltip to render alongside each centroid
+                      CSS will make the tooltip only visible when scrolled over */}
+                      <g class="tooltip css">
+                        <rect x="-3em" y="-45" width="6em" height="1.25em" />
+                        {/* <text y="-45" dy="1em" text-anchor="middle"> */}
+                        <text y="-45" dy="1em" textAnchor="middle">
+                          City: {measurement.city}
+                          State: {measurement.state_id}
+                          Sale Amount: ${measurement.total_volume}
+                        </text>
+                      </g>
+                      </div>
                     );
                   })}
                 </svg>
@@ -320,23 +325,27 @@ function Assignment4() {
                   </div>
                 </div>
               </div>
-              <div className="col"> {/* tbd list col */}
+              <div className="col">
                 <h4>Top Cities:</h4>
-                {/* get the current avocado size and year, store in variable */}
-                {/* data.filter(item => item.year == selectedYear).map((measurement) => { */}
+                {/* get the current avocado size and year */}
+                {/* data.filter(item => item.year == selectedYear) */}
                 {/* sort remaining data based on top sales */}
+                {/* */}
+                {avo_agg_data[0] && 
                 <ol>
-                  <li id="city-1">{data[0].city}</li>
-                  <li id="city-2">{data[1].city}</li>
-                  <li id="city-3">{data[2].city}</li>
-                  <li id="city-4">{data[3].city}</li>
-                  <li id="city-5">{data[4].city}</li>
-                  <li id="city-6">{data[5].city}</li>
-                  <li id="city-7">{data[6].city}</li>
-                  <li id="city-8">{data[7].city}</li>
-                  <li id="city-9">{data[8].city}</li>
-                  <li id="city-10">{data[9].city}</li>
+                  <li id="city-1" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[0].city}</li>
+                  <li id="city-2" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[1].city}</li>
+                  <li id="city-3" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[2].city}</li>
+                  <li id="city-4" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[3].city}</li>
+                  <li id="city-5" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[4].city}</li>
+                  <li id="city-6" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[5].city}</li>
+                  <li id="city-7" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[6].city}</li>
+                  <li id="city-8" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[7].city}</li>
+                  <li id="city-9" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[8].city}</li>
+                  <li id="city-10" class="animate__animated animate__lightSpeedInRight">{avo_agg_data[9].city}</li>
                 </ol>
+}
+                {/* */}
                 <ol>
                   <li id="city-1">Seattle</li>
                   <li id="city-2">San Fransisco</li>
