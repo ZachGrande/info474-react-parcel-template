@@ -5,7 +5,7 @@ import * as topojson from "topojson-client";
 import world from "./land-50m";
 import Slider from 'react-rangeslider'
 import "react-rangeslider/lib/index.css";
-import "./A4styling.css";
+import "./A4styling2.css";
 import { select } from 'd3-selection';
 
 /*
@@ -59,7 +59,7 @@ function Assignment4() {
   }, [avo_agg_data, data, selectedSize])
 
   useEffect(() => {
-    console.log(groupedData)
+    // console.log(groupedData)
   }, [])
 
   const getYears = async () => {
@@ -192,6 +192,32 @@ function Assignment4() {
     currency: 'USD'
   });
 
+  var svg = document.getElementsByClassName('tooltip-svg');
+  svg = svg[0];
+
+  var tooltip = document.getElementById('tooltip');
+
+  var triggers = document.getElementsByClassName('tooltip-trigger');
+  for (var i = 0; i < triggers.length; i++) {
+    triggers[i].addEventListener('mousemove', showTooltip);
+    triggers[i].addEventListener('mouseout', hideTooltip);
+  }
+
+  /*function showTooltip(evt) {
+    tooltip.setAttributeNS(null, "visibility", "visible");
+  }*/
+  function showTooltip(evt) {
+    var CTM = svg.getScreenCTM();
+    var mouseX = (evt.clientX - CTM.e) / CTM.a;
+    var mouseY = (evt.clientY - CTM.f) / CTM.d;
+    tooltip.setAttributeNS(null, "x", mouseX + 6 / CTM.a);
+    tooltip.setAttributeNS(null, "y", mouseY + 20 / CTM.d);
+    tooltip.setAttributeNS(null, "visibility", "visible");
+  }
+  function hideTooltip() {
+    tooltip.setAttributeNS(null, "visibility", "hidden");
+  }
+
   return (
     <div className="p-5" style={{ backgroundColor: "#EEF5DD" }} >
 
@@ -261,7 +287,7 @@ function Assignment4() {
             </div>
             <div className="row py-3"> {/* map / list row */}
               <div className="col"> {/* map col */}
-                <svg id="map" width={1000} height={600} style={{ border: "1px solid black" }} viewBox={`${x} ${y} ${width} ${height}`}>
+                <svg id="map" className="tooltip-svg" width={1000} height={600} style={{ border: "1px solid black" }} viewBox={`${x} ${y} ${width} ${height}`}>
                   <path d={mapPathString} fill="rgb(200, 200, 200)" />
                   {
                     // spark ?
@@ -291,6 +317,8 @@ function Assignment4() {
                     avo_agg_data.filter(item => item.year == selectedYear).map(measurement => {
                       return (
                         <circle
+                          className="tooltip-trigger"
+                          key={measurement.latitude}
                           transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}
                           r={this.setRadius(measurement)}
                           opacity="0.5"
@@ -303,14 +331,22 @@ function Assignment4() {
                   }
                   {avo_agg_data.filter(item => item.year == selectedYear).map(measurement => {
                     return (
-                      // <g className="tooltip css">
-                      <g>
-                        <rect x="-3em" y="-45" width="6em" height="1.25em" />
-                        <text y="-45" dy="1em" textAnchor="middle">
-                          City: {measurement.city}
-                          State: {measurement.state_id}
-                          Sale Amount: ${measurement.total_volume}
-                        </text>
+                      // <g className="tooltip exact">
+                      <g key={measurement.latitude}>
+                        {/* <rect x="-3em" y="-45" width="6em" height="1.25em"  */}
+                        <rect id="tooltip" x="-0.5em" y="-0.5em" width="2em" height="1em" fill="#007bbf"
+                        visibility="hidden" opacity="0.75"
+                        transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}>
+                        <text x="10" y="10" 
+                        transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}>Hello there</text>
+                        
+                        {/* <text y="-45" dy="1em" textAnchor="middle" */}
+                        {/* transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}> */}
+                          {/* City: {measurement.city} */}
+                          {/* State: {measurement.state_id} */}
+                          {/* Sale Amount: ${measurement.total_volume} */}
+                        {/* </text> */}
+                        </rect>
                       </g>
                     );
                   })}
@@ -390,7 +426,7 @@ function Assignment4() {
             </div>
             <div className="row">
               <div className="col">
-                <table class="table table-striped table-sm mb-0">
+                <table className="table table-striped table-sm mb-0">
                   <caption>List of top cities and sale amounts</caption>
                   <thead className="thead-dark">
                     <tr>
