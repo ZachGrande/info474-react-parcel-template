@@ -195,7 +195,8 @@ function Assignment4() {
   var svg = document.getElementsByClassName('tooltip-svg');
   svg = svg[0];
 
-  var tooltip = document.getElementById('tooltip');
+  // var tooltip = document.getElementById('tooltip');
+  var tooltip = document.querySelector('#tooltip');
 
   var triggers = document.getElementsByClassName('tooltip-trigger');
   for (var i = 0; i < triggers.length; i++) {
@@ -203,15 +204,13 @@ function Assignment4() {
     triggers[i].addEventListener('mouseout', hideTooltip);
   }
 
-  /*function showTooltip(evt) {
-    tooltip.setAttributeNS(null, "visibility", "visible");
-  }*/
   function showTooltip(evt) {
-    var CTM = svg.getScreenCTM();
+    var CTM = svg.getCTM();
     var mouseX = (evt.clientX - CTM.e) / CTM.a;
     var mouseY = (evt.clientY - CTM.f) / CTM.d;
-    tooltip.setAttributeNS(null, "x", mouseX + 6 / CTM.a);
-    tooltip.setAttributeNS(null, "y", mouseY + 20 / CTM.d);
+    tooltip.setAttributeNS(null, "x", mouseX - 50 / CTM.a);
+    tooltip.setAttributeNS(null, "y", mouseY - 300 / CTM.d);
+    tooltip.setAttributeNS(null, "transform", null);
     tooltip.setAttributeNS(null, "visibility", "visible");
   }
   function hideTooltip() {
@@ -334,11 +333,11 @@ function Assignment4() {
                       // <g className="tooltip exact">
                       <g key={measurement.latitude}>
                         {/* <rect x="-3em" y="-45" width="6em" height="1.25em"  */}
-                        <rect id="tooltip" x="-0.5em" y="-0.5em" width="2em" height="1em" fill="#007bbf"
-                        visibility="hidden" opacity="0.75"
-                        transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}>
-                        <text x="10" y="10" 
-                        transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}>Hello there</text>
+                        {/* <rect id="tooltip" x="-0.5em" y="-0.5em" width="2em" height="1em" fill="#007bbf" */}
+                        {/* visibility="hidden" opacity="0.75" */}
+                        {/* transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}> */}
+                        <text id="tooltip" className={measurement.city} x="10" y="10" visibility="hidden"
+                        transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}>{measurement.city}</text>
                         
                         {/* <text y="-45" dy="1em" textAnchor="middle" */}
                         {/* transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}> */}
@@ -346,7 +345,7 @@ function Assignment4() {
                           {/* State: {measurement.state_id} */}
                           {/* Sale Amount: ${measurement.total_volume} */}
                         {/* </text> */}
-                        </rect>
+                        {/* </rect> */}
                       </g>
                     );
                   })}
