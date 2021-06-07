@@ -5,6 +5,8 @@ import * as topojson from "topojson-client";
 import world from "./land-50m";
 import Slider from 'react-rangeslider'
 import "react-rangeslider/lib/index.css";
+import "./A4styling2.css";
+import { select } from 'd3-selection';
 
 /*
 * The skeleton for the map was implemented using the documentation for D3's Bubble Map
@@ -44,7 +46,7 @@ function Assignment4() {
   const [selectedYear, setSelectedYear] = useState(2015)
   const [selectedSize, setSelectedSize] = useState("total_volume")
   const [groupedData, setGroupedData] = useState([]);
-  const [spark, setSpark] = useState(true);
+  const [spark, setSpark] = useState(false); // was set to true
 
   useEffect(() => {
     if (avo_agg_data) {
@@ -57,7 +59,7 @@ function Assignment4() {
   }, [avo_agg_data, data, selectedSize])
 
   useEffect(() => {
-    console.log(groupedData)
+    // console.log(groupedData)
   }, [])
 
   const getYears = async () => {
@@ -160,6 +162,51 @@ function Assignment4() {
     setGroupedData(_groupedData)
   }
 
+  var listData = avo_agg_data.filter(item => item.year == selectedYear);
+  if (selectedSize === "4046") {
+    listData = listData.sort(function(a, b){
+      return b.sm_4046 - a.sm_4046;
+    });
+  } else if (selectedSize === "4225") {
+    listData = listData.sort(function(a, b){
+      return b.l_4225 - a.l_4225;
+    });
+  } else if (selectedSize === "4770") {
+    listData = listData.sort(function(a, b){
+      return b.xl_4770 - a.xl_4770;
+    });
+  } else {
+    listData = listData.sort(function(a, b){
+      return b.total_volume - a.total_volume;
+    });
+  }
+  
+  var tableData = avo_agg_data.filter(item => item.year == selectedYear);
+  tableData = tableData.sort(function(a, b){
+    return b.total_volume - a.total_volume;
+  });
+
+  // Implementation is used from https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings
+  var currency = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+
+  var titleData = avo_agg_data.filter(item => item.year == selectedYear);
+  function getDollarAmount(city) {
+    var thisData = titleData.filter(item => item.city == city);
+    thisData = thisData[0];
+    if (selectedSize === "4046") {
+      return currency.format(thisData.sm_4046);
+    } else if (selectedSize === "4225") {
+      return currency.format(thisData.l_4225);
+    } else if (selectedSize === "4770") {
+      return currency.format(thisData.xl_4770);
+    } else {
+      return currency.format(thisData.total_volume);
+    }
+  }
+
   return (
     <div className="p-5" style={{ backgroundColor: "#EEF5DD" }} >
 
@@ -229,7 +276,7 @@ function Assignment4() {
             </div>
             <div className="row py-3"> {/* map / list row */}
               <div className="col"> {/* map col */}
-                <svg id="map" width={1000} height={600} style={{ border: "1px solid black" }} viewBox={`${x} ${y} ${width} ${height}`}>
+                <svg id="map" className="tooltip-svg" width={1000} height={600} style={{ border: "1px solid black" }} viewBox={`${x} ${y} ${width} ${height}`}>
                   <path d={mapPathString} fill="rgb(200, 200, 200)" />
                   {
                     spark ?
@@ -247,7 +294,7 @@ function Assignment4() {
                                     .y((d, i) => {
                                       return y_scale(d);
                                     });
-                        console.log(line(groupedData[city][selectedYear]))
+                        // console.log(line(groupedData[city][selectedYear]))
                         return (
                           <svg width={width} height={height} transform={`translate(
                               ${projection([groupedData[city].longitude, groupedData[city].latitude])})`}>
@@ -259,13 +306,17 @@ function Assignment4() {
                     avo_agg_data.filter(item => item.year == selectedYear).map(measurement => {
                       return (
                         <circle
+                          className="tooltip-trigger"
+                          key={measurement.latitude}
                           transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}
                           r={this.setRadius(measurement)}
                           opacity="0.5"
                           fill="#Dd3815"
                           stroke="8E2914"
                           strokeWidth="0.1"
-                        />
+                        >
+                          <title>{measurement.city}, {measurement.state_id}: {getDollarAmount(measurement.city)}</title>
+                        </circle>
                       );
                     })
                   }
@@ -298,102 +349,134 @@ function Assignment4() {
                   </div>
                 </div>
               </div>
-              <div className="col"> {/* tbd list col */}
+              <div className="col">
                 <h4>Top Cities:</h4>
+                {listData[0] &&
                 <ol>
-                  <li id="city-1">Seattle</li>
-                  <li id="city-2">San Fransisco</li>
-                  <li id="city-3">San Diego</li>
-                  <li id="city-4">Atlanta</li>
-                  <li id="city-5">Miami</li>
-                  <li id="city-6">New York</li>
-                  <li id="city-7">Houston</li>
-                  <li id="city-8">Baltimore</li>
-                  <li id="city-9">Charlotte</li>
-                  <li id="city-10">Albany</li>
-                </ol>
+                  <li id="city-1" className="animate__animated animate__lightSpeedInRight">{listData[0].city}</li>
+                  <li id="city-2" className="animate__animated animate__lightSpeedInRight">{listData[1].city}</li>
+                  <li id="city-3" className="animate__animated animate__lightSpeedInRight">{listData[2].city}</li>
+                  <li id="city-4" className="animate__animated animate__lightSpeedInRight">{listData[3].city}</li>
+                  <li id="city-5" className="animate__animated animate__lightSpeedInRight">{listData[4].city}</li>
+                  <li id="city-6" className="animate__animated animate__lightSpeedInRight">{listData[5].city}</li>
+                  <li id="city-7" className="animate__animated animate__lightSpeedInRight">{listData[6].city}</li>
+                  <li id="city-8" className="animate__animated animate__lightSpeedInRight">{listData[7].city}</li>
+                  <li id="city-9" className="animate__animated animate__lightSpeedInRight">{listData[8].city}</li>
+                  <li id="city-10" className="animate__animated animate__lightSpeedInRight">{listData[9].city}</li>
+                </ol>}
                 <hr></hr>
                 <p>Could put something here</p>
               </div>
             </div>
-            <div className="row"> {/* tbd table / graph row */}
-              <div className="col"> {/* tbd table col */}
-                <table class="table table-striped table-sm mb-0">
+            <div className="row">
+              <div className="col">
+                <table className="table table-striped table-sm mb-0">
                   <caption>List of top cities and sale amounts</caption>
                   <thead className="thead-dark">
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">City</th>
                       <th scope="col">State</th>
-                      <th scope="col">Sales ($)</th>
+                      <th scope="col">Total Sales (USD)</th>
+                      <th scope="col">Small/Medium Avocado Sales (USD)</th>
+                      <th scope="col">Large Avocado Sales (USD)</th>
+                      <th scope="col">Extra Large Avocado Sales (USD)</th>
                     </tr>
                   </thead>
+                  {listData[0] &&
                   <tbody>
                     <tr>
                       <th scope="row">1</th>
-                      <td>Seattle</td>
-                      <td>Washington</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[0].city}</td>
+                      <td>{tableData[0].state_id}</td>
+                      <td>{currency.format(tableData[0].total_volume)}</td>
+                      <td>{currency.format(tableData[0].sm_4046)}</td>
+                      <td>{currency.format(tableData[0].l_4225)}</td>
+                      <td>{currency.format(tableData[0].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
-                      <td>San Fransisco</td>
-                      <td>California</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[1].city}</td>
+                      <td>{tableData[1].state_id}</td>
+                      <td>{currency.format(tableData[1].total_volume)}</td>
+                      <td>{currency.format(tableData[1].sm_4046)}</td>
+                      <td>{currency.format(tableData[1].l_4225)}</td>
+                      <td>{currency.format(tableData[1].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">3</th>
-                      <td>San Diego</td>
-                      <td>California</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[2].city}</td>
+                      <td>{tableData[2].state_id}</td>
+                      <td>{currency.format(tableData[2].total_volume)}</td>
+                      <td>{currency.format(tableData[2].sm_4046)}</td>
+                      <td>{currency.format(tableData[2].l_4225)}</td>
+                      <td>{currency.format(tableData[2].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">4</th>
-                      <td>Atlanta</td>
-                      <td>Georgia</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[3].city}</td>
+                      <td>{tableData[3].state_id}</td>
+                      <td>{currency.format(tableData[3].total_volume)}</td>
+                      <td>{currency.format(tableData[3].sm_4046)}</td>
+                      <td>{currency.format(tableData[3].l_4225)}</td>
+                      <td>{currency.format(tableData[3].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">5</th>
-                      <td>Miami</td>
-                      <td>Florida</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[4].city}</td>
+                      <td>{tableData[4].state_id}</td>
+                      <td>{currency.format(tableData[4].total_volume)}</td>
+                      <td>{currency.format(tableData[4].sm_4046)}</td>
+                      <td>{currency.format(tableData[4].l_4225)}</td>
+                      <td>{currency.format(tableData[4].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">6</th>
-                      <td>New York</td>
-                      <td>New York</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[5].city}</td>
+                      <td>{tableData[5].state_id}</td>
+                      <td>{currency.format(tableData[5].total_volume)}</td>
+                      <td>{currency.format(tableData[5].sm_4046)}</td>
+                      <td>{currency.format(tableData[5].l_4225)}</td>
+                      <td>{currency.format(tableData[5].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">7</th>
-                      <td>Houston</td>
-                      <td>the Bird</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[6].city}</td>
+                      <td>{tableData[6].state_id}</td>
+                      <td>{currency.format(tableData[6].total_volume)}</td>
+                      <td>{currency.format(tableData[6].sm_4046)}</td>
+                      <td>{currency.format(tableData[6].l_4225)}</td>
+                      <td>{currency.format(tableData[6].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">8</th>
-                      <td>Baltimore</td>
-                      <td>Maryland</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[7].city}</td>
+                      <td>{tableData[7].state_id}</td>
+                      <td>{currency.format(tableData[7].total_volume)}</td>
+                      <td>{currency.format(tableData[7].sm_4046)}</td>
+                      <td>{currency.format(tableData[7].l_4225)}</td>
+                      <td>{currency.format(tableData[7].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">9</th>
-                      <td>Charlotte</td>
-                      <td>North Carolina</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[8].city}</td>
+                      <td>{tableData[8].state_id}</td>
+                      <td>{currency.format(tableData[8].total_volume)}</td>
+                      <td>{currency.format(tableData[8].sm_4046)}</td>
+                      <td>{currency.format(tableData[8].l_4225)}</td>
+                      <td>{currency.format(tableData[8].xl_4770)}</td>
                     </tr>
                     <tr>
                       <th scope="row">10</th>
-                      <td>Albany</td>
-                      <td>New York</td>
-                      <td>{"$ " + "1000"}</td>
+                      <td>{tableData[9].city}</td>
+                      <td>{tableData[9].state_id}</td>
+                      <td>{currency.format(tableData[9].total_volume)}</td>
+                      <td>{currency.format(tableData[9].sm_4046)}</td>
+                      <td>{currency.format(tableData[9].l_4225)}</td>
+                      <td>{currency.format(tableData[9].xl_4770)}</td>
                     </tr>
-                  </tbody>
+                  </tbody>}
                 </table>
-              </div>
-              <div className="col"> {/* tbd graph col */}
-                <div className="bg-warning h-100">d3 graph</div>
               </div>
             </div>
           </div>
