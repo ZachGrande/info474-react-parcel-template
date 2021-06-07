@@ -46,7 +46,7 @@ function Assignment4() {
   const [selectedYear, setSelectedYear] = useState(2015)
   const [selectedSize, setSelectedSize] = useState("total_volume")
   const [groupedData, setGroupedData] = useState([]);
-  const [spark, setSpark] = useState(true);
+  const [spark, setSpark] = useState(false); // was set to true
 
   useEffect(() => {
     if (avo_agg_data) {
@@ -192,29 +192,19 @@ function Assignment4() {
     currency: 'USD'
   });
 
-  var svg = document.getElementsByClassName('tooltip-svg');
-  svg = svg[0];
-
-  // var tooltip = document.getElementById('tooltip');
-  var tooltip = document.querySelector('#tooltip');
-
-  var triggers = document.getElementsByClassName('tooltip-trigger');
-  for (var i = 0; i < triggers.length; i++) {
-    triggers[i].addEventListener('mousemove', showTooltip);
-    triggers[i].addEventListener('mouseout', hideTooltip);
-  }
-
-  function showTooltip(evt) {
-    var CTM = svg.getCTM();
-    var mouseX = (evt.clientX - CTM.e) / CTM.a;
-    var mouseY = (evt.clientY - CTM.f) / CTM.d;
-    tooltip.setAttributeNS(null, "x", mouseX - 50 / CTM.a);
-    tooltip.setAttributeNS(null, "y", mouseY - 300 / CTM.d);
-    tooltip.setAttributeNS(null, "transform", null);
-    tooltip.setAttributeNS(null, "visibility", "visible");
-  }
-  function hideTooltip() {
-    tooltip.setAttributeNS(null, "visibility", "hidden");
+  var titleData = avo_agg_data.filter(item => item.year == selectedYear);
+  function getDollarAmount(city) {
+    var thisData = titleData.filter(item => item.city == city);
+    thisData = thisData[0];
+    if (selectedSize === "4046") {
+      return currency.format(thisData.sm_4046);
+    } else if (selectedSize === "4225") {
+      return currency.format(thisData.l_4225);
+    } else if (selectedSize === "4770") {
+      return currency.format(thisData.xl_4770);
+    } else {
+      return currency.format(thisData.total_volume);
+    }
   }
 
   return (
@@ -289,30 +279,30 @@ function Assignment4() {
                 <svg id="map" className="tooltip-svg" width={1000} height={600} style={{ border: "1px solid black" }} viewBox={`${x} ${y} ${width} ${height}`}>
                   <path d={mapPathString} fill="rgb(200, 200, 200)" />
                   {
-                    // spark ?
-                    // Object.keys(groupedData).map((city, i) => {
-                    //     const x_scale = x_d3_scale
-                    //       .range([2, width - 2])
-                    //       .domain(data.length);
-                    //     const y_scale = y_d3_scale
-                    //       .range([height - 2, 2])
-                    //       .domain(d3.extent(groupedData[city][selectedYear]));
-                    //     const line = d3.line()
-                    //                 .x((d, i) => {
-                    //                   return x_scale(i);
-                    //                 })
-                    //                 .y((d, i) => {
-                    //                   return y_scale(d);
-                    //                 });
-                    //     // console.log(line(groupedData[city][selectedYear]))
-                    //     return (
-                    //       <svg width={width} height={height} transform={`translate(
-                    //           ${projection([groupedData[city].longitude, groupedData[city].latitude])})`}>
-                    //         <path
-                    //           style={{ fill: 'none', strokeWidth: '0.5px', stroke: 'steelblue' }}/>
-                    //       </svg>
-                    //     );
-                    // }) :
+                    spark ?
+                    Object.keys(groupedData).map((city, i) => {
+                        const x_scale = x_d3_scale
+                          .range([2, width - 2])
+                          .domain(data.length);
+                        const y_scale = y_d3_scale
+                          .range([height - 2, 2])
+                          .domain(d3.extent(groupedData[city][selectedYear]));
+                        const line = d3.line()
+                                    .x((d, i) => {
+                                      return x_scale(i);
+                                    })
+                                    .y((d, i) => {
+                                      return y_scale(d);
+                                    });
+                        // console.log(line(groupedData[city][selectedYear]))
+                        return (
+                          <svg width={width} height={height} transform={`translate(
+                              ${projection([groupedData[city].longitude, groupedData[city].latitude])})`}>
+                            <path
+                              style={{ fill: 'none', strokeWidth: '0.5px', stroke: 'steelblue' }}/>
+                          </svg>
+                        );
+                    }) :
                     avo_agg_data.filter(item => item.year == selectedYear).map(measurement => {
                       return (
                         <circle
@@ -324,57 +314,12 @@ function Assignment4() {
                           fill="#Dd3815"
                           stroke="8E2914"
                           strokeWidth="0.1"
-                        />
+                        >
+                          <title>{measurement.city}, {measurement.state_id}: {getDollarAmount(measurement.city)}</title>
+                        </circle>
                       );
                     })
                   }
-                  {avo_agg_data.filter(item => item.year == selectedYear).map(measurement => {
-                    return (
-                      // <g className="tooltip exact">
-                      <g key={measurement.latitude}>
-                        {/* <rect x="-3em" y="-45" width="6em" height="1.25em"  */}
-                        {/* <rect id="tooltip" x="-0.5em" y="-0.5em" width="2em" height="1em" fill="#007bbf" */}
-                        {/* visibility="hidden" opacity="0.75" */}
-                        {/* transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}> */}
-                        <text id="tooltip" className={measurement.city} x="10" y="10" visibility="hidden"
-                        transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}>{measurement.city}</text>
-                        
-                        {/* <text y="-45" dy="1em" textAnchor="middle" */}
-                        {/* transform={`translate(${projection([measurement.longitude, measurement.latitude])})`}> */}
-                          {/* City: {measurement.city} */}
-                          {/* State: {measurement.state_id} */}
-                          {/* Sale Amount: ${measurement.total_volume} */}
-                        {/* </text> */}
-                        {/* </rect> */}
-                      </g>
-                    );
-                  })}
-                  {/* {data.filter(item => item.year == selectedYear).map((measurement) => {
-                    return (
-                      // <div>
-                      <circle
-                        transform={`translate(
-                            ${projection([measurement.longitude, measurement.latitude])})`}
-                        r={measurement.total_volume / 1000000}
-                        opacity="0.1"
-                        fill="#Dd3815"
-                        stroke="8E2914"
-                        strokeWidth="0.1"
-                      />
-                      // TODO Get the tooltip to render alongside each centroid
-                      // CSS will make the tooltip only visible when scrolled over
-                      // <g class="tooltip css">
-                        // <rect x="-3em" y="-45" width="6em" height="1.25em" />
-                        // <text y="-45" dy="1em" text-anchor="middle">
-                        // <text y="-45" dy="1em" textAnchor="middle">
-                          // City: {measurement.city}
-                          // State: {measurement.state_id}
-                          // Sale Amount: ${measurement.total_volume}
-                        // </text>
-                      // </g>
-                      // </div>
-                    );
-                  })} */}
                 </svg>
                 {/* zoom overlay, needs nesting to properly stack in corner */}
                 <div className="row text-center no-gutters" style={{ position: "absolute", top: "10px", right: "20px" }}>
