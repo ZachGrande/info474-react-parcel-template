@@ -214,25 +214,140 @@ function Assignment4() {
         <div className="row no-gutters"> {/* header + title area */}
           <div className="col">
             <h2>Final Project: Avocado Sales Dashboard</h2>
-            <h4>Zach Grande, Alycia Nguyen, Michelle Ponting, Darren Ma, Erik Thomas-Hommer</h4>
+            <h3>Zach Grande, Alycia Nguyen, Michelle Ponting, Darren Ma, Erik Thomas-Hommer</h3>
             <p>{loading && "Loading data!"}</p>
             <p>{loading2 && "Loading other data!"}</p>
           </div>
         </div>
 
         <div className="row py-2 flex-wrap"> {/* tbd top write up */}
-          <img width="25%" src="https://images.unsplash.com/photo-1559205313-c6b5ba3e8314?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" />
+          <img width="35%" src="https://images.unsplash.com/photo-1559205313-c6b5ba3e8314?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" />
           <div className="col">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et massa in nunc euismod euismod ac molestie lorem. Suspendisse ut interdum elit. Mauris tempus sed ligula eget maximus. Etiam nisl sapien, egestas ut ullamcorper non, mollis a lacus. Praesent varius ac augue in rhoncus. Vestibulum est ipsum, mattis ut viverra at, ultrices sit amet quam. Praesent lobortis, nibh ut semper imperdiet, purus ligula viverra ligula, lobortis viverra massa augue at justo. Suspendisse ut augue imperdiet, elementum erat a, ullamcorper urna. Curabitur tincidunt consectetur placerat. Vestibulum venenatis mattis nisl, at tempus mauris eleifend sed. Mauris mollis, nisi sit amet finibus condimentum, odio risus ornare dolor, at ultrices nunc turpis in nulla. Nam in maximus urna, vel maximus nisi. Quisque nec mollis mauris, a rutrum ipsum.</p>
-            <p>Donec eget vulputate nibh. Vestibulum interdum tincidunt felis, id dapibus leo posuere nec. Phasellus mattis hendrerit neque sit amet vestibulum. In hac habitasse platea dictumst. Maecenas quis aliquam risus. Praesent id libero quis odio blandit aliquam at vel nisi. Mauris semper cursus urna, nec aliquam nisl auctor eget. Ut ultricies mattis libero.</p>
+            <div className="py-2 px-5">
+              <h4 className="font-weight-light text-uppercase">The Growth of Avocados</h4>
+              <p>
+                Avocados have been trending for years now, and more trends involving avocados continue to present themselves. 
+                The popularity of avocado toast in 2017 and the high consumption of avocados during the Super Bowl halftime in 
+                2019 are just a few potential contributors to the outcome of avocado sales over the years. With growing 
+                popularity comes higher demand for avocados, which in turn calls for more production. Understanding how 
+                the sales for avocados have changed over time will give insight into the continuing popularity as well as 
+                a more detailed overview of the performance of the avocado market, which grew 104% from 2000 - 2016 (
+                <a href="https://www.inspirafarms.com/avocado-market-trends-hitting-2020/" target="blank">Avocado Market Trends</a>)
+              </p>
+              <p>
+                One avocado variety has dominated the market - 
+                <span className="font-weight-bold"> the Hass avocado </span>.
+              </p>
+              <span className="font-weight-bold" style= {{color: '#515C52', fontSize: '18px'}}>
+                Hass avocados currently make up 95% of all the avocados eaten in the USA.
+              </span>
+            </div>
+            <div className="py-2 px-5">
+              <h4 className="font-weight-light text-uppercase">The Story of Hass</h4>
+              <p>Where did Hass avocados come from?</p>
+              <p>
+                The story begins in 1926 in La Habra Heights, California with Rudolph Hass, who purchased avocado seeds 
+                at a local nursery. At the time, different varieties of avocados were being produced, and had smooth, 
+                green skin, but Hass’ avocado trees offered avocados with the pebbly, black outside that we know today.
+              </p>
+              <p>
+                Although Hass’ avocados initially didn’t have high demand, admiration for the avocados grew rapidly over 
+                time. In fact, the trees that Rudolph Hass cultivated have been used as the model for the many Hass avocado 
+                trees today. With the 5 million Hass avocado trees in California alone, and 10 million trees worldwide, it’s 
+                clear that avocados continue to be in high demand and reach many.
+              </p>
+              <p>
+                This prompts several questions:
+                What does the distribution of Hass avocado sales look like? Where are Hass avocados sold, how many are 
+                sold in these locations and how much are the avocados? Moreso… 
+                <span className="font-weight-bold" style= {{color: '#515C52'}}>
+                  how have these aspects (location, price) in combination with the sales for Hass avocados changed 
+                  over time?
+                </span>
+              </p>
+            </div>
           </div>
         </div>
         <div className="row py-2">
           <div className="col">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sagittis pellentesque pulvinar. Donec aliquam sapien ligula, eu aliquet diam dapibus at. Vivamus vestibulum ultrices molestie. Nullam diam dui, venenatis quis justo id, tempus condimentum arcu. Donec vel scelerisque nisl. Sed condimentum risus nec arcu posuere tempus. Nunc nec dapibus purus, ac facilisis enim. Integer semper dolor in magna egestas, vitae maximus arcu fermentum.</p>
-            <p>Duis nulla quam, ornare at fringilla in, vulputate non metus. Morbi sit amet viverra lectus. Vivamus dapibus id lacus eget posuere. Maecenas consectetur arcu laoreet lacus bibendum, ac elementum libero lobortis. In consequat mauris vitae laoreet condimentum. Nullam sodales, orci quis imperdiet lacinia, risus est mattis nisi, ac fringilla dolor risus vel magna. Morbi lobortis dictum sapien non imperdiet. Quisque ac volutpat ante. Curabitur non tristique enim, ac blandit felis. Vivamus sit amet elit leo. Maecenas scelerisque, sapien quis tincidunt cursus, nulla arcu bibendum mi, ac posuere velit diam et purus. Donec vel laoreet nisl, ac finibus massa.</p>
+            <div className="py-2">
+              <h4 className="font-weight-light text-uppercase d-flex justify-content-center">Visualization Overview</h4>
+              <p className="d-flex justify-content-center px-5">
+              The following visualization will answer these questions within the scope of the United States over the years 
+              2015 - 2020. It presents a map of the U.S. with 2 different views to explore the sales for Hass avocados. One 
+              view displays circular markings that reflect the total Hass avocado sales for a given year and the other 
+              utilizes line markings that demonstrate the Hass avocado sales throughout a given year (sales over the months). 
+              These markings will be displayed at its respective location on the map. Each year can be inspected upon selection 
+              on the slider. Other aspects that can be explored are the sales for the different sizes of Hass avocados 
+              (small/medium, large or extra-large) as well as the average price. Accompanying this map will be a list of the 
+              top 10 cities that had the most sales for a selected year (and size).
+              </p>
+              <p className="d-flex justify-content-center px-5">
+                CHANGE THIS LATER
+                A table will also be provided, which lists a breakdown of cities, in descending order from most to least sales of Hass avocados for the selected year (and size). The table will contain a city name, its respective state as well as the minimum and maximum profitable month (with the month name and the dollar amount).
+              </p>
+            </div>
+            <div className="py-2">
+              <h4 className="font-weight-light text-uppercase d-flex justify-content-center">Dataset Overview</h4>
+              <p className="d-flex justify-content-center px-5">
+                The dataset utilized provides records for Hass avocado sales from 2015 - 2020 in the United States. 
+                It describes the total number of avocados sold in major U.S. cities across these five years. In the 
+                visualization, notable attributes were selected to guide exploration: year, size, location data, 
+                price and total volume of sales.  
+              </p>
+            </div>
+            <div className="py-2">
+              <h4 className="font-weight-light text-uppercase d-flex justify-content-center">Visualization Instructions</h4>
+              <div>
+                <h5 className="font-weight-normal px-5">Switch View</h5>
+                <span className="font-italic px-5">
+                  Select the view for total sales (circle markings) or the view for sales over time (line markings)
+                </span>
+                <ul className="px-5">
+                  <li className="px-5">
+                    Use the toggle to select which view you want to explore - left or right
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h5 className="font-weight-normal px-5">Zooming</h5>
+                <span className="font-italic px-5">
+                  Use zoom to enlarge and shrink the area of focus
+                </span>
+                <ul className="px-5">
+                  <li className="px-5">
+                    Use the arrows to change your direction of focus - left, right, up, down
+                  </li>
+                  <li className="px-5">
+                    Use the plus or minus button to zoom in or out of your area of focus
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h5 className="font-weight-normal px-5">Year Selection</h5>
+                <span className="font-italic px-5">
+                  Select a year to look at sales for that given year
+                </span>
+                <ul className="px-5">
+                  <li className="px-5">
+                    Move the slider right to increase the year or left to decrease the year
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h5 className="font-weight-normal px-5">Size Selection</h5>
+                <span className="font-italic px-5">
+                  Select a size to filter your exploration and view sales for a particular size
+                </span>
+                <ul className="px-5">
+                  <li className="px-5">
+                    Click the button for the size you want to observe
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <img width="200" src="https://cdn.pixabay.com/photo/2019/10/23/06/56/avocado-4570642_1280.png" />
+          {/* <img width="200" src="https://cdn.pixabay.com/photo/2019/10/23/06/56/avocado-4570642_1280.png" /> */}
         </div>
 
         <div className="row p-3 bg-white mb-3" style={{ borderRadius: "30px" }}> {/* dashboard area */}
@@ -482,16 +597,69 @@ function Assignment4() {
           </div>
         </div>
 
-        <div className="row no-gutters"> {/* tbd bottom write up */}
-          <div className="col-4">
-            <img width="400" src="https://images.unsplash.com/photo-1554825203-68321ddde262?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" />
+        {/* <div className="row no-gutters"> */}
+          {/* <div className="col-4"> */}
+            {/* <img width="400" src="https://images.unsplash.com/photo-1554825203-68321ddde262?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" /> */}
+          {/* </div> */}
+          {/* <div className="row"> */}
+          <div className="row py-2 px-5">
+            <h4 className="font-weight-light text-uppercase">What does this mean?</h4>
+            <p>
+              On the <span className="font-weight-bold">total sales view</span>
+              , larger circle markings indicate a larger amount of Hass avocado sales for a selected year and size. 
+              So, the locations that have the largest markings also had the most sales, and locations that had the 
+              smallest markings had the least.
+            </p>
+            <p>
+              On the <span className="font-weight-bold">sales over time</span> view, a positive slope on a line 
+              indicates that throughout a selected year, the Hass avocado sales increased for a selected size. 
+              Conversely, a negative slope indicates that a decrease in Hass avocado sales occurred.  Locations 
+              that consistently presented a positive slope had a consistent increase in sales throughout the year,  
+              locations that consistently presented a negative slope had a consistent decrease, and 
+              locations whose slope fluctuated had varied success in sales.
+            </p>
+            <p>
+              The list of the top 10 cities presents the cities in a given year where the most Hass avocado sales 
+              occurred of the chosen avocado size. These locations are also listed in the slots of the table. The 
+              table also contains all the cities that were included in our dataset in descending order, from 
+              cities with the most sales to cities with the least.  
+            </p>
           </div>
-          <div className="col-8">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sagittis pellentesque pulvinar. Donec aliquam sapien ligula, eu aliquet diam dapibus at. Vivamus vestibulum ultrices molestie. Nullam diam dui, venenatis quis justo id, tempus condimentum arcu. Donec vel scelerisque nisl. Sed condimentum risus nec arcu posuere tempus. Nunc nec dapibus purus, ac facilisis enim. Integer semper dolor in magna egestas, vitae maximus arcu fermentum.</p>
+          <div className="row py-2 px-5">
+            <h4 className="font-weight-light text-uppercase">Conclusion</h4>
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat ligula a ante vehicula, ornare commodo felis convallis. Aenean diam elit, varius ac turpis a, facilisis gravida purus. Integer sed sodales erat, ac ullamcorper nulla. Etiam ac accumsan est. Nunc vulputate tortor eget lacus commodo, nec aliquam nisi dignissim. Sed viverra lacus lectus, quis fringilla est auctor vel. Curabitur aliquet commodo interdum.
+            </p>
+          </div>
+          <div className="row py-2 px-5">
+            <h4 className="font-weight-light text-uppercase">Considerations</h4>
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat ligula a ante vehicula, ornare commodo felis convallis. Aenean diam elit, varius ac turpis a, facilisis gravida purus. Integer sed sodales erat, ac ullamcorper nulla. Etiam ac accumsan est. Nunc vulputate tortor eget lacus commodo, nec aliquam nisi dignissim. Sed viverra lacus lectus, quis fringilla est auctor vel. Curabitur aliquet commodo interdum.
+            </p>
+          </div>
+          <div className="row py-2 px-5">
+            <h4 className="font-weight-light text-uppercase">Citations</h4>
+            <ul>
+              <li className="px-5">
+                 <a href="https://www.tutorialspoint.com/d3js/d3js_introduction_to_svg.htm" target="blank">
+                   Introduction to SVG
+                 </a>
+              </li>
+              <li className="px-5">
+                 <a href="https://avocadosfrommexico.com/avocados/hass-avocado/" target="blank">
+                   Hass Avocados Information
+                 </a>
+              </li>
+              <li className="px-5">
+                 <a href="https://www.inspirafarms.com/avocado-market-trends-hitting-2020/" target="blank">
+                   Avocado market trends
+                 </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   )
 }
 
