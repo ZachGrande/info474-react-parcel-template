@@ -6,7 +6,6 @@ import world from "./land-50m";
 import Slider from 'react-rangeslider'
 import "react-rangeslider/lib/index.css";
 import "./A4styling2.css";
-import { select } from 'd3-selection';
 import Toggle from 'react-toggle'
 
 import "react-toggle/style.css"
@@ -31,13 +30,10 @@ function Assignment4() {
   const projection = d3.geoNaturalEarth1();
   const path = d3.geoPath(projection);
   const mapPathString = path(land);
-  const radius = d3.scaleSqrt([0, d3.max(avo_agg_data, d => d.total_volume)], [0, 40]);
   const max_height = 25;
   const max_width = 300;
   const min_height = 1;
   const min_width = 1;
-  const max_x = 90;
-  const max_y = 100
   const x_d3_scale = d3.scaleLinear()
   const y_d3_scale = d3.scaleLinear()
 
@@ -49,7 +45,7 @@ function Assignment4() {
   const [selectedYear, setSelectedYear] = useState(2015)
   const [selectedSize, setSelectedSize] = useState("total_volume")
   const [groupedData, setGroupedData] = useState([]);
-  const [spark, setSpark] = useState(true); // was set to true
+  const [spark, setSpark] = useState(false); // was set to true
 
   useEffect(() => {
     if (avo_agg_data) {
@@ -59,10 +55,6 @@ function Assignment4() {
       getGroupedData()
     }
   }, [avo_agg_data, data, selectedSize])
-
-  useEffect(() => {
-    // console.log(groupedData)
-  }, [])
 
   const getYears = async () => {
     var _years = [];
@@ -77,7 +69,6 @@ function Assignment4() {
   }
 
   handleSizeChange = (event) => {
-    // console.log(event.target.value)
     let returnSize = event.target.value
     setSelectedSize(returnSize)
   }
