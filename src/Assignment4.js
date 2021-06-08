@@ -662,7 +662,7 @@ function Assignment4() {
               {listData[0] && 
                 <span className="font-weight-bold"> {tableData[0].city}, {tableData[1].city}, and {tableData[2].city}</span>
               }. {listData[0] && listData[0].city}, the top city in {selectedYear}, had a total of {listData[0] && Math.round(tableData[0].total_volume)} avocados 
-              sold during that year. That means that a total of $*CALCULATED_DOLLAR_AMOUNT* was spent buying Hass avocados in {listData[0] && listData[0].city}! Not only 
+              sold during that year. That means that a total of ${tableData[0] && Math.round(tableData[0].total_volume * tableData[0].average_price)} was spent buying Hass avocados in {listData[0] && listData[0].city}! Not only 
               was {listData[0] && listData[0].city} the top city in {selectedYear}, but it also was the city with the most avocado sales 
               throughout 2015-2020!
             </p>
