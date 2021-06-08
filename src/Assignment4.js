@@ -207,6 +207,20 @@ function Assignment4() {
     }
   }
 
+  // Getting wording for narration
+  function getSizeWording() {
+    if (selectedSize === "4046") {
+      return 'small/medium';
+    } else if (selectedSize === "4225") {
+      return 'large';
+    } else if (selectedSize === "4770") {
+      return 'extra large';
+    } else {
+      return 'any size';
+    }
+  }
+  var sizeSelectionWord = getSizeWording();
+
   return (
     <div className="p-5" style={{ backgroundColor: "#EEF5DD" }} >
 
@@ -283,8 +297,10 @@ function Assignment4() {
               top 10 cities that had the most sales for a selected year (and size).
               </p>
               <p className="d-flex justify-content-center px-5">
-                CHANGE THIS LATER
-                A table will also be provided, which lists a breakdown of cities, in descending order from most to least sales of Hass avocados for the selected year (and size). The table will contain a city name, its respective state as well as the minimum and maximum profitable month (with the month name and the dollar amount).
+                A table will also be provided, which lists a breakdown of the top 10 cities, in descending order from most to least sales of 
+                Hass avocados. It will display sales for every size for the selected year. Namely, the table will contain a city name, its respective 
+                state name as well as the sales in a dollar amount for the total sales as well as the sales for small/medium, large and 
+                extra large avocados for a more detailed evaluation.
               </p>
             </div>
             <div className="py-2">
@@ -351,6 +367,12 @@ function Assignment4() {
         </div>
 
         <div className="row p-3 bg-white mb-3" style={{ borderRadius: "30px" }}> {/* dashboard area */}
+          <div className="py-4 px-5 text-center">
+            <h3 className="font-weight-normal text-uppercase">
+              <span className="font-weight-bold" style= {{color: '#515C52'}}>{sizeSelectionWord}  </span>
+              Hass Avocado Sales in the United States (<span className="font-weight-bold" style= {{color: '#515C52'}}>{selectedYear}</span>)
+            </h3>
+          </div>
           <div className="col">
             <div className="row justify-content-center text-center"> {/* filters row */}
               <div className="col-7"> {/* slider col */}
@@ -611,14 +633,15 @@ function Assignment4() {
               So, the locations that have the largest markings also had the most sales, and locations that had the
               smallest markings had the least.
               </p>
-            <p>
+            {/* ONLY NEEDED IF SPARKLINE IS DONE */}
+            {/* <p>
               On the <span className="font-weight-bold">sales over time</span> view, a positive slope on a line
               indicates that throughout a selected year, the Hass avocado sales increased for a selected size.
               Conversely, a negative slope indicates that a decrease in Hass avocado sales occurred.  Locations
               that consistently presented a positive slope had a consistent increase in sales throughout the year,
               locations that consistently presented a negative slope had a consistent decrease, and
               locations whose slope fluctuated had varied success in sales.
-              </p>
+              </p> */}
             <p>
               The list of the top 10 cities presents the cities in a given year where the most Hass avocado sales
               occurred of the chosen avocado size. These locations are also listed in the slots of the table. The
@@ -627,9 +650,32 @@ function Assignment4() {
               </p>
             <p>Considering your selections (
               year: <span className="font-weight-bold">{selectedYear} </span>,
-              size: <span className="font-weight-bold">{selectedSize} </span>
+              size: <span className="font-weight-bold">{sizeSelectionWord} </span>
               )...
               </p>
+          </div> 
+          <div> {/* Begin circle markings evaluation */}
+            <h5>Total Sales View Explanation</h5>
+            <p>
+              There was a large range in the total Hass avocado sales between the cities with the most and 
+              least sales! The 3 cities with the highest Hass avocado sales in {selectedYear} for {sizeSelectionWord} avocados were 
+              {listData[0] && 
+                <span className="font-weight-bold"> {tableData[0].city}, {tableData[1].city}, and {tableData[2].city}</span>
+              }. {listData[0] && listData[0].city}, the top city in {selectedYear}, had a total of {listData[0] && Math.round(tableData[0].total_volume)} avocados 
+              sold during that year. That means that a total of $*CALCULATED_DOLLAR_AMOUNT* was spent buying Hass avocados in {listData[0] && listData[0].city}! Not only 
+              was {listData[0] && listData[0].city} the top city in {selectedYear}, but it also was the city with the most avocado sales 
+              throughout 2015-2020!
+            </p>
+          </div>
+          {/* Begin sparkline markings evaluation */} {/* ONLY NEEDED IF SPARKLINE IS DONE */}
+          {/* <div> 
+            <h5>Total Sales Over Time View Explanation</h5>
+          </div> */}
+          <div>
+            <h5>Table Explanation</h5>
+            <p>The top 10 cities during {selectedYear} are displayed in the table. The total sales for each city is provided in 
+              dollars, as well as the sales for each size of avocado (small/medium, large, and extra-large). According to the 
+              table, it seems that Los Angeles remained the city with the most amount of Hass avocado sales from 2015-2020! </p>
           </div>
         </div>
           <div className="row py-2 px-5">
