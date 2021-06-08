@@ -714,8 +714,88 @@ function Assignment4() {
           </div>
           <div className="row py-2 px-5">
             <h4 className="font-weight-light text-uppercase">Considerations</h4>
+            <div>
+              <h5>Interactions / Design Decisions Overview</h5>
+              <p>
+                Following the completion of assignment 3, we received feedback that helped us refine our visualization 
+                for our final project.
+              </p>
+              <p>
+                To ensure interesting information is utilized, we chose to implement a toggle view on the map - one 
+                showing aggregated avocado sales per year and another showing change in sales over a year (by month) 
+                for each city.  This would be presented as centroid markings or sparklines on city locations, 
+                respectively.  In addition, a responsive list showing the top 10 cities was decided to be implemented 
+                to complement the map, along with a table that contains every city in our dataset and its total sales 
+                as well as the sales for the different sizes of avocados. 
+              </p>
+              <p>
+                Particularly, for the total sales view, we decided to standardize centroid markings with a min and 
+                max radius and include a tooltip with the city name, state and total sales (in dollars) for avocados 
+                sold for better understanding.
+              </p>
+              {/* DELETE IF SPARKLINE NOT HERE */}
+              <p>
+               Considering the sales over time view, we decided to plot a line with no axes at its respective location 
+               for each city. 
+              </p>
+              <p>
+                Another consideration we evaluated was regarding the flow of the page. To assist as well as enhance 
+                the exploration process, a narrative that will progress throughout the website and be responsive 
+                according to selection of year, size and toggle mode was decided to be implemented to guide the 
+                exploration of data.
+              </p>
+              <p>
+              Lastly, considering the aesthetic and look of our visualization and page, we chose to incorporate a 
+              green color scheme to follow the avocado theme.
+              </p>
+            </div>
+            <h5>Development Process </h5>
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat ligula a ante vehicula, ornare commodo felis convallis. Aenean diam elit, varius ac turpis a, facilisis gravida purus. Integer sed sodales erat, ac ullamcorper nulla. Etiam ac accumsan est. Nunc vulputate tortor eget lacus commodo, nec aliquam nisi dignissim. Sed viverra lacus lectus, quis fringilla est auctor vel. Curabitur aliquet commodo interdum.
+            Considering our development process, we began where assignment 3 left off. With initial data cleaning and 
+            the map already implemented, we started by performing more data cleaning to establish simplicity of our 
+            code with the new view (the sales over time sparkline). 
+            </p>
+            <p>
+            Our first created dataset (dataset 1) - with columns for city names (geography), latitude, longitude and 
+            a state ID (indicating what state this city is located in) joined with the main avocado dataset - was 
+            identified to be utilized by the sparkline visualization, since it included more detailed time data. 
+            A new dataset was created from dataset 1, and will be referenced in this explanation as dataset 2. 
+            Dataset 2 was determined to be used only for the total sales view (centroid markings) and was created 
+            by copying dataset 1, then manipulating the copy to only include columns that included attributes that 
+            contribute to exploration: city name, state name, year, latitude and longitude, average_price, total_volume, 
+            and the 3 different size columns (for small/medium, large, extra large). From here, the dataset was grouped 
+            by city and year, and summarized to get the total number of sales for each city for a particular year. In 
+            addition, bins were implemented to further organize data.
+            </p>
+            <p>
+            Following this data cleaning process, work was split up to set up the framework for our visualization page, 
+            create and develop the narrative, implement the sparkline view, and fine-tune the centroid view. All 
+            aspects of the project were very time-consuming, especially when all of these moving parts had to complement 
+            each other. 
+            </p>
+            <p>
+            The narrative was formulated in consideration of both views, and was designed to evaluate results of both views. 
+            It was written to include aspects of storytelling, instruction and explanation.
+            </p>
+            <p>
+            The centroid view (for total sales) involved a fair amount of re-working from assignment 3, given it had to 
+            utilize the newly created dataset. The responsive list of top cities and the tooltip that appears on hover 
+            took the most amount of time for the centroid view. 
+            </p>
+            <p>
+            The table under the map visualization also took a considerable amount of time, as it involved a series of 
+            repetitive tasks. A calculation had to be performed to create this table in order to get the total sales in 
+            dollars, so the number of avocados sold was multiplied by the price. Additionally, making this table 
+            responsive to selections was quite difficult, and therefore required a lot of time as well. 
+            </p>
+            <p>
+            The sparkline was by far the most demanding task of them all. It required time data, and since the data 
+            in our dataset was organized by week, data had to be manipulated and summed up so monthly data was available. 
+            In addition, plotting the line seemed to be much more difficult than expected. 
+            </p>
+            <p>
+            Lastly, the style of our page was implemented by our team to reflect the nature of avocados. So, a green 
+            color scheme was decided upon and incorporated throughout our website to make it more engaging. 
             </p>
           </div>
           <div className="row py-2 px-5">
