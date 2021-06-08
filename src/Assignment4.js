@@ -165,25 +165,25 @@ function Assignment4() {
   var listData = avo_agg_data.filter(item => item.year == selectedYear);
   if (selectedSize === "4046") {
     listData = listData.sort(function(a, b){
-      return b.sm_4046 - a.sm_4046;
+      return (b.sm_4046 * b.average_price) - (a.sm_4046 * a.average_price);
     });
   } else if (selectedSize === "4225") {
     listData = listData.sort(function(a, b){
-      return b.l_4225 - a.l_4225;
+      return (b.l_4225 * b.average_price) - (a.l_4225 * a.average_price);
     });
   } else if (selectedSize === "4770") {
     listData = listData.sort(function(a, b){
-      return b.xl_4770 - a.xl_4770;
+      return (b.xl_4770 * b.average_price) - (a.xl_4770 * a.average_price);
     });
   } else {
     listData = listData.sort(function(a, b){
-      return b.total_volume - a.total_volume;
+      return (b.total_volume * b.average_price) - (a.total_volume * a.average_price);
     });
   }
   
   var tableData = avo_agg_data.filter(item => item.year == selectedYear);
   tableData = tableData.sort(function(a, b){
-    return b.total_volume - a.total_volume;
+    return (b.total_volume * b.average_price) - (a.total_volume * a.average_price);
   });
 
   // Implementation is used from https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings
@@ -197,13 +197,13 @@ function Assignment4() {
     var thisData = titleData.filter(item => item.city == city);
     thisData = thisData[0];
     if (selectedSize === "4046") {
-      return currency.format(thisData.sm_4046);
+      return currency.format(thisData.sm_4046 * thisData.average_price);
     } else if (selectedSize === "4225") {
-      return currency.format(thisData.l_4225);
+      return currency.format(thisData.l_4225 * thisData.average_price);
     } else if (selectedSize === "4770") {
-      return currency.format(thisData.xl_4770);
+      return currency.format(thisData.xl_4770 * thisData.average_price);
     } else {
-      return currency.format(thisData.total_volume);
+      return currency.format(thisData.total_volume * thisData.average_price);
     }
   }
 
@@ -389,91 +389,91 @@ function Assignment4() {
                       <th scope="row">1</th>
                       <td>{tableData[0].city}</td>
                       <td>{tableData[0].state_id}</td>
-                      <td>{currency.format(tableData[0].total_volume)}</td>
-                      <td>{currency.format(tableData[0].sm_4046)}</td>
-                      <td>{currency.format(tableData[0].l_4225)}</td>
-                      <td>{currency.format(tableData[0].xl_4770)}</td>
+                      <td>{currency.format(tableData[0].total_volume * tableData[0].average_price)}</td>
+                      <td>{currency.format(tableData[0].sm_4046 * tableData[0].average_price)}</td>
+                      <td>{currency.format(tableData[0].l_4225 * tableData[0].average_price)}</td>
+                      <td>{currency.format(tableData[0].xl_4770 * tableData[0].average_price)}</td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
                       <td>{tableData[1].city}</td>
                       <td>{tableData[1].state_id}</td>
-                      <td>{currency.format(tableData[1].total_volume)}</td>
-                      <td>{currency.format(tableData[1].sm_4046)}</td>
-                      <td>{currency.format(tableData[1].l_4225)}</td>
-                      <td>{currency.format(tableData[1].xl_4770)}</td>
+                      <td>{currency.format(tableData[1].total_volume * tableData[1].average_price)}</td>
+                      <td>{currency.format(tableData[1].sm_4046 * tableData[1].average_price)}</td>
+                      <td>{currency.format(tableData[1].l_4225 * tableData[1].average_price)}</td>
+                      <td>{currency.format(tableData[1].xl_4770 * tableData[1].average_price)}</td>
                     </tr>
                     <tr>
                       <th scope="row">3</th>
                       <td>{tableData[2].city}</td>
                       <td>{tableData[2].state_id}</td>
-                      <td>{currency.format(tableData[2].total_volume)}</td>
-                      <td>{currency.format(tableData[2].sm_4046)}</td>
-                      <td>{currency.format(tableData[2].l_4225)}</td>
-                      <td>{currency.format(tableData[2].xl_4770)}</td>
+                      <td>{currency.format(tableData[2].total_volume * tableData[2].average_price)}</td>
+                      <td>{currency.format(tableData[2].sm_4046 * tableData[2].average_price)}</td>
+                      <td>{currency.format(tableData[2].l_4225 * tableData[2].average_price)}</td>
+                      <td>{currency.format(tableData[2].xl_4770 * tableData[2].average_price)}</td>
                     </tr>
                     <tr>
                       <th scope="row">4</th>
                       <td>{tableData[3].city}</td>
                       <td>{tableData[3].state_id}</td>
-                      <td>{currency.format(tableData[3].total_volume)}</td>
-                      <td>{currency.format(tableData[3].sm_4046)}</td>
-                      <td>{currency.format(tableData[3].l_4225)}</td>
-                      <td>{currency.format(tableData[3].xl_4770)}</td>
+                      <td>{currency.format(tableData[3].total_volume * tableData[3].average_price)}</td>
+                      <td>{currency.format(tableData[3].sm_4046 * tableData[3].average_price)}</td>
+                      <td>{currency.format(tableData[3].l_4225 * tableData[3].average_price)}</td>
+                      <td>{currency.format(tableData[3].xl_4770 * tableData[3].average_price)}</td>
                     </tr>
                     <tr>
                       <th scope="row">5</th>
                       <td>{tableData[4].city}</td>
                       <td>{tableData[4].state_id}</td>
-                      <td>{currency.format(tableData[4].total_volume)}</td>
-                      <td>{currency.format(tableData[4].sm_4046)}</td>
-                      <td>{currency.format(tableData[4].l_4225)}</td>
-                      <td>{currency.format(tableData[4].xl_4770)}</td>
+                      <td>{currency.format(tableData[4].total_volume * tableData[4].average_price)}</td>
+                      <td>{currency.format(tableData[4].sm_4046 * tableData[4].average_price)}</td>
+                      <td>{currency.format(tableData[4].l_4225 * tableData[4].average_price)}</td>
+                      <td>{currency.format(tableData[4].xl_4770 * tableData[4].average_price)}</td>
                     </tr>
                     <tr>
                       <th scope="row">6</th>
                       <td>{tableData[5].city}</td>
                       <td>{tableData[5].state_id}</td>
-                      <td>{currency.format(tableData[5].total_volume)}</td>
-                      <td>{currency.format(tableData[5].sm_4046)}</td>
-                      <td>{currency.format(tableData[5].l_4225)}</td>
-                      <td>{currency.format(tableData[5].xl_4770)}</td>
+                      <td>{currency.format(tableData[5].total_volume * tableData[5].average_price)}</td>
+                      <td>{currency.format(tableData[5].sm_4046 * tableData[5].average_price)}</td>
+                      <td>{currency.format(tableData[5].l_4225 * tableData[5].average_price)}</td>
+                      <td>{currency.format(tableData[5].xl_4770 * tableData[5].average_price)}</td>
                     </tr>
                     <tr>
                       <th scope="row">7</th>
                       <td>{tableData[6].city}</td>
                       <td>{tableData[6].state_id}</td>
-                      <td>{currency.format(tableData[6].total_volume)}</td>
-                      <td>{currency.format(tableData[6].sm_4046)}</td>
-                      <td>{currency.format(tableData[6].l_4225)}</td>
-                      <td>{currency.format(tableData[6].xl_4770)}</td>
+                      <td>{currency.format(tableData[6].total_volume * tableData[6].average_price)}</td>
+                      <td>{currency.format(tableData[6].sm_4046 * tableData[6].average_price)}</td>
+                      <td>{currency.format(tableData[6].l_4225 * tableData[6].average_price)}</td>
+                      <td>{currency.format(tableData[6].xl_4770 * tableData[6].average_price)}</td>
                     </tr>
                     <tr>
                       <th scope="row">8</th>
                       <td>{tableData[7].city}</td>
                       <td>{tableData[7].state_id}</td>
-                      <td>{currency.format(tableData[7].total_volume)}</td>
-                      <td>{currency.format(tableData[7].sm_4046)}</td>
-                      <td>{currency.format(tableData[7].l_4225)}</td>
-                      <td>{currency.format(tableData[7].xl_4770)}</td>
+                      <td>{currency.format(tableData[7].total_volume * tableData[7].average_price)}</td>
+                      <td>{currency.format(tableData[7].sm_4046 * tableData[7].average_price)}</td>
+                      <td>{currency.format(tableData[7].l_4225 * tableData[7].average_price)}</td>
+                      <td>{currency.format(tableData[7].xl_4770 * tableData[7].average_price)}</td>
                     </tr>
                     <tr>
                       <th scope="row">9</th>
                       <td>{tableData[8].city}</td>
                       <td>{tableData[8].state_id}</td>
-                      <td>{currency.format(tableData[8].total_volume)}</td>
-                      <td>{currency.format(tableData[8].sm_4046)}</td>
-                      <td>{currency.format(tableData[8].l_4225)}</td>
-                      <td>{currency.format(tableData[8].xl_4770)}</td>
+                      <td>{currency.format(tableData[8].total_volume * tableData[8].average_price)}</td>
+                      <td>{currency.format(tableData[8].sm_4046 * tableData[8].average_price)}</td>
+                      <td>{currency.format(tableData[8].l_4225 * tableData[8].average_price)}</td>
+                      <td>{currency.format(tableData[8].xl_4770 * tableData[8].average_price)}</td>
                     </tr>
                     <tr>
                       <th scope="row">10</th>
                       <td>{tableData[9].city}</td>
                       <td>{tableData[9].state_id}</td>
-                      <td>{currency.format(tableData[9].total_volume)}</td>
-                      <td>{currency.format(tableData[9].sm_4046)}</td>
-                      <td>{currency.format(tableData[9].l_4225)}</td>
-                      <td>{currency.format(tableData[9].xl_4770)}</td>
+                      <td>{currency.format(tableData[9].total_volume * tableData[9].average_price)}</td>
+                      <td>{currency.format(tableData[9].sm_4046 * tableData[9].average_price)}</td>
+                      <td>{currency.format(tableData[9].l_4225 * tableData[9].average_price)}</td>
+                      <td>{currency.format(tableData[9].xl_4770 * tableData[9].average_price)}</td>
                     </tr>
                   </tbody>}
                 </table>
