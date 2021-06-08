@@ -7,6 +7,9 @@ import Slider from 'react-rangeslider'
 import "react-rangeslider/lib/index.css";
 import "./A4styling2.css";
 import { select } from 'd3-selection';
+import Toggle from 'react-toggle'
+
+import "react-toggle/style.css"
 
 /*
 * The skeleton for the map was implemented using the documentation for D3's Bubble Map
@@ -46,13 +49,12 @@ function Assignment4() {
   const [selectedYear, setSelectedYear] = useState(2015)
   const [selectedSize, setSelectedSize] = useState("total_volume")
   const [groupedData, setGroupedData] = useState([]);
-  const [spark, setSpark] = useState(false); // was set to true
+  const [spark, setSpark] = useState(true); // was set to true
 
   useEffect(() => {
     if (avo_agg_data) {
       getYears()
     }
-
     if (data) {
       getGroupedData()
     }
@@ -180,7 +182,7 @@ function Assignment4() {
       return (b.total_volume * b.average_price) - (a.total_volume * a.average_price);
     });
   }
-  
+
   var tableData = avo_agg_data.filter(item => item.year == selectedYear);
   tableData = tableData.sort(function(a, b){
     return (b.total_volume * b.average_price) - (a.total_volume * a.average_price);
@@ -240,16 +242,16 @@ function Assignment4() {
             <div className="py-2 px-5">
               <h4 className="font-weight-light text-uppercase">The Growth of Avocados</h4>
               <p>
-                Avocados have been trending for years now, and more trends involving avocados continue to present themselves. 
-                The popularity of avocado toast in 2017 and the high consumption of avocados during the Super Bowl halftime in 
-                2019 are just a few potential contributors to the outcome of avocado sales over the years. With growing 
-                popularity comes higher demand for avocados, which in turn calls for more production. Understanding how 
-                the sales for avocados have changed over time will give insight into the continuing popularity as well as 
+                Avocados have been trending for years now, and more trends involving avocados continue to present themselves.
+                The popularity of avocado toast in 2017 and the high consumption of avocados during the Super Bowl halftime in
+                2019 are just a few potential contributors to the outcome of avocado sales over the years. With growing
+                popularity comes higher demand for avocados, which in turn calls for more production. Understanding how
+                the sales for avocados have changed over time will give insight into the continuing popularity as well as
                 a more detailed overview of the performance of the avocado market, which grew 104% from 2000 - 2016 (
                 <a href="https://www.inspirafarms.com/avocado-market-trends-hitting-2020/" target="blank">Avocado Market Trends</a>)
               </p>
               <p>
-                One avocado variety has dominated the market - 
+                One avocado variety has dominated the market -
                 <span className="font-weight-bold"> the Hass avocado </span>.
               </p>
               <span className="font-weight-bold" style= {{color: '#515C52', fontSize: '18px'}}>
@@ -260,22 +262,22 @@ function Assignment4() {
               <h4 className="font-weight-light text-uppercase">The Story of Hass</h4>
               <p>Where did Hass avocados come from?</p>
               <p>
-                The story begins in 1926 in La Habra Heights, California with Rudolph Hass, who purchased avocado seeds 
-                at a local nursery. At the time, different varieties of avocados were being produced, and had smooth, 
+                The story begins in 1926 in La Habra Heights, California with Rudolph Hass, who purchased avocado seeds
+                at a local nursery. At the time, different varieties of avocados were being produced, and had smooth,
                 green skin, but Hass’ avocado trees offered avocados with the pebbly, black outside that we know today.
               </p>
               <p>
-                Although Hass’ avocados initially didn’t have high demand, admiration for the avocados grew rapidly over 
-                time. In fact, the trees that Rudolph Hass cultivated have been used as the model for the many Hass avocado 
-                trees today. With the 5 million Hass avocado trees in California alone, and 10 million trees worldwide, it’s 
+                Although Hass’ avocados initially didn’t have high demand, admiration for the avocados grew rapidly over
+                time. In fact, the trees that Rudolph Hass cultivated have been used as the model for the many Hass avocado
+                trees today. With the 5 million Hass avocado trees in California alone, and 10 million trees worldwide, it’s
                 clear that avocados continue to be in high demand and reach many.
               </p>
               <p>
                 This prompts several questions:
-                What does the distribution of Hass avocado sales look like? Where are Hass avocados sold, how many are 
-                sold in these locations and how much are the avocados? Moreso… 
+                What does the distribution of Hass avocado sales look like? Where are Hass avocados sold, how many are
+                sold in these locations and how much are the avocados? Moreso…
                 <span className="font-weight-bold" style= {{color: '#515C52'}}>
-                  how have these aspects such as location in combination with the sales for Hass avocados changed 
+                  how have these aspects such as location in combination with the sales for Hass avocados changed
                   over time?
                 </span>
               </p>
@@ -287,29 +289,29 @@ function Assignment4() {
             <div className="py-2">
               <h4 className="font-weight-light text-uppercase d-flex justify-content-center">Visualization Overview</h4>
               <p className="d-flex justify-content-center px-5">
-              The following visualization will answer these questions within the scope of the United States over the years 
-              2015 - 2020. It presents a map of the U.S. with 2 different views to explore the sales for Hass avocados. One 
-              view displays circular markings that reflect the total Hass avocado sales for a given year and the other 
-              utilizes line markings that demonstrate the Hass avocado sales throughout a given year (sales over the months). 
-              These markings will be displayed at its respective location on the map. Each year can be inspected upon selection 
-              on the slider. Other aspects that can be explored are the sales for the different sizes of Hass avocados 
-              (small/medium, large or extra-large). Accompanying this map will be a list of the 
+              The following visualization will answer these questions within the scope of the United States over the years
+              2015 - 2020. It presents a map of the U.S. with 2 different views to explore the sales for Hass avocados. One
+              view displays circular markings that reflect the total Hass avocado sales for a given year and the other
+              utilizes line markings that demonstrate the Hass avocado sales throughout a given year (sales over the months).
+              These markings will be displayed at its respective location on the map. Each year can be inspected upon selection
+              on the slider. Other aspects that can be explored are the sales for the different sizes of Hass avocados
+              (small/medium, large or extra-large). Accompanying this map will be a list of the
               top 10 cities that had the most sales for a selected year (and size).
               </p>
               <p className="d-flex justify-content-center px-5">
-                A table will also be provided, which lists a breakdown of the top 10 cities, in descending order from most to least sales of 
-                Hass avocados. It will display sales for every size for the selected year. Namely, the table will contain a city name, its respective 
-                state name as well as the sales in a dollar amount for the total sales as well as the sales for small/medium, large and 
+                A table will also be provided, which lists a breakdown of the top 10 cities, in descending order from most to least sales of
+                Hass avocados. It will display sales for every size for the selected year. Namely, the table will contain a city name, its respective
+                state name as well as the sales in a dollar amount for the total sales as well as the sales for small/medium, large and
                 extra large avocados for a more detailed evaluation.
               </p>
             </div>
             <div className="py-2">
               <h4 className="font-weight-light text-uppercase d-flex justify-content-center">Dataset Overview</h4>
               <p className="d-flex justify-content-center px-5">
-                The dataset utilized provides records for Hass avocado sales from 2015 - 2020 in the United States. 
-                It describes the total number of avocados sold in major U.S. cities across these five years. In the 
-                visualization, notable attributes were selected to guide exploration: year, size, location data, 
-                price and total volume of sales.  
+                The dataset utilized provides records for Hass avocado sales from 2015 - 2020 in the United States.
+                It describes the total number of avocados sold in major U.S. cities across these five years. In the
+                visualization, notable attributes were selected to guide exploration: year, size, location data,
+                price and total volume of sales.
               </p>
             </div>
             <div className="py-2">
@@ -417,27 +419,41 @@ function Assignment4() {
                   <path d={mapPathString} fill="rgb(200, 200, 200)" />
                   {
                     spark ?
-                    Object.keys(groupedData).map((city, i) => {
+                    Object.keys(groupedData).filter(city =>
+                      city == "Los Angeles" ||
+                      city == "New York" ||
+                      city == "San Francisco" ||
+                      city == "Denver" ||
+                      city == "Seattle" ||
+                      city == "Houston" ||
+                      city == "Chicago"
+                    ).map((city, i) => {
+                        const spark_width = 20;
+                        const spark_height = 15;
                         const x_scale = x_d3_scale
-                          .range([2, width - 2])
-                          .domain(data.length);
+                          .range([2, spark_width - 2])
+                          .domain([0, 11]);
                         const y_scale = y_d3_scale
-                          .range([height - 2, 2])
+                          .range([spark_height - 2, 2])
                           .domain(d3.extent(groupedData[city][selectedYear]));
                         const line = d3.line()
                                     .x((d, i) => {
-                                      return x_scale(i);
+                                      let x = x_scale(i);
+                                      return x
+                                    })
+                                    .defined((d) => {
+                                      return !isNaN(d)
                                     })
                                     .y((d, i) => {
                                       return y_scale(d);
                                     });
-                        // console.log(line(groupedData[city][selectedYear]))
+                        const y_transform = parseInt(groupedData[city].latitude) + 4
                         return (
-                          <svg width={width} height={height} transform={`translate(
-                              ${projection([groupedData[city].longitude, groupedData[city].latitude])})`}>
+                          <g transform={`translate(${projection([groupedData[city].longitude - 5, y_transform ])})`}>
                             <path
-                              style={{ fill: 'none', strokeWidth: '0.5px', stroke: 'steelblue' }}/>
-                          </svg>
+                              style={{ fill: 'none', strokeWidth: '0.5px', stroke: 'steelblue' }}
+                              d={line(groupedData[city][selectedYear])}/>
+                          </g>
                         );
                     }) :
                     avo_agg_data.filter(item => item.year == selectedYear).map(measurement => {
@@ -502,7 +518,13 @@ function Assignment4() {
                   <li id="city-10" className="animate__animated animate__lightSpeedInRight">{listData[9].city}</li>
                 </ol>}
                 <hr></hr>
-                <p>Could put something here</p>
+                <div className="d-flex flex-row justify-content-around align-items-start">
+                  <label>{spark ? 'Circles' : 'Sparkline'}</label>
+                  <Toggle
+                    id='spark'
+                    defaultChecked={spark}
+                    onChange={() => setSpark(!spark)} />
+                </div>
               </div>
             </div>
             <div className="row">
@@ -653,28 +675,28 @@ function Assignment4() {
               size: <span className="font-weight-bold">{sizeSelectionWord} </span>
               )...
               </p>
-          </div> 
+          </div>
           <div> {/* Begin circle markings evaluation */}
             <h5>Total Sales View Explanation</h5>
             <p>
-              There was a large range in the total Hass avocado sales between the cities with the most and 
-              least sales! The 3 cities with the highest Hass avocado sales in {selectedYear} for {sizeSelectionWord} avocados were 
-              {listData[0] && 
+              There was a large range in the total Hass avocado sales between the cities with the most and
+              least sales! The 3 cities with the highest Hass avocado sales in {selectedYear} for {sizeSelectionWord} avocados were
+              {listData[0] &&
                 <span className="font-weight-bold"> {tableData[0].city}, {tableData[1].city}, and {tableData[2].city}</span>
-              }. {listData[0] && listData[0].city}, the top city in {selectedYear}, had a total of {listData[0] && Math.round(tableData[0].total_volume)} avocados 
-              sold during that year. That means that a total of ${tableData[0] && Math.round(tableData[0].total_volume * tableData[0].average_price)} was spent buying Hass avocados in {listData[0] && listData[0].city}! Not only 
-              was {listData[0] && listData[0].city} the top city in {selectedYear}, but it also was the city with the most avocado sales 
+              }. {listData[0] && listData[0].city}, the top city in {selectedYear}, had a total of {listData[0] && Math.round(tableData[0].total_volume)} avocados
+              sold during that year. That means that a total of ${tableData[0] && Math.round(tableData[0].total_volume * tableData[0].average_price)} was spent buying Hass avocados in {listData[0] && listData[0].city}! Not only
+              was {listData[0] && listData[0].city} the top city in {selectedYear}, but it also was the city with the most avocado sales
               throughout 2015-2020!
             </p>
           </div>
           {/* Begin sparkline markings evaluation */} {/* ONLY NEEDED IF SPARKLINE IS DONE */}
-          {/* <div> 
+          {/* <div>
             <h5>Total Sales Over Time View Explanation</h5>
           </div> */}
           <div>
             <h5>Table Explanation</h5>
-            <p>The top 10 cities during {selectedYear} are displayed in the table. The total sales for each city is provided in 
-              dollars, as well as the sales for each size of avocado (small/medium, large, and extra-large). According to the 
+            <p>The top 10 cities during {selectedYear} are displayed in the table. The total sales for each city is provided in
+              dollars, as well as the sales for each size of avocado (small/medium, large, and extra-large). According to the
               table, it seems that Los Angeles remained the city with the most amount of Hass avocado sales from 2015-2020! </p>
           </div>
         </div>
@@ -682,33 +704,33 @@ function Assignment4() {
             <h4 className="font-weight-light text-uppercase">Conclusion</h4>
             <div>
               <p>
-                Now that exploration has been completed, some general conclusions can be drawn. 
+                Now that exploration has been completed, some general conclusions can be drawn.
               </p>
               <p>
-                The first set of conclusions will be stated according to the question proposed at the beginning - 
+                The first set of conclusions will be stated according to the question proposed at the beginning -
                 <span className="font-weight-bold"> how has location in combination with the sales for Hass avocados changed over time?</span>
               </p>
               <p>
-              According to the map view, it can be observed that there is undoubtedly an increase in the total number 
-              of avocados sold, since moving the year slider towards the right results in an increased size for the 
-              circle markings. 
+              According to the map view, it can be observed that there is undoubtedly an increase in the total number
+              of avocados sold, since moving the year slider towards the right results in an increased size for the
+              circle markings.
               </p>
               <p>
-              According to the sparkline view, it can also be seen that there is an increase in the number of avocados 
-              sold. This can be assumed because in many cities, including the cities that had the most Hass avocado 
-              sales (which is listed on the side of the map visualization), there was a positive overall change in the line. 
+              According to the sparkline view, it can also be seen that there is an increase in the number of avocados
+              sold. This can be assumed because in many cities, including the cities that had the most Hass avocado
+              sales (which is listed on the side of the map visualization), there was a positive overall change in the line.
               </p>
               <p>
-              According to the table, it can be seen that location has a relationship with the total sales for Hass 
-              avocados. There was one city that maintained the most sales throughout 2015-2020 -- Los Angeles! In 
+              According to the table, it can be seen that location has a relationship with the total sales for Hass
+              avocados. There was one city that maintained the most sales throughout 2015-2020 -- Los Angeles! In
               addition, the number two city also remained the same from 2015-2020 -- New York!
               </p>
               <p>
-              Overall, it could be stated that there was apparent growth in Hass avocado sales throughout the United 
-              States. Notably, Los Angeles and New York demonstrated consistent increase in total sales from 2015-2020. 
-              It is possible that this trend of growing Hass avocado sales will continue not only in these cities, but 
-              throughout the United States. Especially considering how trends involving avocados are unquestionably going 
-              to persist, the sales for the most popular avocado - Hass avocados - will most likely persist as well.  
+              Overall, it could be stated that there was apparent growth in Hass avocado sales throughout the United
+              States. Notably, Los Angeles and New York demonstrated consistent increase in total sales from 2015-2020.
+              It is possible that this trend of growing Hass avocado sales will continue not only in these cities, but
+              throughout the United States. Especially considering how trends involving avocados are unquestionably going
+              to persist, the sales for the most popular avocado - Hass avocados - will most likely persist as well.
               </p>
             </div>
           </div>
@@ -717,85 +739,85 @@ function Assignment4() {
             <div>
               <h5>Interactions / Design Decisions Overview</h5>
               <p>
-                Following the completion of assignment 3, we received feedback that helped us refine our visualization 
+                Following the completion of assignment 3, we received feedback that helped us refine our visualization
                 for our final project.
               </p>
               <p>
-                To ensure interesting information is utilized, we chose to implement a toggle view on the map - one 
-                showing aggregated avocado sales per year and another showing change in sales over a year (by month) 
-                for each city.  This would be presented as centroid markings or sparklines on city locations, 
-                respectively.  In addition, a responsive list showing the top 10 cities was decided to be implemented 
-                to complement the map, along with a table that contains every city in our dataset and its total sales 
-                as well as the sales for the different sizes of avocados. 
+                To ensure interesting information is utilized, we chose to implement a toggle view on the map - one
+                showing aggregated avocado sales per year and another showing change in sales over a year (by month)
+                for each city.  This would be presented as centroid markings or sparklines on city locations,
+                respectively.  In addition, a responsive list showing the top 10 cities was decided to be implemented
+                to complement the map, along with a table that contains every city in our dataset and its total sales
+                as well as the sales for the different sizes of avocados.
               </p>
               <p>
-                Particularly, for the total sales view, we decided to standardize centroid markings with a min and 
-                max radius and include a tooltip with the city name, state and total sales (in dollars) for avocados 
+                Particularly, for the total sales view, we decided to standardize centroid markings with a min and
+                max radius and include a tooltip with the city name, state and total sales (in dollars) for avocados
                 sold for better understanding.
               </p>
               {/* DELETE IF SPARKLINE NOT HERE */}
               <p>
-               Considering the sales over time view, we decided to plot a line with no axes at its respective location 
-               for each city. 
+               Considering the sales over time view, we decided to plot a line with no axes at its respective location
+               for each city.
               </p>
               <p>
-                Another consideration we evaluated was regarding the flow of the page. To assist as well as enhance 
-                the exploration process, a narrative that will progress throughout the website and be responsive 
-                according to selection of year, size and toggle mode was decided to be implemented to guide the 
+                Another consideration we evaluated was regarding the flow of the page. To assist as well as enhance
+                the exploration process, a narrative that will progress throughout the website and be responsive
+                according to selection of year, size and toggle mode was decided to be implemented to guide the
                 exploration of data.
               </p>
               <p>
-              Lastly, considering the aesthetic and look of our visualization and page, we chose to incorporate a 
+              Lastly, considering the aesthetic and look of our visualization and page, we chose to incorporate a
               green color scheme to follow the avocado theme.
               </p>
             </div>
             <h5>Development Process </h5>
             <p>
-            Considering our development process, we began where assignment 3 left off. With initial data cleaning and 
-            the map already implemented, we started by performing more data cleaning to establish simplicity of our 
-            code with the new view (the sales over time sparkline). 
+            Considering our development process, we began where assignment 3 left off. With initial data cleaning and
+            the map already implemented, we started by performing more data cleaning to establish simplicity of our
+            code with the new view (the sales over time sparkline).
             </p>
             <p>
-            Our first created dataset (dataset 1) - with columns for city names (geography), latitude, longitude and 
-            a state ID (indicating what state this city is located in) joined with the main avocado dataset - was 
-            identified to be utilized by the sparkline visualization, since it included more detailed time data. 
-            A new dataset was created from dataset 1, and will be referenced in this explanation as dataset 2. 
-            Dataset 2 was determined to be used only for the total sales view (centroid markings) and was created 
-            by copying dataset 1, then manipulating the copy to only include columns that included attributes that 
-            contribute to exploration: city name, state name, year, latitude and longitude, average_price, total_volume, 
-            and the 3 different size columns (for small/medium, large, extra large). From here, the dataset was grouped 
-            by city and year, and summarized to get the total number of sales for each city for a particular year. In 
+            Our first created dataset (dataset 1) - with columns for city names (geography), latitude, longitude and
+            a state ID (indicating what state this city is located in) joined with the main avocado dataset - was
+            identified to be utilized by the sparkline visualization, since it included more detailed time data.
+            A new dataset was created from dataset 1, and will be referenced in this explanation as dataset 2.
+            Dataset 2 was determined to be used only for the total sales view (centroid markings) and was created
+            by copying dataset 1, then manipulating the copy to only include columns that included attributes that
+            contribute to exploration: city name, state name, year, latitude and longitude, average_price, total_volume,
+            and the 3 different size columns (for small/medium, large, extra large). From here, the dataset was grouped
+            by city and year, and summarized to get the total number of sales for each city for a particular year. In
             addition, bins were implemented to further organize data.
             </p>
             <p>
-            Following this data cleaning process, work was split up to set up the framework for our visualization page, 
-            create and develop the narrative, implement the sparkline view, and fine-tune the centroid view. All 
-            aspects of the project were very time-consuming, especially when all of these moving parts had to complement 
-            each other. 
+            Following this data cleaning process, work was split up to set up the framework for our visualization page,
+            create and develop the narrative, implement the sparkline view, and fine-tune the centroid view. All
+            aspects of the project were very time-consuming, especially when all of these moving parts had to complement
+            each other.
             </p>
             <p>
-            The narrative was formulated in consideration of both views, and was designed to evaluate results of both views. 
+            The narrative was formulated in consideration of both views, and was designed to evaluate results of both views.
             It was written to include aspects of storytelling, instruction and explanation.
             </p>
             <p>
-            The centroid view (for total sales) involved a fair amount of re-working from assignment 3, given it had to 
-            utilize the newly created dataset. The responsive list of top cities and the tooltip that appears on hover 
-            took the most amount of time for the centroid view. 
+            The centroid view (for total sales) involved a fair amount of re-working from assignment 3, given it had to
+            utilize the newly created dataset. The responsive list of top cities and the tooltip that appears on hover
+            took the most amount of time for the centroid view.
             </p>
             <p>
-            The table under the map visualization also took a considerable amount of time, as it involved a series of 
-            repetitive tasks. A calculation had to be performed to create this table in order to get the total sales in 
-            dollars, so the number of avocados sold was multiplied by the price. Additionally, making this table 
-            responsive to selections was quite difficult, and therefore required a lot of time as well. 
+            The table under the map visualization also took a considerable amount of time, as it involved a series of
+            repetitive tasks. A calculation had to be performed to create this table in order to get the total sales in
+            dollars, so the number of avocados sold was multiplied by the price. Additionally, making this table
+            responsive to selections was quite difficult, and therefore required a lot of time as well.
             </p>
             <p>
-            The sparkline was by far the most demanding task of them all. It required time data, and since the data 
-            in our dataset was organized by week, data had to be manipulated and summed up so monthly data was available. 
-            In addition, plotting the line seemed to be much more difficult than expected. 
+            The sparkline was by far the most demanding task of them all. It required time data, and since the data
+            in our dataset was organized by week, data had to be manipulated and summed up so monthly data was available.
+            In addition, plotting the line seemed to be much more difficult than expected.
             </p>
             <p>
-            Lastly, the style of our page was implemented by our team to reflect the nature of avocados. So, a green 
-            color scheme was decided upon and incorporated throughout our website to make it more engaging. 
+            Lastly, the style of our page was implemented by our team to reflect the nature of avocados. So, a green
+            color scheme was decided upon and incorporated throughout our website to make it more engaging.
             </p>
           </div>
           <div className="row py-2 px-5">
