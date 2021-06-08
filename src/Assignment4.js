@@ -627,7 +627,7 @@ function Assignment4() {
           </div>
         </div>
 
-        <div className="row">
+        <div className="row no-gutters">
           <div className="col">
             <h4 className="font-weight-light text-uppercase mt-4">What does this mean?</h4>
             <p>On the <span className="font-weight-bold">total sales view</span>, larger circle markings indicate a larger amount of Hass avocado sales for a selected year and size. So, the locations that have the largest markings also had the most sales, and locations that had the smallest markings had the least.</p>
