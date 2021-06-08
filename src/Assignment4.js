@@ -261,7 +261,7 @@ function Assignment4() {
                 What does the distribution of Hass avocado sales look like? Where are Hass avocados sold, how many are 
                 sold in these locations and how much are the avocados? Moreso… 
                 <span className="font-weight-bold" style= {{color: '#515C52'}}>
-                  how have these aspects (location, price) in combination with the sales for Hass avocados changed 
+                  how have these aspects such as location in combination with the sales for Hass avocados changed 
                   over time?
                 </span>
               </p>
@@ -279,7 +279,7 @@ function Assignment4() {
               utilizes line markings that demonstrate the Hass avocado sales throughout a given year (sales over the months). 
               These markings will be displayed at its respective location on the map. Each year can be inspected upon selection 
               on the slider. Other aspects that can be explored are the sales for the different sizes of Hass avocados 
-              (small/medium, large or extra-large) as well as the average price. Accompanying this map will be a list of the 
+              (small/medium, large or extra-large). Accompanying this map will be a list of the 
               top 10 cities that had the most sales for a selected year (and size).
               </p>
               <p className="d-flex justify-content-center px-5">
@@ -602,34 +602,69 @@ function Assignment4() {
             {/* <img width="400" src="https://images.unsplash.com/photo-1554825203-68321ddde262?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" /> */}
           {/* </div> */}
           {/* <div className="row"> */}
-          <div className="row py-2 px-5">
-            <h4 className="font-weight-light text-uppercase">What does this mean?</h4>
+        <div className="row py-2 px-5">
+          <h4 className="font-weight-light text-uppercase">What does this mean?</h4>
+          <div>
             <p>
               On the <span className="font-weight-bold">total sales view</span>
-              , larger circle markings indicate a larger amount of Hass avocado sales for a selected year and size. 
-              So, the locations that have the largest markings also had the most sales, and locations that had the 
+              , larger circle markings indicate a larger amount of Hass avocado sales for a selected year and size.
+              So, the locations that have the largest markings also had the most sales, and locations that had the
               smallest markings had the least.
-            </p>
+              </p>
             <p>
-              On the <span className="font-weight-bold">sales over time</span> view, a positive slope on a line 
-              indicates that throughout a selected year, the Hass avocado sales increased for a selected size. 
-              Conversely, a negative slope indicates that a decrease in Hass avocado sales occurred.  Locations 
-              that consistently presented a positive slope had a consistent increase in sales throughout the year,  
-              locations that consistently presented a negative slope had a consistent decrease, and 
+              On the <span className="font-weight-bold">sales over time</span> view, a positive slope on a line
+              indicates that throughout a selected year, the Hass avocado sales increased for a selected size.
+              Conversely, a negative slope indicates that a decrease in Hass avocado sales occurred.  Locations
+              that consistently presented a positive slope had a consistent increase in sales throughout the year,
+              locations that consistently presented a negative slope had a consistent decrease, and
               locations whose slope fluctuated had varied success in sales.
-            </p>
+              </p>
             <p>
-              The list of the top 10 cities presents the cities in a given year where the most Hass avocado sales 
-              occurred of the chosen avocado size. These locations are also listed in the slots of the table. The 
-              table also contains all the cities that were included in our dataset in descending order, from 
-              cities with the most sales to cities with the least.  
-            </p>
+              The list of the top 10 cities presents the cities in a given year where the most Hass avocado sales
+              occurred of the chosen avocado size. These locations are also listed in the slots of the table. The
+              table also contains all the cities that were included in our dataset in descending order, from
+              cities with the most sales to cities with the least.
+              </p>
+            <p>Considering your selections (
+              year: <span className="font-weight-bold">{selectedYear} </span>,
+              size: <span className="font-weight-bold">{selectedSize} </span>
+              )...
+              </p>
           </div>
+        </div>
           <div className="row py-2 px-5">
             <h4 className="font-weight-light text-uppercase">Conclusion</h4>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat ligula a ante vehicula, ornare commodo felis convallis. Aenean diam elit, varius ac turpis a, facilisis gravida purus. Integer sed sodales erat, ac ullamcorper nulla. Etiam ac accumsan est. Nunc vulputate tortor eget lacus commodo, nec aliquam nisi dignissim. Sed viverra lacus lectus, quis fringilla est auctor vel. Curabitur aliquet commodo interdum.
-            </p>
+            <div>
+              <p>
+                Now that exploration has been completed, some general conclusions can be drawn. 
+              </p>
+              <p>
+                The first set of conclusions will be stated according to the question proposed at the beginning - 
+                <span className="font-weight-bold"> how has location in combination with the sales for Hass avocados changed over time?</span>
+              </p>
+              <p>
+              According to the map view, it can be observed that there is undoubtedly an increase in the total number 
+              of avocados sold, since moving the year slider towards the right results in an increased size for the 
+              circle markings. 
+              </p>
+              <p>
+              According to the sparkline view, it can also be seen that there is an increase in the number of avocados 
+              sold. This can be assumed because in many cities, including the cities that had the most Hass avocado 
+              sales (which is listed on the side of the map visualization), there was a positive overall change in the line. 
+              </p>
+              <p>
+              According to the table, it can be seen that location has a relationship with the total sales for Hass 
+              avocados. There was one city that maintained the most sales throughout 2015-2020 -- Los Angeles! In 
+              addition, the number two city also remained the same from 2015-2020 -- New York!
+              </p>
+              <p>
+              Overall, it could be stated that there was apparent growth in Hass avocado sales throughout the United 
+              States. Notably, Los Angeles and New York demonstrated consistent increase in total sales from 2015-2020. 
+              It is possible that this trend of growing Hass avocado sales will continue not only in these cities, but 
+              throughout the United States. Especially considering how trends involving avocados are unquestionably going 
+              to persist, the sales for the most popular avocado - Hass avocados - will most likely persist as well.  
+              </p>
+            </div>
           </div>
           <div className="row py-2 px-5">
             <h4 className="font-weight-light text-uppercase">Considerations</h4>
@@ -639,23 +674,35 @@ function Assignment4() {
           </div>
           <div className="row py-2 px-5">
             <h4 className="font-weight-light text-uppercase">Citations</h4>
-            <ul>
-              <li className="px-5">
-                 <a href="https://www.tutorialspoint.com/d3js/d3js_introduction_to_svg.htm" target="blank">
-                   Introduction to SVG
-                 </a>
-              </li>
-              <li className="px-5">
-                 <a href="https://avocadosfrommexico.com/avocados/hass-avocado/" target="blank">
-                   Hass Avocados Information
-                 </a>
-              </li>
-              <li className="px-5">
-                 <a href="https://www.inspirafarms.com/avocado-market-trends-hitting-2020/" target="blank">
-                   Avocado market trends
-                 </a>
-              </li>
-            </ul>
+            <div>
+              <ul>
+                <li className="px-5">
+                  <a href="https://www.tutorialspoint.com/d3js/d3js_introduction_to_svg.htm" target="blank">
+                    Introduction to SVG
+                  </a>
+                </li>
+                <li className="px-5">
+                  <a href="https://avocadosfrommexico.com/avocados/hass-avocado/" target="blank">
+                    Hass Avocados Information
+                  </a>
+                </li>
+                <li className="px-5">
+                  <a href="https://www.inspirafarms.com/avocado-market-trends-hitting-2020/" target="blank">
+                    Avocado market trends
+                  </a>
+                </li>
+                <li className="px-5">
+                  <a href="https://www.kaggle.com/neuromusic/avocado-prices" target="blank">
+                    Initial Avocado Dataset
+                  </a>
+                </li>
+                <li className="px-5">
+                  <a href="https://www.kaggle.com/timmate/avocado-prices-2020" target="blank">
+                    Avocado Dataset Utilized
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
