@@ -5,7 +5,7 @@ import * as topojson from "topojson-client";
 import world from "./land-50m";
 import Slider from 'react-rangeslider'
 import "react-rangeslider/lib/index.css";
-import "./A4styling2.css";
+import "./A4styling.css";
 import { select } from 'd3-selection';
 
 /*
@@ -489,8 +489,8 @@ function Assignment4() {
               <div className="col">
                 <h4>Top Cities:</h4>
                 {listData[0] &&
-                <ol>
-                  <li id="city-1" className="animate__animated animate__lightSpeedInRight">{listData[0].city}</li>
+                <ol className="animation">
+                  <li id="city-1">{listData[0].city}</li>
                   <li id="city-2" className="animate__animated animate__lightSpeedInRight">{listData[1].city}</li>
                   <li id="city-3" className="animate__animated animate__lightSpeedInRight">{listData[2].city}</li>
                   <li id="city-4" className="animate__animated animate__lightSpeedInRight">{listData[3].city}</li>
