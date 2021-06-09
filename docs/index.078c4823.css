@@ -179,7 +179,7 @@
   transform: translate3d(-50%, 0, 0);
 }
 
-li {
+#city-list li {
   display: inline-block;
   margin: 0 0.5rem;
 
