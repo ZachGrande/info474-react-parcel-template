@@ -49,7 +49,7 @@ function Assignment4() {
   const [selectedYear, setSelectedYear] = useState(2015)
   const [selectedSize, setSelectedSize] = useState("total_volume")
   const [groupedData, setGroupedData] = useState([]);
-  const [spark, setSpark] = useState(true); // was set to true
+  const [spark, setSpark] = useState(false); // was set to true
 
   useEffect(() => {
     if (avo_agg_data) {
