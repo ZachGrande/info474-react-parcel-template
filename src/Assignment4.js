@@ -489,7 +489,7 @@ function Assignment4() {
               </div>
               <div className="col">
                 <div className="d-flex flex-row justify-content-around align-items-start">
-                  <label>{spark ? 'Circles' : 'Sparkline'}</label>
+                  <label>Sparkline</label>
                   <Toggle
                     id='spark'
                     defaultChecked={spark}
