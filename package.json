@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "animate.css": "^4.1.1",
-    "bootstrap": "^4.6.0",
+    "bootstrap": "^5.0.0",
     "d3": "^6.7.0",
     "d3-array": "^2.12.1",
     "d3-fetch": "^2.0.0",
