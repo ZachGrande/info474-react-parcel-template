@@ -5,7 +5,7 @@ import Assignment2 from './Assignment2';
 import InteractiveDemos from './InteractiveDemos';
 import Assignment3 from './Assignment3';
 import Assignment4 from './Assignment4';
-import { Route, Switch, Link, Redirect, NavLink } from 'react-router-dom';
+import { Routes, Route, Link, Navigate, NavLink } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -28,16 +28,16 @@ function App(props) {
             </header>
 
             <main>
-                <Switch>
-                    <Route exact path="/info474-react-parcel-template/" component={Assignment4} />
-                    <Route path="/info474-react-parcel-template/home" component={HomePage} />
-                    <Route path="/info474-react-parcel-template/demos" component={ClassDemos} />
-                    <Route path="/info474-react-parcel-template/assignment2" component={Assignment2} />
-                    <Route path="/info474-react-parcel-template/demos2" component={InteractiveDemos} />
-                    <Route path="/info474-react-parcel-template/assignment3" component={Assignment3} />
+                <Routes>
+                    <Route exact path="/info474-react-parcel-template/" component={<Assignment4/>} />
+                    <Route path="/info474-react-parcel-template/home" component={<HomePage/>} />
+                    <Route path="/info474-react-parcel-template/demos" component={<ClassDemos/>} />
+                    <Route path="/info474-react-parcel-template/assignment2" component={<Assignment2/>} />
+                    <Route path="/info474-react-parcel-template/demos2" component={<InteractiveDemos/>} />
+                    <Route path="/info474-react-parcel-template/assignment3" component={<Assignment3/>} />
 
-                    <Redirect to="/info474-react-parcel-template/" />
-                </Switch>
+                    <Route path="*" element={<Navigate to="/info474-react-parcel-template/" />} />
+                </Routes>
             </main>
             <footer className="container pt-5">
                 <p className="float-right">University of Washington</p>
