@@ -35,8 +35,15 @@ jobs:
         with:
           source: ./
           destination: ./_site
+      - name: Run build process and move to docs
+        run: |
+          parcel build index.html --public-url ./
+          rm -rf docs;
+          mv dist docs;
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
 
   # Deployment job
   deploy:
