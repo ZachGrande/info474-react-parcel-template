@@ -68,12 +68,12 @@ function Assignment4() {
     setYears(_years)
   }
 
-  handleSizeChange = (event) => {
+  const handleSizeChange = (event) => {
     let returnSize = event.target.value
     setSelectedSize(returnSize)
   }
 
-  setRadius = (measurement) => {
+  const setRadius = (measurement) => {
     let r = "5"
     let rValue = 0
     if (selectedSize === "4046") {
@@ -124,8 +124,8 @@ function Assignment4() {
     return r
   }
 
-  setDisplayPrice = (size) => {
-    r = "0"
+  const setDisplayPrice = (size) => {
+    let r = "0"
     if (selectedSize === "4046") {
       if (size === "1") {
         return "Less than $2,500,000";
@@ -177,7 +177,7 @@ function Assignment4() {
     }
   }
 
-  setDotColor = (size) => {
+  const setDotColor = (size) => {
     if (size === "1") {
       return "#006837";
     } else if (size === "2") {
@@ -364,34 +364,34 @@ function Assignment4() {
                 <h4 className="mb-0">Change Which Year Is Displayed:</h4>
                 <div> {/* slider wrapper */}
                   <Slider
-                    value={selectedYear - d3.min(years)}
+                    value={selectedYear - Math.min(...years)}
                     min={0}
                     max={5}
-                    labels={years}
+                    labels={years.reduce((acc, year, index) => ({ ...acc, [index]: year }), {})}
                     tooltip={false}
                     orientation="horizontal"
-                    onChange={value => { setSelectedYear(value + d3.min(years)) }}
+                    onChange={value => { setSelectedYear(value + Math.min(...years)) }}
                   />
                 </div>
               </div>
               <div className="col-5"> {/* tbd size radio btns col */}
                 <h4 className="mb-0">Change Which Size Of Avocado Is Displayed:</h4>
                 <div className="py-3">
-                  <div className="form-check form-check-inline" onChange={this.handleSizeChange}>
-                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="4046" onChange={this.handleSizeChange} checked={selectedSize === "4046"} />
-                    <label className="form-check-label" for="inlineRadio1">Small/Medium</label>
+                  <div className="form-check form-check-inline" onChange={handleSizeChange}>
+                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="4046" onChange={handleSizeChange} checked={selectedSize === "4046"} />
+                    <label className="form-check-label" htmlFor="inlineRadio1">Small/Medium</label>
                   </div>
                   <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="4225" onChange={this.handleSizeChange} checked={selectedSize === "4225"} />
-                    <label className="form-check-label" for="inlineRadio2">Large</label>
+                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="4225" onChange={handleSizeChange} checked={selectedSize === "4225"} />
+                    <label className="form-check-label" htmlFor="inlineRadio2">Large</label>
                   </div>
                   <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="4770" onChange={this.handleSizeChange} checked={selectedSize === "4770"} />
-                    <label className="form-check-label" for="inlineRadio3">Extra Large</label>
+                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="4770" onChange={handleSizeChange} checked={selectedSize === "4770"} />
+                    <label className="form-check-label" htmlFor="inlineRadio3">Extra Large</label>
                   </div>
                   <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="total_volume" onChange={this.handleSizeChange} checked={selectedSize === "total_volume"} />
-                    <label className="form-check-label" for="inlineRadio4">Any Size</label>
+                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="total_volume" onChange={handleSizeChange} checked={selectedSize === "total_volume"} />
+                    <label className="form-check-label" htmlFor="inlineRadio4">Any Size</label>
                   </div>
                 </div>
               </div>
@@ -440,8 +440,8 @@ function Assignment4() {
                         );
                     }) :
                     avo_agg_data.filter(item => item.year == selectedYear).map(measurement => {
-                      let size = this.setRadius(measurement);
-                      let color = this.setDotColor(size);
+                      let size = setRadius(measurement);
+                      let color = setDotColor(size);
                       return (
                         <circle
                             className="tooltip-trigger"
@@ -499,24 +499,24 @@ function Assignment4() {
                 <h4 className="m-0 p-0">Legend</h4>
                 <p className="font-weight-light text-secondary">Total Sales for Avocado Size</p>
                 <div>
-                  <svg width="40" height="40"><circle cx="20" cy="20" r="10" opacity="0.75" fill={this.setDotColor("1")} stroke="#001c0f" strokeWidth="2"></circle></svg>
-                  <span className="pl-1" style={{fontSize:"14px"}}>{this.setDisplayPrice("1")}</span>
+                  <svg width="40" height="40"><circle cx="20" cy="20" r="10" opacity="0.75" fill={setDotColor("1")} stroke="#001c0f" strokeWidth="2"></circle></svg>
+                  <span className="pl-1" style={{fontSize:"14px"}}>{setDisplayPrice("1")}</span>
                 </div>
                 <div>
-                  <svg width="40" height="40"><circle cx="20" cy="20" r="12" opacity="0.75" fill={this.setDotColor("2")} stroke="#1a572d" strokeWidth="2"></circle></svg>
-                  <span className="pl-1" style={{fontSize:"14px"}}>{this.setDisplayPrice("2")}</span>
+                  <svg width="40" height="40"><circle cx="20" cy="20" r="12" opacity="0.75" fill={setDotColor("2")} stroke="#1a572d" strokeWidth="2"></circle></svg>
+                  <span className="pl-1" style={{fontSize:"14px"}}>{setDisplayPrice("2")}</span>
                 </div>
                 <div>
-                  <svg width="40" height="40"><circle cx="20" cy="20" r="14" opacity="0.75" fill={this.setDotColor("3")} stroke="#4b7a4b" strokeWidth="2"></circle></svg>
-                  <span className="pl-1" style={{fontSize:"14px"}}>{this.setDisplayPrice("3")}</span>
+                  <svg width="40" height="40"><circle cx="20" cy="20" r="14" opacity="0.75" fill={setDotColor("3")} stroke="#4b7a4b" strokeWidth="2"></circle></svg>
+                  <span className="pl-1" style={{fontSize:"14px"}}>{setDisplayPrice("3")}</span>
                 </div>
                 <div>
-                  <svg width="40" height="40"><circle cx="20" cy="20" r="16" opacity="0.75" fill={this.setDotColor("4")} stroke="#819967" strokeWidth="2"></circle></svg>
-                  <span className="pl-1" style={{fontSize:"14px"}}>{this.setDisplayPrice("4")}</span>
+                  <svg width="40" height="40"><circle cx="20" cy="20" r="16" opacity="0.75" fill={setDotColor("4")} stroke="#819967" strokeWidth="2"></circle></svg>
+                  <span className="pl-1" style={{fontSize:"14px"}}>{setDisplayPrice("4")}</span>
                 </div>
                 <div>
-                  <svg width="40" height="40"><circle cx="20" cy="20" r="18" opacity="0.75" fill={this.setDotColor("5")} stroke="#b3b38f" strokeWidth="2"></circle></svg>
-                  <span className="pl-1" style={{fontSize:"14px"}}>{this.setDisplayPrice("5")}</span>
+                  <svg width="40" height="40"><circle cx="20" cy="20" r="18" opacity="0.75" fill={setDotColor("5")} stroke="#b3b38f" strokeWidth="2"></circle></svg>
+                  <span className="pl-1" style={{fontSize:"14px"}}>{setDisplayPrice("5")}</span>
                 </div>
                 <hr></hr>
                 <h4>Top Cities:</h4>

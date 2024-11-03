@@ -6,7 +6,7 @@ import App from "./App";
 const container = document.querySelector("#root");
 const root = createRoot(container);
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/info474-react-parcel-template">
     <App />
   </BrowserRouter>
 );
