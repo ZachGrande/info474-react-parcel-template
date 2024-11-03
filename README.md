@@ -1,6 +1,6 @@
 # INFO 474: Data Visualizations
 
-Univeristy of Washington, Information School, Spring 2022
+Univeristy of Washington, Information School, Spring 2021
 
 This project is a data visualization application built using React and Vite. It includes various visualizations and interactive demos of included data sets.
 
