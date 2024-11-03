@@ -16,7 +16,7 @@ function App(props) {
             <header className="jumbotron jumbotron-fluid py-4 mb-0">
                 <div className="d-flex mx-5 px-5 flex-column">
                     <div>
-                        <h1><Link to="/"> INFO 474: Data Visualization ztest </Link></h1>
+                        <h1><Link to="/"> INFO 474: Data Visualization </Link></h1>
                     </div>
                     <div>
                         <h2>Zach Grande, Spring 2021</h2>
