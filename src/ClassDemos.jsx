@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFetch } from "./hooks/useFetch";
 import { scaleLinear } from "d3-scale";
-import { extent, max, min, bin } from "d3-array";
+import { extent, bin } from "d3-array";
 
 function ClassDemos() {
 
@@ -11,16 +11,25 @@ function ClassDemos() {
         // "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/netflix_titles.csv"
     );
 
-    console.log("from hook", loading, data);
+    if (loading) {
+        return (
+            <div className="container">
+                <h1>Exploratory Data Analysis, Assignment 2, INFO 474 SP 2021</h1>
+                <div className="d-flex justify-content-center">
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     const dataSmallSample = data.slice(0, 5000);
     const TMAXextent = extent(dataSmallSample, (d) => {
         return +d.TMAX;
     });
-    console.log(TMAXextent);
 
     const projection = d3.geoNaturalEarth1();
-    const path = d3.geoPath(projection);
 
     const size = 500;
     const margin = 20;
@@ -29,37 +38,24 @@ function ClassDemos() {
         .domain(TMAXextent) // unit: km
         .range([size - margin, size - 350]); // unit: pixels
 
-    _bins = bin().thresholds(30);
-    tmaxBins = _bins(
+    let _bins = bin().thresholds(30);
+    let tmaxBins = _bins(
         dataSmallSample.map((d) => {
             return +d.TMAX;
         })
     );
 
-    console.log(
-        tmaxBins.map((bin, i) => {
-            console.log(i, bin.x0, bin.x1, bin);
-        })
-    );
-
     const histogramLeftPadding = 20;
-
-    console.log(tmaxBins);
 
     return (
         <div className="container">
             <h1>Exploratory Data Analysis, Assignment 2, INFO 474 SP 2021</h1>
-            <p>{loading && "Loading data!"}</p>
-
-            <h3>Working with Geo Data</h3>
-            <svg width={size} height={size} style={{ border: "1px solid black" }}>
-
-            </svg>
 
             <h3>Binning</h3>
             <svg width={size} height={size} style={{ border: "1px solid black" }}>
                 {tmaxBins.map((bin, i) => {
                     return <rect
+                        key={bin}
                         y={size - 50 - bin.length}
                         width="10"
                         height={bin.length}

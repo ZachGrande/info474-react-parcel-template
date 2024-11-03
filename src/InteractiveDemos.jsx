@@ -6,7 +6,8 @@ import { extent, max, min, bin } from "d3-array";
 function InteractiveDemos() {
     
     const [data, loading] = useFetch(
-        "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
+        // "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
+        "https://raw.githubusercontent.com/colinmegill/react-parcel-starter/main/weather.csv"
         );
         
         const [selectedStation, setSelectedStation] = useState(
@@ -17,7 +18,6 @@ function InteractiveDemos() {
             const TMAXextent = extent(dataSmallSample, (d) => {
                 return +d.TMAX;
             });
-            console.log(TMAXextent);
             
             const projection = d3.geoNaturalEarth1();
             const path = d3.geoPath(projection);
@@ -29,18 +29,12 @@ function InteractiveDemos() {
             .domain(TMAXextent) // unit: km
             .range([size - margin, size - 350]); // unit: pixels
             
-            _bins = bin().thresholds(30);
-            tmaxBins = _bins(
+            let _bins = bin().thresholds(30);
+            let tmaxBins = _bins(
                 dataSmallSample.map((d) => {
                     return +d.TMAX;
                 })
                 );
-                
-                console.log(
-                    tmaxBins.map((bin, i) => {
-                        console.log(i, bin.x0, bin.x1, bin);
-                    })
-                    );
                     
                     const histogramLeftPadding = 20;
                     
