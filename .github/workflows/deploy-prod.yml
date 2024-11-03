@@ -1,4 +1,4 @@
-name: Deploy React app with Vite to GitHub Pages
+name: Deploy to Production
 
 on:
   push:
