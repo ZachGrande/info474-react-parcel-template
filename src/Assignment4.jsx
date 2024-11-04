@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFetch } from "./hooks/useFetch";
 import { AiFillPlusCircle, AiFillMinusCircle, AiFillCaretLeft, AiFillCaretDown, AiFillCaretUp, AiFillCaretRight } from "react-icons/ai";
 import * as topojson from "topojson-client";
@@ -7,7 +7,6 @@ import Slider from 'react-rangeslider'
 import "react-rangeslider/lib/index.css";
 import Toggle from 'react-toggle'
 import "animate.css";
-
 import "react-toggle/style.css"
 
 /*

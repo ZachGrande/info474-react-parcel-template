@@ -1,15 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import { useFetch } from "./hooks/useFetch";
-import { useJson } from "./hooks/useJson";
-import { geoPath, geoAlbersUsa } from 'd3-geo';
 import { AiFillPlusCircle, AiFillMinusCircle, AiFillCaretLeft, AiFillCaretDown, AiFillCaretUp, AiFillCaretRight } from "react-icons/ai";
 import * as topojson from "topojson-client";
-//import us from './cb_2015_us_state_20m.js';
-import * as us from "./states-albers-10m.json";
 import world from "./land-50m";
-import { extent } from "d3-array";
-import { scaleLinear } from "d3-scale";
-import {sliderBottom} from "d3-simple-slider"
 import Slider from 'react-rangeslider'
 import "react-rangeslider/lib/index.css";
 

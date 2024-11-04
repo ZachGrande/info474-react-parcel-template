@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFetch } from "./hooks/useFetch";
 import { scaleLinear } from "d3-scale";
 import { extent, bin } from "d3-array";

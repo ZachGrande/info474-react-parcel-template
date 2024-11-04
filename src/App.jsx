@@ -1,16 +1,14 @@
-import React from "react";
 import ClassDemos from './ClassDemos';
 import HomePage from './HomePage';
 import Assignment2 from './Assignment2';
 import InteractiveDemos from './InteractiveDemos';
 import Assignment3 from './Assignment3';
 import Assignment4 from './Assignment4';
-import { Routes, Route, Link, Navigate, NavLink } from 'react-router-dom';
+import { Routes, Route, Link, NavLink } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// const App = () => {
-function App(props) {
+function App() {
     return (
         <div>
             <header className="jumbotron jumbotron-fluid py-4 mb-0">

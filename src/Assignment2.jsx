@@ -1,4 +1,3 @@
-import React from 'react';
 import { VegaLite } from 'react-vega';
 import { useFetch } from "./hooks/useFetch";
 
