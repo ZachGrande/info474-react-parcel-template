@@ -77,6 +77,7 @@ function Assignment4() {
         return (b.total_volume * b.average_price) - (a.total_volume * a.average_price);
       });
     }
+    cities = cities.slice(0, 11); // show top 10 cities
     setListData(cities);
   }, [avo_agg_data, data, selectedSize]);
 
