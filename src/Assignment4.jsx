@@ -5,8 +5,8 @@ import * as topojson from "topojson-client";
 import world from "./land-50m";
 import Slider from 'react-rangeslider'
 import "react-rangeslider/lib/index.css";
-import "./A4styling2.css";
 import Toggle from 'react-toggle'
+import "animate.css";
 
 import "react-toggle/style.css"
 
@@ -24,6 +24,9 @@ function Assignment4() {
   const [avo_agg_data, loading2] = useFetch(
     "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/sizeChange/aggregated-avocado-2020.csv"
   );
+
+  const [listData, setListData] = useState([]);
+  const [animateCitiesList, setAnimateCitiesList] = useState(false);
 
   // Colin's starter code to render world map
   const land = topojson.feature(world, world.objects.land);
@@ -54,7 +57,35 @@ function Assignment4() {
     if (data) {
       getGroupedData()
     }
-  }, [avo_agg_data, data, selectedSize])
+
+    let cities = avo_agg_data.filter(item => item.year == selectedYear);
+
+    if (selectedSize === "4046") {
+      cities = cities.sort(function(a, b){
+        return (b.sm_4046 * b.average_price) - (a.sm_4046 * a.average_price);
+      });
+    } else if (selectedSize === "4225") {
+      cities = cities.sort(function(a, b){
+        return (b.l_4225 * b.average_price) - (a.l_4225 * a.average_price);
+      });
+    } else if (selectedSize === "4770") {
+      cities = cities.sort(function(a, b){
+        return (b.xl_4770 * b.average_price) - (a.xl_4770 * a.average_price);
+      });
+    } else {
+      cities = cities.sort(function(a, b){
+        return (b.total_volume * b.average_price) - (a.total_volume * a.average_price);
+      });
+    }
+    setListData(cities);
+  }, [avo_agg_data, data, selectedSize]);
+
+  useEffect(() => {
+    setAnimateCitiesList(true);
+
+    const timer = setTimeout(() => setAnimateCitiesList(false), 1000);
+    return () => clearTimeout(timer);
+  }, [listData]);
 
   const getYears = async () => {
     var _years = [];
@@ -223,25 +254,6 @@ function Assignment4() {
       }
     });
     setGroupedData(_groupedData)
-  }
-
-  var listData = avo_agg_data.filter(item => item.year == selectedYear);
-  if (selectedSize === "4046") {
-    listData = listData.sort(function(a, b){
-      return (b.sm_4046 * b.average_price) - (a.sm_4046 * a.average_price);
-    });
-  } else if (selectedSize === "4225") {
-    listData = listData.sort(function(a, b){
-      return (b.l_4225 * b.average_price) - (a.l_4225 * a.average_price);
-    });
-  } else if (selectedSize === "4770") {
-    listData = listData.sort(function(a, b){
-      return (b.xl_4770 * b.average_price) - (a.xl_4770 * a.average_price);
-    });
-  } else {
-    listData = listData.sort(function(a, b){
-      return (b.total_volume * b.average_price) - (a.total_volume * a.average_price);
-    });
   }
 
   var tableData = avo_agg_data.filter(item => item.year == selectedYear);
@@ -521,17 +533,16 @@ function Assignment4() {
                 <hr></hr>
                 <h4>Top Cities:</h4>
                 {listData[0] &&
-                  <ol>
-                    <li id="city-1" className="animate__animated animate__lightSpeedInRight">{listData[0].city}</li>
-                    <li id="city-2" className="animate__animated animate__lightSpeedInRight">{listData[1].city}</li>
-                    <li id="city-3" className="animate__animated animate__lightSpeedInRight">{listData[2].city}</li>
-                    <li id="city-4" className="animate__animated animate__lightSpeedInRight">{listData[3].city}</li>
-                    <li id="city-5" className="animate__animated animate__lightSpeedInRight">{listData[4].city}</li>
-                    <li id="city-6" className="animate__animated animate__lightSpeedInRight">{listData[5].city}</li>
-                    <li id="city-7" className="animate__animated animate__lightSpeedInRight">{listData[6].city}</li>
-                    <li id="city-8" className="animate__animated animate__lightSpeedInRight">{listData[7].city}</li>
-                    <li id="city-9" className="animate__animated animate__lightSpeedInRight">{listData[8].city}</li>
-                    <li id="city-10" className="animate__animated animate__lightSpeedInRight">{listData[9].city}</li>
+                  <ol className="ps-0">
+                    {listData.map((item, index) => (
+                      <li
+                        key={index}
+                        id={`city-${index + 1}`}
+                        className={`d-block animate__animated ${animateCitiesList ? 'animate__lightSpeedInRight' : ''}`}
+                      >
+                        {item.city}
+                        </li>
+                    ))}
                   </ol>}
               </div>
             </div>
