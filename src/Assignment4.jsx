@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFetch } from "./hooks/useFetch";
 import { AiFillPlusCircle, AiFillMinusCircle, AiFillCaretLeft, AiFillCaretDown, AiFillCaretUp, AiFillCaretRight } from "react-icons/ai";
 import * as topojson from "topojson-client";
@@ -7,7 +7,6 @@ import Slider from 'react-rangeslider'
 import "react-rangeslider/lib/index.css";
 import Toggle from 'react-toggle'
 import "animate.css";
-
 import "react-toggle/style.css"
 
 /*
@@ -77,6 +76,7 @@ function Assignment4() {
         return (b.total_volume * b.average_price) - (a.total_volume * a.average_price);
       });
     }
+    cities = cities.slice(0, 11); // show top 10 cities
     setListData(cities);
   }, [avo_agg_data, data, selectedSize]);
 
