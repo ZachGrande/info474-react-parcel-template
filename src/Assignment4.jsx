@@ -21,7 +21,7 @@ function Assignment4() {
   );
 
   const [avo_agg_data, loading2] = useFetch(
-    "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/sizeChange/aggregated-avocado-2020.csv"
+    "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/aggregated-avocado-2020.csv"
   );
 
   const [listData, setListData] = useState([]);
