@@ -17,11 +17,11 @@ import "react-toggle/style.css"
 function Assignment4() {
 
   const [data, loading] = useFetch(
-    "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/avocado-2020-joined-city-only.csv"
+    "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/e8e82879867a43381706483de0d059b380034941/avocado-2020-joined-city-only.csv"
   );
 
   const [avo_agg_data, loading2] = useFetch(
-    "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/sizeChange/aggregated-avocado-2020.csv"
+    "https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/e8e82879867a43381706483de0d059b380034941/aggregated-avocado-2020.csv"
   );
 
   const [listData, setListData] = useState([]);
