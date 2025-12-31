@@ -16,7 +16,7 @@ function ClassDemos() {
                 <h1>Exploratory Data Analysis, Assignment 2, INFO 474 SP 2021</h1>
                 <div className="d-flex justify-content-center">
                     <div className="spinner-border" role="status">
-                        <span className="sr-only">Loading...</span>
+                        <span className="visually-hidden">Loading...</span>
                     </div>
                 </div>
             </div>
