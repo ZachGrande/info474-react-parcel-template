@@ -3,8 +3,7 @@ import { useFetch } from "./hooks/useFetch";
 import { AiFillPlusCircle, AiFillMinusCircle, AiFillCaretLeft, AiFillCaretDown, AiFillCaretUp, AiFillCaretRight } from "react-icons/ai";
 import * as topojson from "topojson-client";
 import world from "./land-50m";
-import Slider from 'react-rangeslider'
-import "react-rangeslider/lib/index.css";
+import YearSlider from "./components/YearSlider";
 
 /*
 * The skeleton for the map was implemented using the documentation for D3's Bubble Map
@@ -96,15 +95,14 @@ function Assignment3() {
             </div>
             <div id="slider-time"></div>
             <div class="col-sm-2"><p id="value-time"></p></div>
-              <Slider
-                value={selectedYear - d3.min(years)}
-                min={0}
-                max={5}
-                labels={years}
-                tooltip={false}
-                orientation="horizontal"
-                onChange={value => { setSelectedYear(value + d3.min(years))
-                }}
+              <YearSlider
+                value={selectedYear}
+                min={Math.min(...years)}
+                max={Math.max(...years)}
+                step={1}
+                ticks={years.map((year) => ({ value: year, label: year }))}
+                ariaLabel="Select avocado sales year"
+                onChange={setSelectedYear}
               />
 
             <svg id="map" width={1000} height={600} style={{ border: "1px solid black", 'margin-top': '10vh' }} viewBox={`${x} ${y} ${width} ${height}`}>
