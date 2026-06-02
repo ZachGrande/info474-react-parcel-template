@@ -3,8 +3,7 @@ import { useFetch } from "./hooks/useFetch";
 import { AiFillPlusCircle, AiFillMinusCircle, AiFillCaretLeft, AiFillCaretDown, AiFillCaretUp, AiFillCaretRight } from "react-icons/ai";
 import * as topojson from "topojson-client";
 import world from "./land-50m";
-import Slider from 'react-rangeslider'
-import "react-rangeslider/lib/index.css";
+import YearSlider from "./components/YearSlider";
 import Toggle from 'react-toggle'
 import "animate.css";
 import "react-toggle/style.css"
@@ -375,14 +374,14 @@ function Assignment4() {
               <div className="col-7"> {/* slider col */}
                 <h4 className="mb-0">Change Which Year Is Displayed:</h4>
                 <div> {/* slider wrapper */}
-                  <Slider
-                    value={selectedYear - Math.min(...years)}
-                    min={0}
-                    max={5}
-                    labels={years.reduce((acc, year, index) => ({ ...acc, [index]: year }), {})}
-                    tooltip={false}
-                    orientation="horizontal"
-                    onChange={value => { setSelectedYear(value + Math.min(...years)) }}
+                  <YearSlider
+                    value={selectedYear}
+                    min={Math.min(...years)}
+                    max={Math.max(...years)}
+                    step={1}
+                    ticks={years.map((year) => ({ value: year, label: year }))}
+                    ariaLabel="Select dashboard year"
+                    onChange={setSelectedYear}
                   />
                 </div>
               </div>
