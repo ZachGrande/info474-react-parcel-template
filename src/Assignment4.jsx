@@ -4,9 +4,8 @@ import { AiFillPlusCircle, AiFillMinusCircle, AiFillCaretLeft, AiFillCaretDown, 
 import * as topojson from "topojson-client";
 import world from "./land-50m";
 import YearSlider from "./components/YearSlider";
-import Toggle from 'react-toggle'
+import Toggle from './components/Toggle'
 import "animate.css";
-import "react-toggle/style.css"
 
 /*
 * The skeleton for the map was implemented using the documentation for D3's Bubble Map
