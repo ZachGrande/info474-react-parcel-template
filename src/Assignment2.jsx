@@ -1,5 +1,19 @@
-import { VegaLite } from 'react-vega';
+import { useEffect, useRef } from 'react';
+import { useVegaEmbed } from 'react-vega';
 import { useFetch } from "./hooks/useFetch";
+
+const embedOptions = { mode: "vega-lite" };
+
+function VegaLiteChart({ spec, data }) {
+    const ref = useRef(null);
+    const embed = useVegaEmbed({ ref, spec, options: embedOptions });
+
+    useEffect(() => {
+        embed?.view.data("values", data).runAsync();
+    }, [embed, data]);
+
+    return <div ref={ref} />;
+}
 
 function Assignment2() {
 
@@ -56,7 +70,7 @@ function Assignment2() {
         },
         data: {
             // "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
-            values: data
+            name: "values"
         },
         transform: [{
             filter: {
@@ -95,7 +109,7 @@ function Assignment2() {
         },
         data: {
             // "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
-            values: data
+            name: "values"
         },
         transform: [{
             filter: {
@@ -137,7 +151,7 @@ function Assignment2() {
         },
         data: {
             // "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
-            values: data
+            name: "values"
         },
         transform: [{
             filter: {
@@ -171,7 +185,7 @@ function Assignment2() {
         },
         data: {
             // "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
-            values: data
+            name: "values"
         },
         transform: [{
             filter: {
@@ -207,7 +221,7 @@ function Assignment2() {
         },
         data: {
             // "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
-            values: data
+            name: "values"
         },
         transform: [{
             filter: {
@@ -243,7 +257,7 @@ function Assignment2() {
         },
         data: {
             // "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
-            values: data
+            name: "values"
         },
         transform: [{
             filter: {
@@ -294,7 +308,7 @@ function Assignment2() {
         },
         data: {
             // "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
-            values: data
+            name: "values"
         },
         encoding: {
             x: {
@@ -323,7 +337,7 @@ function Assignment2() {
         },
         data: {
             // "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
-            values: data
+            name: "values"
         },
         transform: [{
             filter: {
@@ -374,7 +388,7 @@ function Assignment2() {
         },
         data: {
             // "url":"https://raw.githubusercontent.com/ZachGrande/info474-react-parcel-template/master/disney_movies.csv"
-            values: data
+            name: "values"
         },
         transform: [{
             filter: {
@@ -421,13 +435,13 @@ function Assignment2() {
         
         {/* <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet1?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe> */}
         
-        <VegaLite spec={visOne} />
+        <VegaLiteChart spec={visOne} data={data} />
         
         <p>This bar chart compares the number of movies in each genre. We can identify Comedy, Adventure, and Drama movies as the most common Disney films, with each category having over 100 movies. The trend steadily declines as the subsequent categories all have 40 or less movies. The bar chart affords us the view of what Disney believes its most popular genres are, based on how many they have made. The data was filtered to exclude null values and an additional numerical variable, "Number of Movies," was created to represent the sum of records for each genre.</p>
         
         {/* <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet2?:origin=card_share_link&:embed=yes" width="800" height="600"></iframe> */}
         
-        <VegaLite spec={visTwo} />
+        <VegaLiteChart spec={visTwo} data={data} />
         
         <p>This bar chart shows a similar view as the last, but here we can see the gross income of each genre. The largest difference here is that we can see which genres the <em>public</em> favors, instead of the studio. Money invested by consumers in each genre shows which types of movies they value, which in turn may eduate the types of movies Disney produces moving forward. The data is sorted to bring prominence to the most popular genres, and the graph is constructued in such a way that each genre represents the sum income of films contained in them.</p>
         
@@ -435,20 +449,20 @@ function Assignment2() {
         
         {/* <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet3?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe> */}
         
-        <VegaLite spec={visThree} />
+        <VegaLiteChart spec={visThree} data={data} />
         
         <p>In our second analysis question, we are searching to find which MPAA rating from Disney has made the most money. A key element to this question is to find how many movies belong to each MPAA rating. Since most of the movies Disney has made are rated PG, it could stand to reason that PG movies have made the most money. Further analysis can either confirm or debunk this hypothesis. In this graph, movies were binned by MPAA rating to provide the "Number of Movies" numerical attribute.</p>
         
         {/* <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet4?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe> */}
 
-        <VegaLite spec={visFourOne} />
-        <VegaLite spec={visFourTwo} />
+        <VegaLiteChart spec={visFourOne} data={data} />
+        <VegaLiteChart spec={visFourTwo} data={data} />
         
         <p>These two bar charts investigate the income generated from each MPAA rating. Here, gross income <b>and</b> gross income adjusted for inflation are displayed. The graphs are each sorted for their unique attribute of income so we can compare them. Looking at these attributes, the G rating is clearly the highest grossing category with adjusting for inflation. This debunks our hypothesis, showing that fewer movies were able to generate more money than the PG rating. However, the second graph for unadjusted income show PG as the highest grossing category.</p>
         
         {/* <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet8?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe> */}
 
-        <VegaLite spec={visFive} />
+        <VegaLiteChart spec={visFive} data={data} />
         
         <p>This time table serves as a further exploration into the last chart. The top ten highest grossing movies (with income adjusted for inflation) are displayed and sorted by release year. In this list, the highest grossing movies, noted by the depth of black in their bars, are released in or before the year 1961. This could explain our dichotomy from the last graphs, as we know older movies are affected by a larger inflation factor. This chart confirms that some of Disney's most popular films were created over 60 years ago, so many of these values will be affected by inflation. Only one film on the list was originally made in the 21st century.</p>
         
@@ -456,19 +470,19 @@ function Assignment2() {
         
         {/* <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet5?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe> */}
 
-        <VegaLite spec={visSix} />
+        <VegaLiteChart spec={visSix} data={data} />
         
         <p>For our third question, we are introducing time as a core element of our visualizations. To get our bearings, this graph plots the gross income of Disney by year. We can see that there is a strong outlier in the opening year, 1937. The graph stabilizes after this point, and we can generally identify an increase in gross income throughout the history of Disney's existence.</p>
         
         {/* <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet6?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe> */}
 
-        <VegaLite spec={visSeven} />
+        <VegaLiteChart spec={visSeven} data={data} />
         
         <p>This scorecard investigates the outlier from the last visualization. Snow White and the Seven Dwarfs is arguably one of Disney's most popular films, having garnered <b>$5.2 BILLION</b> in the box office. When put into context, we can understand why the year 1937 is such a massive outlier in the previous visualization.</p>
         
         {/* <iframe src="https://10ay.online.tableau.com/t/zachgrande/views/Assignment2/Sheet7?:embed=yes&:showAppBanner=false&:display_count=n&:showVizHome=n&:origin=viz_share_link" width="800" height="600"></iframe> */}
 
-        <VegaLite spec={visEight} />
+        <VegaLiteChart spec={visEight} data={data} />
         
         <p>This visualization utilizes several attributes from the Disney Movies dataset as we seek to answer our third analysis question. First, movies have been grouped into their respective genres. This allows us to aggregate the income for each genre into a single numerical value that we can plot against time. There is no clear "winner" for most popular genre, but we can see that Musical, Comedy, and Adventure (respectively) had all had their time to shine.</p>
         
