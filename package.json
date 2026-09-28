@@ -23,13 +23,13 @@
     "d3-scale": "^4.0.2",
     "d3-simple-slider": "^2.0.0",
     "parcel": "^2.16.4",
-    "react": "^19.2.7",
+    "react": "^19.3.0",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^19.2.7",
+    "react-dom": "^19.3.0",
     "react-icons": "^4.12.0",
-    "react-router-dom": "^6.30.4",
+    "react-router-dom": "^6.30.6",
     "react-vega": "^7.7.1",
-    "vega": "^6.2.0",
+    "vega": "^6.4.0",
     "vega-lite": "^6.4.3"
   },
   "devDependencies": {
@@ -38,5 +38,13 @@
     "process": "^0.11.10",
     "vite": "^6.4.3",
     "vite-bundle-analyzer": "^0.12.1"
+  },
+  "allowScripts": {
+    "lmdb@2.8.5": true,
+    "@parcel/watcher@2.6.0": true,
+    "@swc/core@1.16.2": true,
+    "msgpackr-extract@3.0.4": true,
+    "esbuild@0.25.12": true,
+    "fsevents@2.3.3": true
   }
 }
