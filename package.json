@@ -21,16 +21,16 @@
     "d3-fetch": "^3.0.1",
     "d3-geo-projection": "^4.0.0",
     "d3-scale": "^4.0.2",
-    "d3-simple-slider": "^2.0.0",
+    "d3-simple-slider": "^2.1.0",
     "parcel": "^2.16.4",
-    "react": "^19.3.0",
+    "react": "^19.3.1",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^19.3.0",
+    "react-dom": "^19.3.1",
     "react-icons": "^4.12.0",
-    "react-router": "^8.4.0",
+    "react-router": "^8.5.0",
     "react-vega": "^8.0.0",
     "vega": "^6.4.0",
-    "vega-lite": "^6.4.3"
+    "vega-lite": "^6.5.0"
   },
   "devDependencies": {
     "buffer": "^6.0.3",
