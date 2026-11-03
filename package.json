@@ -39,11 +39,7 @@
     "vite-bundle-analyzer": "^0.12.1"
   },
   "allowScripts": {
-    "lmdb@2.8.5": true,
-    "@parcel/watcher@2.6.0": true,
-    "@swc/core@1.16.2": true,
-    "msgpackr-extract@3.0.4": true,
-    "esbuild@0.25.12": true,
-    "fsevents@2.3.3": true
+    "esbuild": true,
+    "fsevents": true
   }
 }
