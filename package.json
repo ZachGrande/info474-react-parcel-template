@@ -22,7 +22,6 @@
     "d3-geo-projection": "^4.0.0",
     "d3-scale": "^4.0.2",
     "d3-simple-slider": "^2.1.0",
-    "parcel": "^2.16.4",
     "react": "^19.3.1",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.3.1",
