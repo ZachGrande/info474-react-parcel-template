@@ -1,29 +1,34 @@
+import { useEffect } from 'react';
 import ClassDemos from './ClassDemos';
 import HomePage from './HomePage';
 import Assignment2 from './Assignment2';
 import InteractiveDemos from './InteractiveDemos';
 import Assignment3 from './Assignment3';
 import Assignment4 from './Assignment4';
-import { Routes, Route, Link, NavLink } from 'react-router';
-import { Navbar } from 'react-bootstrap';
+import { Routes, Route, Link, NavLink, useLocation } from 'react-router';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles.css';
+
+const navItems = [
+    { to: '/', label: 'Final Project' },
+    { to: '/home', label: 'Home Page' },
+    { to: '/demos', label: 'Class Demos' },
+    { to: '/assignment2', label: 'Assignment 2' },
+    { to: '/demos2', label: 'Interactive Demos' },
+    { to: '/assignment3', label: 'Assignment 3' },
+];
 
 function App() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
     return (
-        <div>
-            <header className="bg-light py-4 mb-0">
-                <div className="d-flex mx-5 px-5 flex-column">
-                    <div>
-                        <h1><Link to="/"> INFO 474: Data Visualization </Link></h1>
-                    </div>
-                    <div>
-                        <h2>Zach Grande, Spring 2021</h2>
-                    </div>
-                </div>
-                <div className="d-flex mx-5 px-3 flex-column text-center">
-                    <AboutNav />
-                </div> 
-            </header>
+        <>
+            <SiteNav />
 
             <main>
                 <Routes>
@@ -37,25 +42,38 @@ function App() {
                     {/* <Route path="*" element={<Navigate to="/" />} /> */}
                 </Routes>
             </main>
-            <footer className="container pt-5">
-                <p className="float-end">University of Washington</p>
+
+            <footer className="site-footer py-4">
+                <Container className="d-flex flex-column flex-sm-row justify-content-between gap-2">
+                    <span>INFO 474: Data Visualization &middot; Spring 2021</span>
+                    <span>University of Washington</span>
+                </Container>
             </footer>
-        </div>
+        </>
     );
 }
 
-function AboutNav() {
-    const basePath = '/info474-react-parcel-template'
+function SiteNav() {
     return (
-        <Navbar bg="navbar navbar-expand-lg navbar-light bg-transparent" id="nav-bar">
-            <NavLink to="/" className="nav-link link-primary me-3" id="nav-li" activeclassname={"activeLink"}>Final Project</NavLink>
-            <NavLink to="/home" className="nav-link link-primary me-3" id="nav-li" activeclassname={"activeLink"}>Home Page</NavLink>
-            <NavLink to="/demos" className="nav-link link-primary me-3" id="nav-li" activeclassname={"activeLink"}>Class Demos</NavLink>
-            <NavLink to="/assignment2" className="nav-link link-primary me-3" id="nav-li" activeclassname={"activeLink"}>Assignment 2</NavLink>
-            <NavLink to="/demos2" className="nav-link link-primary me-3" id="nav-li" activeclassname={"activeLink"}>Interactive Demos</NavLink>
-            <NavLink to="/assignment3" className="nav-link link-primary" id="nav-li" activeclassname={"activeLink"}>Assignment 3</NavLink>
+        <Navbar expand="lg" sticky="top" collapseOnSelect className="site-navbar py-2">
+            <Container>
+                <Navbar.Brand as={Link} to="/">
+                    <span className="brand-title">INFO 474: Data Visualization</span>
+                    <span className="brand-subtitle">Zach Grande, Spring 2021</span>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="site-nav" />
+                <Navbar.Collapse id="site-nav">
+                    <Nav className="ms-auto gap-lg-1 py-2 py-lg-0">
+                        {navItems.map(({ to, label }) => (
+                            <Nav.Link key={to} as={NavLink} to={to} eventKey={to} end>
+                                {label}
+                            </Nav.Link>
+                        ))}
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
         </Navbar>
-    )
+    );
 }
 
 export default App;
